@@ -75,7 +75,7 @@
       </ol>
       <figure>
         <caption>Opening Add / Remove Software</caption>
-        <image source="screenshots/raspi_setup/main_menu-add_remove_software.png">
+        <image source="screenshots/codeblocks_setup/main_menu-add_remove_software.png">
           <description>A view of the navigation path to <em>Add / Remove Software</em> in the Raspberry Pi OS main menu.</description>
         </image>
       </figure>
@@ -90,7 +90,7 @@
       </ol>
       <figure>
         <caption>Selecting software in Add / Remove Software</caption>
-        <image source="screenshots/raspi_setup/add_remove_software-selecting_codeblocks.png">
+        <image source="screenshots/codeblocks_setup/add_remove_software-selecting_codeblocks.png">
           <description>Searching for, and selecting software to install in the <em>Add / Remove Software</em> tool in Raspberry Pi OS.</description>
         </image>
       </figure>
@@ -99,7 +99,7 @@
       </p>
       <figure>
         <caption>Authentication Window</caption>
-        <image source="screenshots/raspi_setup/add_remove_software-authentication.png">
+        <image source="screenshots/codeblocks_setup/add_remove_software-authentication.png">
           <description>Authentication window for the software installation request <em>Add / Remove Software</em> tool in Raspberry Pi OS.</description>
         </image>
       </figure>

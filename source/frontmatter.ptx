@@ -6,25 +6,23 @@
 <frontmatter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="frontmatter">
   <titlepage>
     <author>
-      <personname>Me</personname>
-      <department>My department</department>
-      <institution>My school</institution>
+      <personname>Anthony Bradburn</personname>
     </author>
     <date><today/></date>
   </titlepage>
 
   <colophon>
     <website>
-      <name><c>my-website.org</c></name>
-      <address>http://my.website.org</address>
+      <name><c>https://github.com/ajbradburn/FundOfMicroPLabManual</c></name>
+      <address>https://github.com/ajbradburn/FundOfMicroPLabManual</address>
     </website>
 
     <copyright>
       <!-- In addition to specifying the copyright holder, you should  -->
       <!-- include a license, such as the cc-by-sa license shown below -->
       <!-- so people reading your book know how they can use it.       -->
-      <year>2020<ndash/>2021</year>
-      <holder>Me</holder>
+      <year>2022</year>
+      <holder>Anthony Bradburn</holder>
       <!-- <minilicense><image source="../images/by-sa.png" /></minilicense> -->
       <shortlicense>
         <!-- <image source="../images/by-sa.png" width="15%"/>  -->
@@ -33,13 +31,6 @@
 
     </copyright>
   </colophon>
-
-  <acknowledgement>
-    <p>
-      I would like to thank...
-    </p>
-
-  </acknowledgement>
 
   <preface xml:id="preface">
     <!-- You should be a little careful about what you put here -->

@@ -1,4 +1,4 @@
-# Introduction to Microprocessors: Assembly for the Raspberry Pi Lab Manual
+# Fundamentals of Microprocessors: Assembly for the Raspberry Pi Lab Manual
 
 TODO this should have some simple build information
 and/or a link to documentation

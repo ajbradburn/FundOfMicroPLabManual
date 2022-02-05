@@ -5,8 +5,8 @@
   <xi:include href="./docinfo.ptx" />
 
   <book xml:id="my-great-book">
-    <title>Introduction to Microprocessors</title>
-    <subtitle>The Raspberry Pi and the ARM Processor</subtitle>
+    <title>Fundamentals of Microprocessors</title>
+    <subtitle>The ARM Processors and the Raspberry Pi</subtitle>
 
     <xi:include href="./frontmatter.ptx" />
 
