@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<chapter xml:id="ch-first" xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <title>Setting up your environment.</title>
+  <introduction>
+    <p>Before we can dive into learning about microprocessors, and the power they offer us, we need to take some time to setup, and understand how we are going to be interacting with them.</p>
+    <p>To that end, this first series of exercises is going to be focused on getting your Raspberry Pi configured and software installed.</p> 
+  </introduction>
+
+  <section>
+    <!-- I've run into issues with the keyboard layout before. I cannot guarantee that it is still a problem. Testing should be done. -->
+    <subsection>
+      <title>Initial setup of the Raspberry Pi</title>
+      <introduction>
+        <p>
+          The first thing that you're presented to when you boot up your new Raspberry PI OS is a wizard that guides you through the basic setup of your new device. The wizard covers so much ground that this section is unneeded, with the exception of a quick with the keyboard layout that makes life difficult for US users that are used to the 104 key layout.
+        </p>
+      </introduction>
+      <p>
+        To Change the keyboard layout from "Generic 105-key PC" to "Generic 104-key PC".
+      </p>
+      <ol>
+        <li> Click <em>main menu</em> (Raspberry Pi Icon on the Taskbar)</li>
+        <li>... <em>Preferences</em></li>
+        <li>... <em>Mouse and Keyboard Settings</em></li>
+      </ol>
+      <figure>
+        <caption>Mouse and Keyboard Settings in the Raspberry PI OS main menu.</caption>
+        <image source="screenshots/raspi_setup/main_menu-mouse_and_keyboard_settings.png">
+          <description>A view of the navigation path to <em>Mouse and Keyboard Settings</em> in the Raspberry Pi OS main menu.</description>
+        </image>
+      </figure>
+      <p>
+        When the <em>Mouse and Keyboard Settings</em> window opens.
+      </p>
+      <ol>
+        <li>Select the <em>Keyboard</em> tab</li>
+        <li>Click <em>Keyboard Layout...</em></li>
+        <li>... <em>Model:</em> dropdown</li>
+        <li>Select <em>Generic 105-key PC (intl.)</em></li>
+        <li>Click <em>Layout:</em> dropdown</li>
+        <li>Select <em>English (US)</em></li>
+        <li>Click the <em>Variant:</em> dropdown</li>
+        <li>Select <em>English (US)</em></li>
+      </ol>
+      <figure>
+        <caption>Keyboard layout configuration.</caption>
+        <image source="screenshots/raspi_setup/mouse_and_keyboard_layout-selection.png">
+          <description>A view of the layout options for the keyboard.</description>
+        </image>
+      </figure>
+      <p>
+        Now, you're ready to follow the guidance of the Raspberry Pi OS wizard for initial setup.
+      </p>
+    </subsection>
+
+    <subsection>
+      <title>Installation of Code::Blocks IDE</title>
+      <introduction>
+        <p>
+          In order to interface with the processor, we are going to need to write programs. Writing programs can be a challenging process, requiring a great deal of knowledge, and is prone to mistakes. A simple human error can result in all sorts of unanticipated behavior.
+        </p>
+        <p>
+          There are tools, called an Interactive Development Environment or <term>IDE</term> that make this process of writing code, and working through errors much easier. We will install one such IDE that will be used for the labs in this book.
+        </p>
+      </introduction>
+      <p>
+        To install Code::Blocks IDE.
+      </p>
+      <ol>
+        <li> Click <em>main menu</em> (Raspberry Pi Icon on the Taskbar)</li>
+        <li>... <em>Preferences</em></li>
+        <li>... <em>Add / Remove Software</em></li>
+      </ol>
+      <figure>
+        <caption>Opening Add / Remove Software</caption>
+        <image source="screenshots/raspi_setup/main_menu-add_remove_software.png">
+          <description>A view of the navigation path to <em>Add / Remove Software</em> in the Raspberry Pi OS main menu.</description>
+        </image>
+      </figure>
+      <p>
+        When the <em>Add / Remove Software</em> window opens.
+      </p>
+      <ol>
+        <li>Type "codeblocks" in the search field at the top left</li>
+        <li>Wait for the list of software to load</li>
+        <li>Check the box for <em>Code::Blocks integrated development environment (IDE)</em></li>
+        <li>Click <em>Apply</em></li>
+      </ol>
+      <figure>
+        <caption>Selecting software in Add / Remove Software</caption>
+        <image source="screenshots/raspi_setup/add_remove_software-selecting_codeblocks.png">
+          <description>Searching for, and selecting software to install in the <em>Add / Remove Software</em> tool in Raspberry Pi OS.</description>
+        </image>
+      </figure>
+      <p>
+        Next you'll be prompted with an <em>Authentication</em> window, where you'll need to type in the password you've recently created, and click <em>OK</em>.
+      </p>
+      <figure>
+        <caption>Authentication Window</caption>
+        <image source="screenshots/raspi_setup/add_remove_software-authentication.png">
+          <description>Authentication window for the software installation request <em>Add / Remove Software</em> tool in Raspberry Pi OS.</description>
+        </image>
+      </figure>
+      <p>
+        Finally, wait a while while the software installs. When complete, click <em>OK</em> to close the <em>Add / Remove Software</em> window.
+      </p>
+    </subsection>
+  </section>
+</chapter>
