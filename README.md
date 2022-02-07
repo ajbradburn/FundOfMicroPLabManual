@@ -8,7 +8,7 @@ Outline:
     
     Writing and Debugging Code
         Installation of Code::Blocks.
-            Writing and debugging a program.
+        Writing and debugging a program.
         Terminale Compilation and Debugging.
 
     Basics of Programming

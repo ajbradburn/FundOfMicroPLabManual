@@ -2,38 +2,66 @@
 
 <chapter xml:id="ch-first" xmlns:xi="http://www.w3.org/2001/XInclude">
 
-  <title>Setting up your environment.</title>
+  <title>Setting up for, and exploring programming.</title>
   <introduction>
     <p>Before we can dive into learning about microprocessors, and the power they offer us, we need to take some time to setup, and understand how we are going to be interacting with them.</p>
     <p>To that end, this first series of exercises is going to be focused on getting your Raspberry Pi configured and software installed.</p> 
   </introduction>
 
+  <!-- I've run into issues with the keyboard layout before. I cannot guarantee that it is still a problem. Testing should be done. -->
+  <!--
   <section>
-    <!-- I've run into issues with the keyboard layout before. I cannot guarantee that it is still a problem. Testing should be done. -->
-    <subsection>
-      <title>Initial setup of the Raspberry Pi</title>
-      <introduction>
-        <p>
-          The first thing that you're presented to when you boot up your new Raspberry PI OS is a wizard that guides you through the basic setup of your new device. The wizard covers so much ground that this section is unneeded, with the exception of a quick with the keyboard layout that makes life difficult for US users that are used to the 104 key layout.
-        </p>
-      </introduction>
+    <title>Initial setup of the Raspberry Pi</title>
+    <introduction>
       <p>
-        To Change the keyboard layout from "Generic 105-key PC" to "Generic 104-key PC".
+        The first thing that you're presented to when you boot up your new Raspberry PI OS is a wizard that guides you through the basic setup of your new device.
+        The wizard covers so much ground that this section is unneeded, with the exception that special attention may need to be drawn to the keyboard setup, as an error here will cause problems later.
       </p>
-      <ol>
-        <li> Click <em>main menu</em> (Raspberry Pi Icon on the Taskbar)</li>
-        <li>... <em>Preferences</em></li>
-        <li>... <em>Mouse and Keyboard Settings</em></li>
-      </ol>
+    </introduction>
+
+
+    <subsection>
+      <figure>
+        <caption>Locatity Selection in the Rapsberry Pi OS setup wizard.</caption>
+        <image source="screenshots/raspi_setup/wizard-locality_selection.png">
+          <description>A view of the Locality Selection or <em>Set Country</em> step in the setup wizard.</description>
+        </image>
+      </figure>
+      <p>
+        When going through the initial setup wizard, pay special attention to the selections. Selecting the wrong locality, or keyboard layout can lead to a typed password that isn't what you expect.
+      </p>
+      <p>
+        This can become a problem when you go to type your programs later, or when trying to authenticate to make changes.
+      </p>
+    </subsection>
+
+    <subsection>
+      <p>
+        At any time, if you need to change the layout, make sure to change your password first. Then, follow the steps below.
+      </p>
       <figure>
         <caption>Mouse and Keyboard Settings in the Raspberry PI OS main menu.</caption>
         <image source="screenshots/raspi_setup/main_menu-mouse_and_keyboard_settings.png">
           <description>A view of the navigation path to <em>Mouse and Keyboard Settings</em> in the Raspberry Pi OS main menu.</description>
         </image>
       </figure>
+      <ol>
+        <li> Click <em>main menu</em> (Raspberry Pi Icon on the Taskbar)</li>
+        <li>... <em>Preferences</em></li>
+        <li>... <em>Mouse and Keyboard Settings</em></li>
+      </ol>
+    </subsection>
+    <subsection>
       <p>
         When the <em>Mouse and Keyboard Settings</em> window opens.
       </p>
+
+      <figure>
+        <caption>Keyboard layout configuration.</caption>
+        <image source="screenshots/raspi_setup/mouse_and_keyboard_layout-selection.png">
+          <description>A view of the layout options for the keyboard.</description>
+        </image>
+      </figure>
       <ol>
         <li>Select the <em>Keyboard</em> tab</li>
         <li>Click <em>Keyboard Layout...</em></li>
@@ -44,56 +72,58 @@
         <li>Click the <em>Variant:</em> dropdown</li>
         <li>Select <em>English (US)</em></li>
       </ol>
-      <figure>
-        <caption>Keyboard layout configuration.</caption>
-        <image source="screenshots/raspi_setup/mouse_and_keyboard_layout-selection.png">
-          <description>A view of the layout options for the keyboard.</description>
-        </image>
-      </figure>
       <p>
-        Now, you're ready to follow the guidance of the Raspberry Pi OS wizard for initial setup.
+        Or whichever options make the most sense for you.
       </p>
     </subsection>
+  </section>
+-->
 
-    <subsection>
+  <section>
       <title>Installation of Code::Blocks IDE</title>
       <introduction>
         <p>
           In order to interface with the processor, we are going to need to write programs. Writing programs can be a challenging process, requiring a great deal of knowledge, and is prone to mistakes. A simple human error can result in all sorts of unanticipated behavior.
         </p>
         <p>
-          There are tools, called an Interactive Development Environment or <term>IDE</term> that make this process of writing code, and working through errors much easier. We will install one such IDE that will be used for the labs in this book.
+          There are tools, called an Interactive Development Environment or <term>IDE</term> that make this process of writing code and working through errors much easier. We will install one such IDE that will be used for the labs in this book.
         </p>
       </introduction>
-      <p>
-        To install Code::Blocks IDE.
-      </p>
-      <ol>
-        <li> Click <em>main menu</em> (Raspberry Pi Icon on the Taskbar)</li>
-        <li>... <em>Preferences</em></li>
-        <li>... <em>Add / Remove Software</em></li>
-      </ol>
-      <figure>
-        <caption>Opening Add / Remove Software</caption>
-        <image source="screenshots/codeblocks_setup/main_menu-add_remove_software.png">
-          <description>A view of the navigation path to <em>Add / Remove Software</em> in the Raspberry Pi OS main menu.</description>
-        </image>
-      </figure>
+      <!-- I want to experiment with blocks, for page breaks. -->
+      <subsection>
+        <p>
+          For our purposes, we are going to use Code::Blocks IDE. To install it:
+        </p>
+        <figure>
+          <caption>Opening Add / Remove Software</caption>
+          <image source="screenshots/codeblocks_setup/main_menu-add_remove_software.png">
+            <description>A view of the navigation path to <em>Add / Remove Software</em> in the Raspberry Pi OS main menu.</description>
+          </image>
+        </figure>
+        <ol>
+          <li> Click <em>main menu</em> (Raspberry Pi Icon on the Taskbar)</li>
+          <li>... <em>Preferences</em></li>
+          <li>... <em>Add / Remove Software</em></li>
+        </ol>
+      </subsection>
+      <subsection>
       <p>
         When the <em>Add / Remove Software</em> window opens.
       </p>
-      <ol>
-        <li>Type "codeblocks" in the search field at the top left</li>
-        <li>Wait for the list of software to load</li>
-        <li>Check the box for <em>Code::Blocks integrated development environment (IDE)</em></li>
-        <li>Click <em>Apply</em></li>
-      </ol>
       <figure>
         <caption>Selecting software in Add / Remove Software</caption>
         <image source="screenshots/codeblocks_setup/add_remove_software-selecting_codeblocks.png">
           <description>Searching for, and selecting software to install in the <em>Add / Remove Software</em> tool in Raspberry Pi OS.</description>
         </image>
       </figure>
+      <ol>
+        <li>Type "codeblocks" in the search field at the top left</li>
+        <li>Wait for the list of software to load</li>
+        <li>Check the box for <em>Code::Blocks integrated development environment (IDE)</em></li>
+        <li>Click <em>Apply</em></li>
+      </ol>
+    </subsection>
+    <subsection>
       <p>
         Next you'll be prompted with an <em>Authentication</em> window, where you'll need to type in the password you've recently created, and click <em>OK</em>.
       </p>
@@ -107,5 +137,174 @@
         Finally, wait a while while the software installs. When complete, click <em>OK</em> to close the <em>Add / Remove Software</em> window.
       </p>
     </subsection>
+  </section>
+
+  <section>
+    <title>Writing and Debugging Programs</title>
+    <introduction>
+      <p>
+        We will go into more detail about the process of programming in later exercises.
+        For now, the expectation is that you will simply follow steps as you are guided through the process of using Code::Blocks IDE to write and debug a simple program.
+        We wont go into detail about what the program does, or why bits of text are included. That will come later. 
+        The goal with this exercise is to simply expose you to the process as a whole. So see, and do.
+        That way, when we discuss the material in more depth, you've actual experience to reflect upon.
+      </p>
+    </introduction>
+    <subsection>
+      <p>
+        To begin, open <em>Code::Blocks IDE</em>.
+      </p>
+      <figure>
+        <caption>Opening Code::Blocks IDE</caption>
+        <image source="screenshots/codeblocks_first_program/main_menu-codeblocks.png">
+          <description>A view of the navigation path to <em>Code::Blocks IDE</em> in the Raspberry Pi OS main menu.</description>
+        </image>
+      </figure>
+      <ol>
+        <li> Click <em>main menu</em> (Raspberry Pi Icon on the Taskbar)</li>
+        <li>... <em>Programming</em></li>
+        <li>... <em>Code::Blocks IDE</em></li>
+      </ol>
+      <figure>
+        <caption>Code::Blocks IDE Layout</caption>
+        <image source="screenshots/codeblocks_first_program/codeblocks-layout.png">
+          <description>A view of a newly opened codeblocks window.</description>
+        </image>
+      </figure>
+  </subsection>
+  <!--
+  <subsection>
+    <p>
+      
+    </p>
+    <figure>
+      <caption></caption>
+      <image source="screenshots/codeblocks_first_program/.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li></li>
+    </ol>
+  </subsection>
+-->
+  <subsection>
+    <p>
+      Create a new project.
+    </p>
+    <figure>
+      <caption>Creating a new project in Code::Blocks IDE</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-new_project.png">
+        <description>The navigation path for starting a new project in Code::Blocks IDE.</description>
+      </image>
+    </figure>
+    <ol>
+      <li>Click <em>File</em></li>
+      <li>... <em>New</em></li>
+      <li>... <em>Project...</em></li>
+    </ol>
+  </subsection>
+  <subsection>
+    <p>
+      When the <em>New from template</em> window opens.
+    </p>
+    <figure>
+      <caption>Select <em>Console application</em> for your new project.</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-console_application.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Select <em>Console application</em></li>
+      <li>Click <em>Go</em></li>
+    </ol>
+  </subsection>
+  <subsection>
+    <p>
+      When the <em>Console application wizard</em> window opens
+    </p>
+    <figure>
+      <caption>The console application wizard introduction screen.</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-console_app_wizard.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Click <em>Next</em></li>
+    </ol>
+  </subsection>
+  <subsection>
+    <figure>
+      <caption>The console application wizard language selection window.</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-wizard-language_selection.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Select <em>C</em></li>
+      <li>Click <em>Next</em></li>
+    </ol>
+  </subsection>
+  <subsection>
+    <figure>
+      <caption>The console application wizard project title and save location window.</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-wizard-project_definition.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Type the project name, or title in the <em>Project title:</em> field. In this case, <em>sum</em></li>
+      <li>Enter the path to where you project will be saved in the <em>Folder to create project in:</em> field. You can type this out, or click the <em>button</em> to the right of the field to select it using the file browser.</li>
+    </ol>
+  </subsection>
+  <subsection>
+    <figure>
+      <caption>The console application wizard compiler configuration window.</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-wizard-compiler_selection.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Click <em>Finish</em></li>
+    </ol>
+  </subsection>
+
+    <p>
+      Remove or Rename File main.c
+    </p>
+    <p>
+      Type Program
+    </p>
+    <code>
+      .global main
+      .func main
+
+      main:
+        mov r1, #3
+        mov r2, #4
+        add r0, r1, r2
+        bx lr
+    </code>
+    <p>
+      Select debugger
+    </p>
+    <p>
+      Add break points
+    </p>
+    <p>
+      Run debug
+    </p>
+    <p>
+      View registers
+    </p>
+    <p>
+      Step through program.
+    </p>
+  </section>
+
+  <section>
+    <p>
+      Questions for reflection and reporting.
+    </p>
   </section>
 </chapter>
