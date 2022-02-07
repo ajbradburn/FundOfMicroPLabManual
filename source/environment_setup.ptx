@@ -172,22 +172,7 @@
         </image>
       </figure>
   </subsection>
-  <!--
-  <subsection>
-    <p>
-      
-    </p>
-    <figure>
-      <caption></caption>
-      <image source="screenshots/codeblocks_first_program/.png">
-        <description></description>
-      </image>
-    </figure>
-    <ol>
-      <li></li>
-    </ol>
-  </subsection>
--->
+
   <subsection>
     <p>
       Create a new project.
@@ -269,42 +254,283 @@
     </ol>
   </subsection>
 
+  <subsection>
     <p>
-      Remove or Rename File main.c
+      Now that your project is established, we need to make a few customizations for it to work well with our assembly code.
     </p>
     <p>
-      Type Program
+      The new project was setup with a main.c file that includes some framework code. We don't need that, so we are going to remove the file from the project, and create a new blank file for our program.
     </p>
-    <code>
-      .global main
-      .func main
+    <figure>
+      <caption></caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-remove_main_c.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Click the triangle next to <em>Sources</em> to list its contents</li>
+      <li>Right-click <em>main.c</em></li>
+      <li>Click <em>Remove file from project</em></li>
+    </ol>
+  </subsection>
+  <subsection>
+    <figure>
+      <caption>The navigation path for adding a new empty file using the file menu.</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-new_empty_file.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Click <em>File</em></li>
+      <li>... <em>New</em></li>
+      <li>... <em>Empty File</em></li>
+    </ol>
+  </subsection>
+  <subsection>
+    <p>
+      When prompted to add file to the active project.
+    </p>
+    <figure>
+      <caption>The <em>Add file to project</em> window.</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-add_file_to_project.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Click <em>Yes</em></li>
+    </ol>
+  </subsection>
+  <subsection>
+    <p>
+      When presented with the <em>Save file</em> window.
+    </p>
+    <figure>
+      <caption>The <em>Save file</em> window.</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-save-sum.s.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Type the name of the file, in this case <em>sum.s</em></li>
+      <li>Click <em>Save</em></li>
+    </ol>
+  </subsection>
+  <subsection>
+    <p>
+      When presented with the <em>Multiple selection</em> window.
+    </p>
+    <figure>
+      <caption>The <em>Multiple selection</em> window.</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-save-select_targets.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Click <em>OK</em></li>
+    </ol>
+  </subsection>
+  <subsection>
+    <p>
+      In <em>sum.s</em> document, type out the following code. When done, save.
+    </p>
+    <fragment>
+      <title>sum.s</title>
+      <code>
+        .global main
+        .func main
 
-      main:
-        mov r1, #3
-        mov r2, #4
-        add r0, r1, r2
-        bx lr
-    </code>
+        main:
+          mov r1, #3
+          mov r2, #4
+          add r0, r1, r2
+          bx lr
+      </code>
+    </fragment>
+    <figure>
+      <caption>The <em>sum</em> program.</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-type_program.png">
+        <description></description>
+      </image>
+    </figure>
+  </subsection>
+  <subsection>
     <p>
-      Select debugger
+      Now that our program is written, we can see it in action by:
+    </p>
+    <ol>
+      <li>Click <em>Build</em> in the menu bar.</li>
+      <li>... <em>Run</em></li>
+    </ol>
+    <p>
+      OR
+    </p>
+    <figure>
+      <caption>Select the active debugger for your application.</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-run_program.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Click the <em>Run</em> (green arrow) shortcut in the toolbar.</li>
+    </ol>
+    <p>
+      If everything was typed correctly, you should see little window pop up and present to you the result of running your program. However, if there are errors, you're going to need to do some debugging, and that is what we will illustrate next.
     </p>
     <p>
-      Add break points
+      Because the program functions by executing one step at a time, you can follow the progress of the application by adding <em>break points</em> to the program in the IDE. These function as stop-and-wait points in the program and enable you to take time and review expected states for things.
     </p>
     <p>
-      Run debug
+      In our case, we are moving data into registers of the processor, and then adding up the values from two different registers into a third. As the program advances through the steps, we should be able to see the values of these registers change.
     </p>
     <p>
-      View registers
+      To see this debugging process in action, do the following:
+    </p>
+    <figure>
+      <caption>Select the active debugger for your application.</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-select_debugger.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Click <em>Debug</em> in the menu bar.</li>
+      <li>... <em>Active debuggers</em></li>
+      <li>... <em>GDB/CDB debugger: Default</em></li>
+    </ol>
+    <p>
+      There are other debugging options, but this one works well for us now. In time, you may need a different one.
+    </p>
+  </subsection>
+  <subsection>
+    <p>
+      Add break points to the program.
+    </p>
+    <figure>
+      <caption>Adding break points to the program.</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-add_breakpoints.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Click in the space to the right of the line number.</li>
+    </ol>
+    <p>
+      To remove a break point:
+    </p>
+    <ol>
+      <li>Click on the red dot that indicates a break point.</li>
+    </ol>
+  </subsection>
+  <subsection>
+    <p>
+      Run the program in debug mode.
+    </p>
+    <figure>
+      <caption>The <em>Debug / Contue</em> shortcut in the toolbar.</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-click_debug.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Click the <em>Debug / Continue</em> (red arrow) shortcut in the toolbar.</li>
+    </ol>
+    <p>
+      OR
+    </p>
+    <ol>
+      <li>Click <em>Debug</em></li>
+      <li>... <em>Start / Continue</em></li>
+    </ol>
+  </subsection>
+  <subsection>
+    <p>
+      At this point, things will start happening on the screen.
+    </p>
+    <ul>
+      <li> A program console pop up on the screen, and maybe disappear.</li>
+      <li>The layout will change slightly.</li>
+    </ul>
+    <p>When asked to save the layout change:</p>
+    <figure>
+      <caption>Notification that the layout has changed.</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-layout_changed.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Click <em>Yes</em></li>
+    </ol>
+  </subsection>
+  <subsection>
+    <p>
+      To see the register values as we advance through our application:
+    </p>
+    <figure>
+      <caption>Navigation path for selecting <em>CPU Registers</em> from the <em>Debug</em> menu.</caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-debug_window-cpu_registers.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Click <em>Debug</em></li>
+      <li>... <em>Debugging windows</em></li>
+      <li>... <em>CPU Registers</em></li>
+    </ol>
+  </subsection>
+  <subsection>
+    <p>
+      There should now see a window in the foreground that displays register names, and values in both hexadecimal, and decimal.
     </p>
     <p>
-      Step through program.
+      To see the values change as our program executes, step-by-step:
     </p>
+    <figure>
+      <caption></caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-debug-step.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Click the <em>Next line</em> shortcut in the toolbar</li>
+      <li>View the register values</li>
+      <li>Repeat</li>
+    </ol>
+    <p>
+      As you advance through the program, you may notice a little yellow arrow overlaying the red break point symbols to indicate which one it is currently waiting at.
+    </p>
+    <p>
+      You may also notice messages in the <em>Debugger</em> logs in the bottom panel of the screen.
+    </p>
+    <p>
+      These can be useful references for later.
+    </p>
+  </subsection>
+  <subsection>
+    <p>
+      When you've stepped through the entire program, stop the debugger:
+    </p>
+    <figure>
+      <caption></caption>
+      <image source="screenshots/codeblocks_first_program/codeblocks-stop_debugger.png">
+        <description></description>
+      </image>
+    </figure>
+    <ol>
+      <li>Click the <em>Stop debugger</em> shortcut in the toolbar.</li>
+    </ol>
+  </subsection>
   </section>
 
-  <section>
-    <p>
-      Questions for reflection and reporting.
-    </p>
-  </section>
+  <exercise>
+    <title>Reflections</title>
+    <task>
+      <statement>
+        What, if any, experience do you have with programming?
+      </statement>
+    </task>
+    <task>
+      <statement>
+        The Rapsberry Pi uses an ARM processor. What are some other popular microprocessor designers?
+      </statement>
+    </task>
+  </exercise>
 </chapter>

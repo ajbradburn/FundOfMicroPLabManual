@@ -1,3 +1,6 @@
+# jupyterhub/notebook temp files.
+.ipynb_checkpoints
+
 # screenshot source videos
 assets/video
 
