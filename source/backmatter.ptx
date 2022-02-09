@@ -8,23 +8,15 @@
 <backmatter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="backmatter">
   <title>Backmatter</title>
   
-  <solutions divisional="hint">
-    <title>Selected Hints</title>
-  </solutions>
-  
-  <solutions divisional="solution">
-    <title>Selected Solutions</title>
-  </solutions>
-  
+  <!-- Reference materials used for the creation of this manual -->
   <appendix>
-    <title>List of Symbols</title>
-    <notation-list/>
+    <xi:include href="./appendices/reference_materials.ptx" />
   </appendix>
 
-  <index>
-    <title>Index</title>
-    <index-list/>
-  </index>
+  <!-- Guidance for sourcing parts -->
+  <appendix>
+    <xi:include href="./appendices/sourcing_parts.ptx" />
+  </appendix>
 
   <colophon>
     <p>

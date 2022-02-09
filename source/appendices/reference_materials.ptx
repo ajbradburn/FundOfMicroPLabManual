@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section>
+  <title>List of Referenced Materials</title>
+  <subsection>
+    <title>Assembly</title>
+    <p><url href="https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf">Raspberry Pi Assembler</url></p>
+    <p><url href="https://developer.arm.com/documentation/den0024/a/The-A64-instruction-set">ARM Programmer's Guide for ARMv8-A</url></p>
+  </subsection>
+
+  <subsection>
+    <title>Python</title>
+    <p><url href="https://greenteapress.com/wp/think-python-2e/">Think Python 2nd Edition</url></p>
+    <p><url href="https://www.ti.com/lit/an/slva704/slva704.pdf">Understanding the <m>I^2C</m> Bus</url></p>
+    <p><url href="https://www.egr.msu.edu/classes/ece480/capstone/fall09/group03/AN_hemmanur.pdf">Inter-Integrated Circuit</url></p>
+  </subsection>
+</section>

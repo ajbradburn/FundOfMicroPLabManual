@@ -5,8 +5,8 @@
   <xi:include href="./docinfo.ptx" />
 
   <book xml:id="my-great-book">
-    <title>Fundamentals of Microprocessors</title>
-    <subtitle>The ARM Processors and the Raspberry Pi</subtitle>
+    <title>Embedded Systems and Applications</title>
+    <subtitle>Through the Raspberry Pi</subtitle>
 
     <xi:include href="./frontmatter.ptx" />
 
@@ -24,6 +24,7 @@
         The requirement for explicit instructions
         Logical operations
         Program Flow
+        Low-level vs High-level Programming
     -->
     <xi:include href="./programming_basics.ptx" />
 
@@ -149,7 +150,7 @@
         Read sensor data and write it to a file.
         Read file data and generate a graph.
     -->
-    <xi:include href="./data_managment.ptx" />
+    <xi:include href="./data_management.ptx" />
 
     <!--
       Final Lab: Integration?

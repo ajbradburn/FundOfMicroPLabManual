@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<introduction>
+  <p>Programming, more than anything else, is about giving instructions. And programming is the source of control over micro processors that are the core of embedded systems.</p>
+  <p>Before exploring the syntax of any programming language, we are going to explore the basic concepts that will be used to compose the code for a program.</p>
+  <p>We will explore the concepts of pseudo code, branching, looping, functions, and how these can be expressed in flowcharts, or comments to facilitate problem solving through programming.</p>
+  <p>Finally, we will explore some concepts like machine language, low-level programming languages, and high-level programming languages.</p>
+</introduction>
+

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<introduction>
+  <p>
+    Most applications for microprocessors will not be met by the basics of assembly covered so far. A program that can only address memory and do some math won't have many use cases.
+  </p>
+  <p>
+    To improve upon what we've learned so far, we will explore control structures in the form of branching, and loops. Additionally, we will explore some additional data processing instructions in the form of shift operations.
+  </p>
+</introduction>

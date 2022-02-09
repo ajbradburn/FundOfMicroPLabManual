@@ -2,94 +2,15 @@
 
 <chapter xml:id="ch-first" xmlns:xi="http://www.w3.org/2001/XInclude">
 
-  <title>Setting up for, and exploring programming.</title>
-  <introduction>
-    <p>Before we can dive into learning about microprocessors, and the power they offer us, we need to take some time to setup, and understand how we are going to be interacting with them.</p>
-    <p>To that end, this first series of exercises is going to be focused on getting your Raspberry Pi configured and software installed.</p> 
-  </introduction>
-
-  <!-- I've run into issues with the keyboard layout before. I cannot guarantee that it is still a problem. Testing should be done. -->
-  <!--
-  <section>
-    <title>Initial setup of the Raspberry Pi</title>
-    <introduction>
-      <p>
-        The first thing that you're presented to when you boot up your new Raspberry PI OS is a wizard that guides you through the basic setup of your new device.
-        The wizard covers so much ground that this section is unneeded, with the exception that special attention may need to be drawn to the keyboard setup, as an error here will cause problems later.
-      </p>
-    </introduction>
-
-
-    <subsection>
-      <figure>
-        <caption>Locatity Selection in the Rapsberry Pi OS setup wizard.</caption>
-        <image source="screenshots/raspi_setup/wizard-locality_selection.png">
-          <description>A view of the Locality Selection or <em>Set Country</em> step in the setup wizard.</description>
-        </image>
-      </figure>
-      <p>
-        When going through the initial setup wizard, pay special attention to the selections. Selecting the wrong locality, or keyboard layout can lead to a typed password that isn't what you expect.
-      </p>
-      <p>
-        This can become a problem when you go to type your programs later, or when trying to authenticate to make changes.
-      </p>
-    </subsection>
-
-    <subsection>
-      <p>
-        At any time, if you need to change the layout, make sure to change your password first. Then, follow the steps below.
-      </p>
-      <figure>
-        <caption>Mouse and Keyboard Settings in the Raspberry PI OS main menu.</caption>
-        <image source="screenshots/raspi_setup/main_menu-mouse_and_keyboard_settings.png">
-          <description>A view of the navigation path to <em>Mouse and Keyboard Settings</em> in the Raspberry Pi OS main menu.</description>
-        </image>
-      </figure>
-      <ol>
-        <li> Click <em>main menu</em> (Raspberry Pi Icon on the Taskbar)</li>
-        <li>... <em>Preferences</em></li>
-        <li>... <em>Mouse and Keyboard Settings</em></li>
-      </ol>
-    </subsection>
-    <subsection>
-      <p>
-        When the <em>Mouse and Keyboard Settings</em> window opens.
-      </p>
-
-      <figure>
-        <caption>Keyboard layout configuration.</caption>
-        <image source="screenshots/raspi_setup/mouse_and_keyboard_layout-selection.png">
-          <description>A view of the layout options for the keyboard.</description>
-        </image>
-      </figure>
-      <ol>
-        <li>Select the <em>Keyboard</em> tab</li>
-        <li>Click <em>Keyboard Layout...</em></li>
-        <li>... <em>Model:</em> dropdown</li>
-        <li>Select <em>Generic 105-key PC (intl.)</em></li>
-        <li>Click <em>Layout:</em> dropdown</li>
-        <li>Select <em>English (US)</em></li>
-        <li>Click the <em>Variant:</em> dropdown</li>
-        <li>Select <em>English (US)</em></li>
-      </ol>
-      <p>
-        Or whichever options make the most sense for you.
-      </p>
-    </subsection>
-  </section>
--->
+  <!-- Title -->
+  <xi:include href="./titles/assembly_environment_setup.ptx" />
+  
+  <!-- Introduction -->
+  <xi:include href="./introductions/assembly_environment_setup.ptx" />
 
   <section>
-      <title>Installation of Code::Blocks IDE</title>
-      <introduction>
-        <p>
-          In order to interface with the processor, we are going to need to write programs. Writing programs can be a challenging process, requiring a great deal of knowledge, and is prone to mistakes. A simple human error can result in all sorts of unanticipated behavior.
-        </p>
-        <p>
-          There are tools, called an Interactive Development Environment or <term>IDE</term> that make this process of writing code and working through errors much easier. We will install one such IDE that will be used for the labs in this book.
-        </p>
-      </introduction>
       <!-- I want to experiment with blocks, for page breaks. -->
+      <title>Installing Code::Blocks IDE in Raspberry Pi OS</title>
       <subsection>
         <p>
           For our purposes, we are going to use Code::Blocks IDE. To install it:

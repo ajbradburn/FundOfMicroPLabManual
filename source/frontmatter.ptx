@@ -49,7 +49,6 @@
           <li>What is the URL for the online page, or page number in the PDF that contains the errors?</li>
       </ol>
 		</p>
-    <title>Creation</title>
     <p>
       This document was created using <url href="https://pretextbook.org/">PreTeXt</url>. It is a very useful tool, but does require a bit of a learning to get it to work. Thankfully, documentation is pretty good, and the project is currently being maintained. Basic instructions for cloning the project, making edits, and exporting your changes to useful formats are available in an appendix to this document.
     </p>
