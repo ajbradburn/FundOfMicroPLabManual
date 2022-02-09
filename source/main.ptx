@@ -10,7 +10,150 @@
 
     <xi:include href="./frontmatter.ptx" />
 
-    <xi:include href="./environment_setup.ptx" />
+    <!--
+      Setting up the Raspberry Pi and IDE. Example experience:
+        Install Code::Blocks
+        Writing a program
+        Debugging a program
+    -->
+    <xi:include href="./assembly_environment_setup.ptx" />
+
+    <!--
+      Understanding the basic concepts of programming:
+        Pseudocode
+        The requirement for explicit instructions
+        Logical operations
+        Program Flow
+    -->
+    <xi:include href="./programming_basics.ptx" />
+
+    <!--
+      Assembly Basics:
+        Registers
+        Basic Math
+        Writing to Memory
+        Getting from Memory
+          
+      Material:
+        https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf
+        Chapter 1: ARM Registers
+        Chapter 2: Memory
+        https://developer.arm.com/documentation/den0024/a/The-A64-instruction-set
+        Chapter 6: The A64 instruction set
+
+      Exercise:
+        Moving data around, and adding up values.
+    -->
+    <xi:include href="./assembly_basics.ptx" />
+
+    <!--
+      Assembly Control Structures:
+        Branching
+        Loops
+
+      Material:
+        https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf
+        Chapter 6: Control structures
+      
+      Exercise:
+        Choosing the largest number. "Who gets the prize."
+    -->
+    <xi:include href="./assembly_control_structures.ptx" />
+
+    <!--
+      High Level Language Introduction
+        Selecting the largest number from array.
+        Reusing code, and speeding up design.
+
+      Material:
+        https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist
+        Chapter 1: The way of the program
+        Chapter 2: Variable, expressions and statements
+      
+      Exercise:
+        Select largest number.
+        Python demonstration.
+    -->
+    <xi:include href="./high-level_languages_basics.ptx" />
+
+    <!-- Thorny IDE for Python -->
+    <!-- raspi-config for i2c, etc? -->
+    <xi:include href="./python_environment_setup.ptx" />
+
+    <!-- 
+      Basic Programs
+        Getting user input
+        Providing output
+        Performing calcluations
+      
+      Material:
+        https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist
+        Chapter 3: Functions
+      
+      Exercise:
+        Create a basic calculator.
+    -->
+    <xi:include href="./python_basic_programs.ptx" />
+
+    <!--
+      Interfacing: Basics
+        Controlling an LED
+        Reading Input
+      
+      Material:
+        https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist
+        Chapter 7: Itteration
+        Chapter 8: Strings
+
+      Exercise:
+        Read a PIR sensor. Photoresistor?
+        Blink and LED in morse code.
+    -->
+    <xi:include href="./interfacing_basics.ptx" />
+
+    <!--
+      Interfacing: Bus Protocols
+        Serial
+        I2C
+        SPI
+        I2S
+      
+      Material:
+        https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist
+        Chapter 10: Lists
+        Chapter 12: Tuples
+        
+        https://www.ti.com/lit/an/slva704/slva704.pdf?ts=1644352222854&ref_url=https%253A%252F%252Fwww.google.com%252F
+        https://www.egr.msu.edu/classes/ece480/capstone/fall09/group03/AN_hemmanur.pdf
+        I2C Bus Description
+      
+      Exercise:
+        Read data from a sensor.
+        Write data to a sensor.
+    -->
+    <xi:include href="./interfacing_bus_protocols.ptx" />
+
+    <!--
+      Managing Data
+        Memory
+        Reading Data
+        Writing Data
+        From the internet?
+
+      Material:
+        https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist
+        Chapter 11: Dictionaries
+        Chapter 14: Files
+
+      Exercise:
+        Read sensor data and write it to a file.
+        Read file data and generate a graph.
+    -->
+    <xi:include href="./data_managment.ptx" />
+
+    <!--
+      Final Lab: Integration?
+    -->
 
     <xi:include href="./backmatter.ptx" />
   </book>

@@ -333,9 +333,9 @@
     <p>
       In <em>sum.s</em> document, type out the following code. When done, save.
     </p>
-    <fragment>
+    <listing>
       <title>sum.s</title>
-      <code>
+      <program>
         .global main
         .func main
 
@@ -344,8 +344,8 @@
           mov r2, #4
           add r0, r1, r2
           bx lr
-      </code>
-    </fragment>
+      </program>
+    </listing>
     <figure>
       <caption>The <em>sum</em> program.</caption>
       <image source="screenshots/codeblocks_first_program/codeblocks-type_program.png">

@@ -3,6 +3,16 @@
 TODO this should have some simple build information
 and/or a link to documentation
 
+Textbooks
+
+ARM Assembly:
+https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf
+https://bob.cs.sonoma.edu/IntroCompOrg-RPi/intro-co-rpi.html
+
+Python:
+https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist
+https://www.py4e.com/book.php
+
 Outline:
     Initial Setup of the Pi (Wizard) - Primarily the keyboard layout.
     
