@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <introduction>
-  <p>This is the introduction to the chapter</p>
+  <p>In this age of Internet of Things, embedded systems have come to rely heavily upon the exchange of data.</p>
+  <p>Handling this sort of exchange still presents challenges, but thanks to high-level programming languages, it is accessible to even the beginning programmer.</p>
+  <p>We will explore reading from, and writing to files that are local to our device, as well as making requests to the internet to fetch, or submit data.</p>
+  <p>While doing so, we will continue to explore data structures that make doing so more manageable.</p>
 </introduction>

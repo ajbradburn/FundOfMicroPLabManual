@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <introduction>
-  <p>This is the introduction to the chapter</p>
+  <p>Basic inputs and outputs of the digital or analog variety that make use of a single pin are very useful, but encounter a problem when we starting looking to work with more complicated systems.</p>
+  <p>This is essentially the reason for all networking protocols. There is a need for a structured communication between independent systems that allow for the exchange of much more complex information.</p>
+  <p>In the embedded world, there are several protocols that are designed for communication between independent systems. Of these, <m>I^2C</m> and SPI are very common protocols.</p>
+  <p>We will explore the basic underlying concepts, and use one or both to interface with a sensor. We will also continue our exploration of Python by making use of some Python data structures for managing data.</p>
 </introduction>

@@ -5,7 +5,7 @@
   <xi:include href="./docinfo.ptx" />
 
   <book xml:id="my-great-book">
-    <title>Embedded Systems and Applications</title>
+    <title>An Introduction to Embedded Systems and Applications</title>
     <subtitle>Through the Raspberry Pi</subtitle>
 
     <xi:include href="./frontmatter.ptx" />

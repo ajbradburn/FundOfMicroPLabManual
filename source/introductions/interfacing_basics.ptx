@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <introduction>
-  <p>This is the introduction to the chapter</p>
+  <p>While interfacing with humans at some level is pretty much the entire purpose of computers, embedded systems aren't generally focused as much on general purpose uses. They aren't typically desktop computers with keyboards and mice attached.</p>
+  <p>Most embedded systems are interfacing with dozens of sensors, and executing control over other systems based upon their inputs. The Raspberry Pi is exceptional for the access that it offers curious people like yourself to this crossover.</p>
+  <p>We are going to explore the use of the Raspberry Pi GPIO header for interfacing with electronic circuits. This will include reading input, and controlling output based upon it.</p>
+  <p>We will make use of itteration structures, and explore data structures known as strings.</p>
 </introduction>

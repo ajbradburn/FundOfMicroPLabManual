@@ -254,9 +254,12 @@
     <p>
       In <em>sum.s</em> document, type out the following code. When done, save.
     </p>
-    <listing>
+    <fragment>
       <title>sum.s</title>
-      <program>
+      <caption>A simple introductory program.</caption>
+      <!-- TODO: The documentation suggests that the code tags should instead be program tags. However, that isn't being rendered at this time.
+      pretext-cli v0.6.0 -->
+      <code>
         .global main
         .func main
 
@@ -265,8 +268,8 @@
           mov r2, #4
           add r0, r1, r2
           bx lr
-      </program>
-    </listing>
+      </code>
+    </fragment>
     <figure>
       <caption>The <em>sum</em> program.</caption>
       <image source="screenshots/codeblocks_first_program/codeblocks-type_program.png">

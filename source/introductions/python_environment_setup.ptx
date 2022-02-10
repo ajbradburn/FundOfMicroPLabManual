@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <introduction>
-  <p>This is the introduction to the chapter</p>
+  <p>Different integrated development environments bring different strengths and weaknesses to the process of solving problems with programming.</p>
+  <p>The Code::Blocks IDE that has been used for assembly programming so far isn't as well suited for Python as the Thonny Python IDE. We will go through the process of writing our first simple Python program in this new IDE.</p>
 </introduction>

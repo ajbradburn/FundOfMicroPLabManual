@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <introduction>
-  <p>This is the introduction to the chapter</p>
+  <p>High-level programming languages like python make very complicated tasks like interfacing with humans incredible simple.</p>
+  <p>What is one or two lines in Python is likely thousands of lines in assembly, because, as we've explored, seemingly simple tasks are in fact, made up of many elementary steps.</p>
+  <p>We are going to explore some basic Python programming by getting user input, and providing natural language responses. This will be done through extensive use of functions.</p>
 </introduction>

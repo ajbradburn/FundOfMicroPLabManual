@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <introduction>
-  <p>This is the introduction to the chapter</p>
+  <p>Giving a microprocessor instructions through assembly is tedious, as it requires seemingly infinite explicit instructions that quickly become repetative, and difficult to understand. Even with procedures, loops, and branching.</p>
+  <p>Early on, computer users started re-using code and working to make it more human readable, from that emerged the concept of high-level programming languages. These programming languages make complex but common tasks such as comparing numbers, working with text, interfacing with humans, or external data sources as simple as typing a phrase, and providing easily understandable instructions.</p>
+  <p>While all programming languages require that you provide instructions, the instructions that are provided with high-level languages are much more general, and obscure impressive amounts of low-level work.</p>
+  <p>We will build upon our assembly experience with a more complex example of previous exercises, and then we will review how the same process might be handled with a high-evel programming language called Python.</p>
+  <p>This introduction to Python will touch on the variables, expressions, and statments, and introduce functions.</p>
 </introduction>

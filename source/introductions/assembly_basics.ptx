@@ -1,14 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <introduction>
-  <p>
-    The approach to programming in assembly will change fairly significantly based upon the processor that you're coding for. The instruction set will alter the flow of many basic operations, and programs written for one processor will not work on a different one.
-  </p>
-  <p>
-    We will explore the basics of the ARMV8 A64 Instruction Set. While the syntax is different than that of the Atmel, and Intel microprocessors, the basic concepts are the same. These are instructions designed to interface with highly integrated digital circuits.
-  </p>
-  <p>
-    The basics will include register addressing, arithmetic and logical data processing instructions, and memory addressing. 
-  </p>
+  <p>Machine code is the actual data that a microprocessor uses to do the work you give it. However, machine code isn't human readable. Assembly was an early step in allowing humans to more easily provide instructions to the computer. Assembly is translated at compile time, into machine code which is then executed by the microprocessor.</p>
+  <p>The approach to programming in assembly will change fairly significantly based upon the processor that you're coding for. The instruction set will alter the flow of many basic operations, and programs written for one processor will not work on a different one.</p>
+  <p>We will explore the basics of the ARMV8 A64 Instruction Set. While the syntax is different than that of the Atmel, and Intel microprocessors, the basic concepts are the same. These are instructions designed to interface with highly integrated digital circuits.</p>
+  <p>The basics will include register addressing, arithmetic and logical data processing instructions, and memory addressing.</p>
 </introduction>
 

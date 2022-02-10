@@ -3,19 +3,91 @@
 <pretext xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
 
   <book xml:id="my-great-book">
-    <!-- The book needs a title and can have a subtitle  -->
-    <title>My Great Book</title>
-    <subtitle>Subset Preview</subtitle>
+    <title>An Introduction to Embedded Systems and Applications</title>
+    <subtitle>Through the Raspberry Pi</subtitle>
 
-    <!-- edit href to desired section below -->
+    <xi:include href="./frontmatter.ptx" />
+
     <chapter>
-      <title>Placeholder Chapter</title>
-      <xi:include href="./sec_firstch-examples.ptx"/>
+      <!-- Title -->
+      <xi:include href="./titles/assembly_environment_setup.ptx" />
+
+      <!-- Introduction -->
+      <xi:include href="./introductions/assembly_environment_setup.ptx" />
     </chapter>
 
-    <!-- or replace with this include to get a full chapter
-    <xi:include href="./ch_first-chapter.ptx"/>
-    -->
+    <chapter>
+      <!-- Title -->
+      <xi:include href="./titles/programming_basics.ptx" />
 
+      <!-- Introduction -->
+      <xi:include href="./introductions/programming_basics.ptx" />
+    </chapter>
+
+    <chapter>
+      <!-- Title -->
+      <xi:include href="./titles/assembly_basics.ptx" />
+
+      <!-- Introduction -->
+      <xi:include href="./introductions/assembly_basics.ptx" />
+    </chapter>
+    
+    <chapter>
+      <!-- Title -->
+      <xi:include href="./titles/assembly_control_structures.ptx" />
+
+      <!-- Introduction -->
+      <xi:include href="./introductions/assembly_control_structures.ptx" />
+    </chapter>
+    
+    <chapter>
+      <!-- Title -->
+      <xi:include href="./titles/high-level_languages_basics.ptx" />
+
+      <!-- Introduction -->
+      <xi:include href="./introductions/high-level_languages_basics.ptx" />
+    </chapter>
+    
+    <chapter>
+      <!-- Title -->
+      <xi:include href="./titles/python_environment_setup.ptx" />
+
+      <!-- Introduction -->
+      <xi:include href="./introductions/python_environment_setup.ptx" />
+    </chapter>
+    
+    <chapter>
+      <!-- Title -->
+      <xi:include href="./titles/python_basic_programs.ptx" />
+
+      <!-- Introduction -->
+      <xi:include href="./introductions/python_basic_programs.ptx" />
+    </chapter>
+    
+    <chapter>
+      <!-- Title -->
+      <xi:include href="./titles/interfacing_basics.ptx" />
+
+      <!-- Introduction -->
+      <xi:include href="./introductions/interfacing_basics.ptx" />
+    </chapter>
+    
+    <chapter>
+      <!-- Title -->
+      <xi:include href="./titles/interfacing_bus_protocols.ptx" />
+
+      <!-- Introduction -->
+      <xi:include href="./introductions/interfacing_bus_protocols.ptx" />
+    </chapter>
+    
+    <chapter>
+      <!-- Title -->
+      <xi:include href="./titles/data_management.ptx" />
+
+      <!-- Introduction -->
+      <xi:include href="./introductions/data_management.ptx" />
+    </chapter>
+
+    <xi:include href="./backmatter.ptx" />
   </book>
 </pretext>

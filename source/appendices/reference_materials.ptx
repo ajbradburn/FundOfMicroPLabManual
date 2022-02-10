@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section>
-  <title>List of Referenced Materials</title>
-  <subsection>
-    <title>Assembly</title>
-    <p><url href="https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf">Raspberry Pi Assembler</url></p>
-    <p><url href="https://developer.arm.com/documentation/den0024/a/The-A64-instruction-set">ARM Programmer's Guide for ARMv8-A</url></p>
-  </subsection>
+<references xml:id="references-section">
+  <title>References</title>
 
-  <subsection>
-    <title>Python</title>
-    <p><url href="https://greenteapress.com/wp/think-python-2e/">Think Python 2nd Edition</url></p>
-    <p><url href="https://www.ti.com/lit/an/slva704/slva704.pdf">Understanding the <m>I^2C</m> Bus</url></p>
-    <p><url href="https://www.egr.msu.edu/classes/ece480/capstone/fall09/group03/AN_hemmanur.pdf">Inter-Integrated Circuit</url></p>
-  </subsection>
-</section>
+  <introduction>
+      <p>Materials for which this lab manual references, or relies upon.</p>
+  </introduction>
+
+  <biblio type="raw">
+    Ibanez, R. F., Pervin, W. j.
+    <title>Raspberry Pi Assembly</title> 2018.
+    URL: https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf
+  </biblio>
+
+  <biblio type="raw">
+    <title>ARM Programmer's Guide for ARMv8-A</title>
+    URL: https://developer.arm.com/documentation/den0024/a/The-A64-instruction-set
+  </biblio>
+
+  <biblio type="raw">
+    Downey, Allen B.
+    <title>Think Python 2nd Edition</title>
+    URL: https://greenteapress.com/wp/think-python-2e/
+  </biblio>
+
+  <biblio type="raw">
+    <title>Understanding the <m>I^2C</m> Bus</title>
+    URL: https://www.ti.com/lit/an/slva704/slva704.pdf
+  </biblio>
+
+  <biblio type="raw">
+    <title>Inter-Integrated Circuit</title>
+    URL: https://www.egr.msu.edu/classes/ece480/capstone/fall09/group03/AN_hemmanur.pdf
+  </biblio>
+</references>
+
