@@ -7,8 +7,13 @@
   <book xml:id="my-great-book">
     <title>An Introduction to Embedded Systems and Applications</title>
     <subtitle>Through the Raspberry Pi</subtitle>
-
+    
     <xi:include href="./programming_basics.ptx" />
+
+    <!--
+    <xi:include href="./programming_basics.ptx" />
+    <xi:include href="./assembly_environment_setup.ptx" />
+    -->
 
   </book>
 </pretext>

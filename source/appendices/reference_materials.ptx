@@ -7,10 +7,11 @@
       <p>Materials for which this lab manual references, or relies upon.</p>
   </introduction>
 
-  <biblio type="raw">
-    Ibanez, R. F., Pervin, W. j.
-    <title>Raspberry Pi Assembly</title> 2018.
-    URL: https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf
+  <biblio type="bibtex">
+    <title>Raspberry Pi Assembly</title>
+    <author>Ibanez, R. F.</author>
+    <year>2018</year>
+    <note>URL: https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf</note>
   </biblio>
 
   <biblio type="raw">

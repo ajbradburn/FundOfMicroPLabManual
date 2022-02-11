@@ -12,18 +12,21 @@
 
   <!--
     Programming is all about giving instructions to a dumb rock.
-    Before steps, define problem, and solution.
-    Frame solution in the context of the problem.
-      Hunger - no hunger. PBandJ Solution.
-      Whole solution, or just part?
-        Milk?
+    Define the problem.
+    Frame the solution.
+    Expand steps.
+
+    Documentation.
+      Flow Charts
+      Comments
     
+    Transitioning.
   -->
 
   <section>
     <title>Where to begin?</title>
     <p>
-      We are going to start with a really simple concept. Something you've probably already explored in a previous class.
+      We are going to begin this exploration with a really simple concept, and expand upon it to demonstrate it's importance when it comes to programming. We will start with this question:
     </p>
     <p>
       How do you make a peanut butter and jelly sandwich?
@@ -37,7 +40,7 @@
       <li>Lay second piece of bread on first.</li>
     </ol>
     <p>
-      For many, in the United States, these instructions may be adequate enough. However, these instructions make very broad assumptions about the readers knowledge, and established ways of doing things. To provide useful instructions to a broader range of reader, you have to make fewer assumptions, and be more explicit with your instructions.
+      It seems like a really simple question, and doesn't require a great deal of thought to answer. For many, in the United States, these instructions may be adequate enough. However, these instructions make very broad assumptions about the readers knowledge, and established ways of doing things. To provide useful instructions to a broader range of reader, you have to make fewer assumptions, and be more explicit with your instructions.
     </p>
     <ol>
       <li>Acquire two pieces of bread with the following dimensions: 10cm wide, 10cm tall, and 1cm thick.</li>
@@ -69,13 +72,13 @@
       The concept of defining the problem may seem silly, as silly as decribing how to make a peanut butter and jelly sandwich, but it can honestly be quite tricky.
     </p>
     <p>
-      The problem may come from a client, that lacks the knowledge to properly explain what they lack and need, it may come from your own observations and desires. Whatever the souce, it usually pays to step back, and study it before working on a solution.
+      The problem may come from a client, that lacks the knowledge to properly explain what they need, or it may come from your own observations and desires. Whatever the souce, it usually pays to step back, and study the problem before working on a solution.
     </p>
     <p>
       Let us return to our peanut butter and jelly sandwich example, from a slightly different perspective for a moment.
     </p>
     <p>
-      Let's say a friend comes to you and says they are hungry. Our first assessment of the problem indicates that the real problem is a lack of food. Providing food will eliminate the hunger. We offer a solution of a PBJS, and our friend accepts that solution, and they eat the sandwich. As they make progress on the sandwich, they realize that the bread and the peanut butter are making it a bit difficult to eat the sandwich, and that they could really use something to wash it down.
+      Let's say a friend comes to you and says they are hungry. Our first assessment of the problem indicates that the real problem is a lack of food. Providing food will eliminate the hunger. We offer a solution of a PBJ. Our friend accepts that solution, and they eat the sandwich. As they make progress on the sandwich, they realize that the bread and the peanut butter are making it a bit difficult to eat the sandwich, and that they could really use something to wash it down.
     </p>
     <p>
       While our solution of the sandwich was appropriate for the problem as it was originally outlined, in practice, we have learned that there were unintended consequences to our original solution that make it inadequate, so the solution has to be revised.
@@ -84,7 +87,7 @@
       In our example, we revise the solution we offer our friend, by adding a glass of milk. Our friend enjoys a sip of milk occasionally as they eat the sandwich, and they are no longer hungry.
     </p>
     <p>
-      The point to this hypothetical scenario is that a problem often includes hidden, or obscured parameters that can be identified before you get started on a solution if you take a bit of time to study it.
+      The point to this hypothetical scenario is that a problem often includes hidden, or obscured parameters that can be identified before you get started on a solution if you take a bit of time to study it. Even then, you may only be able to anticipate some of them once you've had experience with them before.
     </p>
   </section>
   <section>
@@ -93,23 +96,96 @@
       Once you have a problem and solution defined in broad terms, it becomes necessary to start breaking the solution down into constituent steps. This first round of definition usually involves drawing connections between the parts of the solution, and the end product.
     </p>
     <p>
-      For example, when talking about making a PB&amp;amp;J, we'd be in a good position if we identified the components that go into making that sandwich, and organizing them that conveys relationships.
+      For example, when talking about making a PB&amp;J, we'd be in a good position if we identified the components that go into making that sandwich, and organizing them that conveys relationships.
     </p>
+    <p>It can be convenient to start with a list of the elements involved, using levels to indicate subordinate points.</p>
     <ul>
-      <li>Peanut Butter</li>
-      <li>Jelly</li>
-      <li>Bread</li>
-      <li>Knife</li>
-      <li>Plate</li>
+      <li>Sandwich</li>
+      <ul>
+        <li>Bread</li>
+        <ul>
+          <li>Slice 1</li>
+          <ul>
+            <li>Jelly</li>
+          </ul>
+          <li>Slice 2</li>
+          <ul>
+            <li>Peanut Butter</li>
+          </ul>
+        </ul>
+      </ul>
+      <li>
+        Milk
+      </li>
     </ul>
+    <p>
+      Another option is a flowchart.
+    </p>
     <figure>
       <caption>Illustration of solution for making a Peanut Butter and Jelly Sandwich.</caption>
-      <image source="generated/programming_basics_img01">
+      <image source="generated/programming_basics_img01" width="75%">
         <description>A flow chart that illustrates the basic steps of making a peanut butter and jelly sandwich.</description>
       </image>
     </figure>
     <p>
-      Then
+      Once the first round of definition is completed, it is very common for further definition to be necessary, resulting in one, or more rounds of increased granularity. Do any of your processes include loops, or decision branching?
+    </p>
+    <p>
+      For example, is it necessary to explain how jelly is made? Should we include a knife for cutting bread, or a plate to hold our sandwich? Should we include more definition of the Eat, Drink cycle in our solution?
+    </p>
+    <figure>
+      <caption>Illustration of the eat sandwich, drink milk cycle for our example.</caption>
+      <image source="generated/programming_basics_img02" width="50%">
+        <description>A flow chart that illustrates the basic decision tree for eating a PB&amp;J sandwich, and drinking milk.</description>
+      </image>
+    </figure>
+    <p>
+      Depending on the complexity of the project, what componenents are involved, etc. The documentation of the solution can become quite the production, but is typically even more valueable in the long run.
+    </p>
+    <historical>
+      <p>
+        If you've never seen the repair manuals for old electrical equipment, I'd strongly recommend you take a look. The <url href="http://www.decadecounter.com/vta/  pdf/9825A-B%20Service%20Manual%20[09825-91030%201981-09].pdf">HP 9825</url> is just an example.
+      </p>
+    </historical>
+  </section>
+  <section>
+    <title>Documenting the process.</title>
+    <p>
+      Lists are probably your best friend when it comes to planning but not in the obvious way. Lists really shine when you begin writing pseudocode. This is typically included as comments in a program, and is generally the starting point for some new work.
+    </p>
+    <p>
+      These comments, lists of the steps that will be needed to make this section of code work are an excellent framework for programmers. First, because they are natural language descriptions that will remain in the code base, and will be readable for others who come later. Second, because they are syntax independent. You won't be able to remember how to type every command in the programming language, and looking that stuff up can be distracting from the more important process of defining your objects. Writing out the pseudocode list first, and adding the programming afterwards helps to keep you on track.
+    </p>
+    <p>
+      With a programming project of any size, you're going to end up using functions to handle repeated work. We haven't covered this topic yet, but they can be described as a grouping of programming that can be re-used.
+    </p>
+    <p>
+      For example, we don't have to describe how to make jelly, because that process is self-contained. We just need to say, get a jar of jelly, and all the different steps that went into that jar of jelly are sorta hidden in the background. This sort of simplicity is good for our sanity, and effecient for programming.
+    </p>
+    <p>
+      Lists, in the form of pseudo code, have a limited scope of utility. Large programs can't easily be described with lists, because the relationships between sections of code, and the jumps they make to functions, or obscured bits of the program, aren't included in them. This is where the importance of flowcharts comes back to the forefront.
+    </p>
+    <p>
+      Flowcharts can be really helpful tools for visually orienting oneself with how a process will go. If the solution you're working on involves more than a couple components, it can be a worthwhile illustration to spend time on, as it can be used for your own reference as your work progresses, when discussing it with customers, and orienting new team members.
     </p>
   </section>
+  <conclusion>
+    <title>Writing Code.</title>
+    <p>
+      With documentation in place, as lists, flowcharts, and or pseudocode, it is time to start writing the actual program. This set fo exercises will introduce you to a couple of different programming paradigms. The first is a low-level programming language that really covers very simple concepts, but doesn't get you very far very quickly, thus, it is pretty difficult to go from idea to finished product. The second is a high-level programming language that has lots of inbuilt functionality, and enables you to go very far, very quickly, but does abstract away a lot of the basics of programming.
+    </p>
+    <p>
+      If this was programming instruction at it's core, or if the curriculum was more focused on the Arduino, it would be very valueable for you to be exposed to a third paradigm which lies somewhere in between.
+    </p>
+    <p>[PLACEHOLDER: IMAGE OF PROGRAMMING LEVELS]</p>
+    <p>
+      The first programming language we will be exploring is called Assembly. Assembly is just one layer above machine code. It requires mind-numbing levels of detail to accomplish anything of great significance on a modern computer. However, it can be everything you need for smaller embeded microcontrollers in the right environment. A microwave isn't a complex electronic circuit. Assembly on a tiny 8-pin microcontroller interfacing with a few buttons, and controlling function would be perfectly reasonable.
+    </p>
+    <p>
+      Once you start getting into meaningful human interactions on a more complex system, or a general purpose computer, a language like C, or C++ is much more approachable. While the level of detail for these languages is still pretty high, it includes a lot of abstraction in the base libraries. Processes like getting user input, or providing output are made significantly easier.
+    </p>
+    <p>
+      Finally, there are a whole slew of scripting languages that abstract away a lot of the detail from programming. In doing so, you loose some control, but for most general purpose applications, that control isn't needed. In exchange, they make processes like getting data from the internet, or displaying images on a screen a breeze.
+    </p>
+  </conclusion>
 </chapter>
