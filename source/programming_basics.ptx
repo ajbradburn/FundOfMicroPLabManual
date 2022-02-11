@@ -10,7 +10,106 @@
   <!-- Introduction -->
   <xi:include href="./introductions/programming_basics.ptx" />
 
-  <section>
+  <!--
+    Programming is all about giving instructions to a dumb rock.
+    Before steps, define problem, and solution.
+    Frame solution in the context of the problem.
+      Hunger - no hunger. PBandJ Solution.
+      Whole solution, or just part?
+        Milk?
+    
+  -->
 
+  <section>
+    <title>Where to begin?</title>
+    <p>
+      We are going to start with a really simple concept. Something you've probably already explored in a previous class.
+    </p>
+    <p>
+      How do you make a peanut butter and jelly sandwich?
+    </p>
+    <p>
+      A first draft of an answer to this question might go like:
+    </p>
+    <ol>
+      <li>Apply peanut butter to one slice of bread.</li>
+      <li>Apply jelly to a second slice of bread.</li>
+      <li>Lay second piece of bread on first.</li>
+    </ol>
+    <p>
+      For many, in the United States, these instructions may be adequate enough. However, these instructions make very broad assumptions about the readers knowledge, and established ways of doing things. To provide useful instructions to a broader range of reader, you have to make fewer assumptions, and be more explicit with your instructions.
+    </p>
+    <ol>
+      <li>Acquire two pieces of bread with the following dimensions: 10cm wide, 10cm tall, and 1cm thick.</li>
+      <li>Apply 15g of peanut butter to one side of the first slice of bread.</li>
+      <li>Apply 7g of grape preserves to one side of the second slice of bread.</li>
+      <li>Lay the first slice of bread flat, with the peanut butter laying up.</li>
+      <li>Lay the second slice of bread on top of the first, with the jelly side down, so that the peanut butter and jelly are in contact.</li>
+    </ol>
+    <p>
+      With this second draft, the instructions are more explicit, but there are still many assumptions made. For example, does everyone know what peanut butter is? The answer is no.
+      So, again, to provide useful instructions, you have to be still more explicit.
+    </p>
+    <p>
+      This process can seem tedious, but it is at the root of making computers do what you want them to do. Take a moment to reflect on just how difficult it would be to explain to a 2 year old the process of making a peanut butter and jelly sandwich. The explaination would require details for everything from the process of growing peanuts, making peanut butter, baking bread,  preparing jellies, to slicing bread, and the proper tools for applying the core ingredients. Now, take a second to reflect on just how difficult it is to explain the same process to a rock.
+    </p>
+    <p>
+      At the core of our modern technology is a whole bunch of different configurations of digital circuits etched into silicon crystals. These rocks don't do anything more than what they are designed to do. Things like microprocessors, while incredibly useful for so many tasks, are less useful than a baghdad battery unless provided with a program that brings their design to use.
+    </p>
+    <p>
+      [transition]
+    </p>
+  </section>
+  <section>
+    <title>Defining the problem.</title>
+    <p>
+      Now that the importance of being explicit is understood, we will move on to a topic that applies to programming, as well as any project you will work on. That is, defining the problem, and framing the solution.
+    </p>
+    <p>
+      The concept of defining the problem may seem silly, as silly as decribing how to make a peanut butter and jelly sandwich, but it can honestly be quite tricky.
+    </p>
+    <p>
+      The problem may come from a client, that lacks the knowledge to properly explain what they lack and need, it may come from your own observations and desires. Whatever the souce, it usually pays to step back, and study it before working on a solution.
+    </p>
+    <p>
+      Let us return to our peanut butter and jelly sandwich example, from a slightly different perspective for a moment.
+    </p>
+    <p>
+      Let's say a friend comes to you and says they are hungry. Our first assessment of the problem indicates that the real problem is a lack of food. Providing food will eliminate the hunger. We offer a solution of a PBJS, and our friend accepts that solution, and they eat the sandwich. As they make progress on the sandwich, they realize that the bread and the peanut butter are making it a bit difficult to eat the sandwich, and that they could really use something to wash it down.
+    </p>
+    <p>
+      While our solution of the sandwich was appropriate for the problem as it was originally outlined, in practice, we have learned that there were unintended consequences to our original solution that make it inadequate, so the solution has to be revised.
+    </p>
+    <p>
+      In our example, we revise the solution we offer our friend, by adding a glass of milk. Our friend enjoys a sip of milk occasionally as they eat the sandwich, and they are no longer hungry.
+    </p>
+    <p>
+      The point to this hypothetical scenario is that a problem often includes hidden, or obscured parameters that can be identified before you get started on a solution if you take a bit of time to study it.
+    </p>
+  </section>
+  <section>
+    <title>Framing the Solution.</title>
+    <p>
+      Once you have a problem and solution defined in broad terms, it becomes necessary to start breaking the solution down into constituent steps. This first round of definition usually involves drawing connections between the parts of the solution, and the end product.
+    </p>
+    <p>
+      For example, when talking about making a PB&amp;amp;J, we'd be in a good position if we identified the components that go into making that sandwich, and organizing them that conveys relationships.
+    </p>
+    <ul>
+      <li>Peanut Butter</li>
+      <li>Jelly</li>
+      <li>Bread</li>
+      <li>Knife</li>
+      <li>Plate</li>
+    </ul>
+    <figure>
+      <caption>Illustration of solution for making a Peanut Butter and Jelly Sandwich.</caption>
+      <image source="generated/programming_basics_img01">
+        <description>A flow chart that illustrates the basic steps of making a peanut butter and jelly sandwich.</description>
+      </image>
+    </figure>
+    <p>
+      Then
+    </p>
   </section>
 </chapter>
