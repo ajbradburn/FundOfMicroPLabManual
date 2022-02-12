@@ -156,6 +156,51 @@
     <p>
       These comments, lists of the steps that will be needed to make this section of code work are an excellent framework for programmers. First, because they are natural language descriptions that will remain in the code base, and will be readable for others who come later. Second, because they are syntax independent. You won't be able to remember how to type every command in the programming language, and looking that stuff up can be distracting from the more important process of defining your objects. Writing out the pseudocode list first, and adding the programming afterwards helps to keep you on track.
     </p>
+    <listing>
+      <program>
+        <input>
+          # Program Name: Make Peanut Butter and Jelly Sandwich
+
+          # import loaf
+          # slice_1 = get slice of bread with loaf
+          # slice_2 = get clise of bread with loaf
+
+          # import jelly
+          # call apply with (slice_1, jelly)
+
+          # import peanut butter
+          # call apply with (slice_2, peanut butter)
+
+          # sandwich = join (slice_1, slice_2)
+
+          # import milk
+
+          # call eat (sandwich, milk)
+
+
+          # function eat (sandwich, milk)
+          # A function to handle the sandwich and milk loop.
+          # while sandwich > 0
+          #   call bite on sandwich
+          #   if mouth == dry
+          #     call drink on milk
+
+          # function get slice of bread
+          # A function for getting a slice of bread from a loaf.
+          # loaf = loaf - slice
+          # return slice
+
+          # function apply (slice, topping)
+          # A function to handle the application of something to a slice of bread.
+          # slice = slice + topping
+          # return slice
+
+          # function join (slice_1, slice_2)
+          # A function for joining two slices of bread, with the expectation that they both hae a topping.
+          # return slice_1 + rotate(slice_2, 180)
+        </input>
+      </program>
+    </listing>
     <p>
       With a programming project of any size, you're going to end up using functions to handle repeated work. We haven't covered this topic yet, but they can be described as a grouping of programming that can be re-used.
     </p>
@@ -169,23 +214,31 @@
       Flowcharts can be really helpful tools for visually orienting oneself with how a process will go. If the solution you're working on involves more than a couple components, it can be a worthwhile illustration to spend time on, as it can be used for your own reference as your work progresses, when discussing it with customers, and orienting new team members.
     </p>
   </section>
-  <conclusion>
-    <title>Writing Code.</title>
+  <section>
+    <title>Writing Code</title>
     <p>
-      With documentation in place, as lists, flowcharts, and or pseudocode, it is time to start writing the actual program. This set fo exercises will introduce you to a couple of different programming paradigms. The first is a low-level programming language that really covers very simple concepts, but doesn't get you very far very quickly, thus, it is pretty difficult to go from idea to finished product. The second is a high-level programming language that has lots of inbuilt functionality, and enables you to go very far, very quickly, but does abstract away a lot of the basics of programming.
+      With documentation in place, as lists, flowcharts, and or pseudocode, it is time to start writing the actual program.
     </p>
     <p>
-      If this was programming instruction at it's core, or if the curriculum was more focused on the Arduino, it would be very valueable for you to be exposed to a third paradigm which lies somewhere in between.
-    </p>
-    <p>[PLACEHOLDER: IMAGE OF PROGRAMMING LEVELS]</p>
-    <p>
-      The first programming language we will be exploring is called Assembly. Assembly is just one layer above machine code. It requires mind-numbing levels of detail to accomplish anything of great significance on a modern computer. However, it can be everything you need for smaller embeded microcontrollers in the right environment. A microwave isn't a complex electronic circuit. Assembly on a tiny 8-pin microcontroller interfacing with a few buttons, and controlling function would be perfectly reasonable.
+      This set of exercises will introduce you to a couple of different programming paradigms. The first is low-level programming languages that really covers very simple steps, but doesn't get you very far very quickly, thus, it is pretty difficult to go from idea to finished product. The second is high-level programming language that has lots of inbuilt functionality, and enables you to program a solution quickly, but does abstract away a lot of the underlying principles of the machine.
     </p>
     <p>
-      Once you start getting into meaningful human interactions on a more complex system, or a general purpose computer, a language like C, or C++ is much more approachable. While the level of detail for these languages is still pretty high, it includes a lot of abstraction in the base libraries. Processes like getting user input, or providing output are made significantly easier.
+      If this was programming instruction at it's core, or if the curriculum was more focused on the Arduino, it would be very valueable for you to be exposed to the C programming language, a third paradigm which lies somewhere in between.
+    </p>
+    <figure>
+      <caption>Illustration of the basic relationship between different programming languages.</caption>
+      <image source="generated/programming_basics_img03" width="75%">
+        <description>There are interpreted, compiled, and machine languages. Everything is eventually converted to binary, but the user experience varies dramatically.</description>
+      </image>
+    </figure>
+    <p>
+      The first programming language we will be exploring is called Assembly. Assembly is just one layer above machine code. It requires mind-numbing levels of detail to accomplish anything of great significance on a modern computer. However, it can be everything you need for smaller embeded microcontrollers in the right environment. A microwave isn't a complex electronic circuit. Assembly on a tiny 8-pin microcontroller interfacing with a few buttons, and controlling operation would be perfectly reasonable.
     </p>
     <p>
-      Finally, there are a whole slew of scripting languages that abstract away a lot of the detail from programming. In doing so, you loose some control, but for most general purpose applications, that control isn't needed. In exchange, they make processes like getting data from the internet, or displaying images on a screen a breeze.
+      Once you start getting into meaningful human interactions, interfacing with data, or peripherial systems, a language like C, or C++ is much more approachable. While the level of detail for these languages is still pretty high, it includes a lot of abstraction in the base libraries. Processes like getting user input, or providing output are made significantly easier.
     </p>
-  </conclusion>
+    <p>
+      Finally, there are a whole slew of scripting, or interpreted languages that abstract away a lot of the detail from programming. In doing so, you loose some control, but for most general purpose applications, that control isn't needed. In exchange, they make processes like getting data from the internet, or displaying images on a screen a breeze.
+    </p>
+  </section>
 </chapter>
