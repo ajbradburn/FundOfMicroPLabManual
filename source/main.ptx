@@ -10,6 +10,13 @@
 
     <xi:include href="./frontmatter.ptx" />
 
+    <!-- 
+      A discussion of embeded systems.
+        ARM vs Atmel vs other options.
+        Interfacing with sensors and exercising control
+        
+    -->
+
     <!--
       Setting up the Raspberry Pi and IDE. Example experience:
         Install Code::Blocks
@@ -25,6 +32,8 @@
         Logical operations
         Program Flow
         Low-level vs High-level Programming
+        Exercise:
+          Pick a process, and itterate steps in list form, and flowchart form.
     -->
     <xi:include href="./programming_basics.ptx" />
 
@@ -37,8 +46,8 @@
           
       Material:
         https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf
-        Chapter 1: ARM Registers
-        Chapter 2: Memory
+        Chapter 2: ARM Registers
+        Chapter 3: Memory
         https://developer.arm.com/documentation/den0024/a/The-A64-instruction-set
         Chapter 6: The A64 instruction set
 
@@ -54,6 +63,7 @@
 
       Material:
         https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf
+        Chapter 5: Branching
         Chapter 6: Control structures
       
       Exercise:

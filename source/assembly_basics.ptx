@@ -10,7 +10,441 @@
   <!-- Introduction -->
   <xi:include href="./introductions/assembly_basics.ptx" />
 
-  <section>
+      <!--
+      Assembly Basics:
+        Registers
+        Basic Math
+        Writing to Memory
+        Getting from Memory
+          
+      Material:
+        https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf
+        Chapter 2: ARM Registers
+        Chapter 3: Memory
+        https://developer.arm.com/documentation/den0024/a/The-A64-instruction-set
+        Chapter 6: The A64 instruction set
 
+      Exercise:
+        Moving data around, and adding up values.
+    -->
+
+  <section>
+    <title>Code</title>
+    <!-- The starting program. -->
+    <p>
+      As you will have learned through the reading, assembly is oriented around very basic operations. Moving data into a register, out of a register, performing some sort of calculation on the value of one or more registers, etc.
+    </p>
+    <project>
+      <p>
+        Open your IDE, and type this first application. Compile it, and run it.
+      </p>
+      <listing>
+        <program>
+          <input>
+            0|  .global main
+            1|  .func main
+            2|
+            3|  main:
+            4|    mov r0, #5
+            5|    mov r1, #5
+            6|    add r0, r0, r1
+            7|    bx lr
+          </input>
+        </program>
+      </listing>
+    </project>
+    <exercise>
+      <statement>
+        What is the return value of the program?
+      </statement>
+      <answer>
+        10
+      </answer>
+    </exercise>
+    <p>
+      The first program is very simple. It loads two values into register 0, and 1, and then adds the two values placing the sum into register 0. We will build off of this as we progress through the experiment.
+    </p>
+    <p>
+      Once you've got it running, proceed to the next section.
+    </p>
+  </section>
+  <section>
+    <title>Exploration</title>
+    <!-- Make some changes to the program. -->
+    <subsection>
+      <title>Memory Addressing</title>
+      <p>
+        The values that are moved into the registers <c>r0</c> and <c>r1</c> in the first example are immediate values, or values that are defined in the program code. More often than not, the values you'll be working with won't be defined in the code, but will instead be stored in memory, and will need to be retrieved before performing operations on them.
+      </p>
+      <project>
+        <p>Trascribe the following program, compile and run it.</p>
+        <listing>
+          <program>
+            <input>
+             0|  .data
+             1|  .balign 4
+             2|  numbers: .word 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+             3|
+             4|  .text
+             5|  .balign 4
+             6|  .global main
+             7|  .func main
+             8|
+             9|  main:
+            10|    mov r0, #5
+            11|    mov r1, #5
+            12|      /* r0 + 5 */
+            13|    add r0, r0, r1
+            14|
+            15|    ldr r2, numbers_address
+            16|    ldr r1, [r2], #4
+            17|      /* r0 + 10 */
+            18|    add r0, r0, r1
+            19|    ldr r1, [r2], #4
+            20|      /* r0 + 9 */
+            21|    add r0, r0, r1
+            22|    ldr r1, [r2], #4
+            23|      /* r0 + 8 */
+            24|    add r0, r0, r1
+            25|
+            26|    bx lr
+            27|
+            28|  numbers_address: .word numbers
+            </input>
+          </program>
+        </listing>
+      </project>
+      <exercise>
+        <statement>
+          What is the return value of the program?
+        </statement>
+        <answer>
+          37
+        </answer>
+      </exercise>
+      <p>
+        Our next example addresses accessing values from the memory. In doing so, we first initialize an array, or list of numbers that we will use for our calculations. When doing so, we specify the byte length for each element (number) which is <c>.word</c> or 4 bytes each. We also provide an assembler directive of <c>.balign 4</c> which tells the assembler that our data should be arranged with addresses that are multiples of 4 bytes. You can read more about <url href="http://web.mit.edu/gnu/doc/html/as_7.html">assembler directives</url> if you're interested.
+      </p>
+      <p>
+        While <c>numbers</c> identifies our variable for later reference, we can't use that to access the memory address directly, so we add the line <c>numbers_address: .word numbers</c> at the bottom that provides another variable that we can use. The explaination for this is found in the book.
+      </p>
+      <p>
+        Finally, we start accessing our numbers from memory with the <c>ldr r2, numbers_address</c> command. This places the address of our first element. It is important to understand that even though our first element is 10, <c>r2</c> only contains the memory address to it, but not the actual value <c>10</c>.
+      </p>
+      <p>
+        With the next line <c>ldr r1, [r2], #4</c> we copy the value that is stored at the memory address stored in <c>r2</c>, and then change the memory address by increasing its value by 4.
+      </p>
+      <p>
+        Once our new value is copied into <c>r1</c> we can add it to the running total in <c>r0</c>.
+      </p>
+      <project>
+        <p>
+            The sample addition of our list of numbers stops at 8, add the remaining lines of code so that all of the numbers of our list are added to our running total in <c>r0</c>.
+        </p>
+      </project>
+      <exercise>
+        <statement>
+          What is the output of the program once all the numbers are added?
+        </statement>
+        <answer>
+          65
+        </answer>
+      </exercise>
+    </subsection>
+    <subsection>
+      <title>Arithmatic Functions</title>
+      <p>
+        So far, we've made great use of the addition instruction. But, as you know, there are more arithmatic operations.
+      </p>
+      <project>
+        <p>
+          Add the following lines before <c>bx lr</c> in the previous example to calculate the average value for the numbers we've added up.
+        </p>
+        <listing>
+          <program>
+            <input>
+              1|      /* Find the average */
+              2|    mov r1, #12
+              3|    udiv r0, r0, r1
+            </input>
+          </program>
+        </listing>
+        <p>
+          Your final code should look something like this:
+        </p>
+        <listing>
+          <program>
+            <input>
+              0|  .data
+              1|  .balign 4
+              2|  numbers: .word 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+              3|
+              4|  .text
+              5|  .balign 4
+              6|  .global main
+              7|  .func main
+              8|
+              9|  main:
+             10|    mov r0, #5
+             11|    mov r1, #5
+             12|      /* r0 + 5 */
+             13|    add r0, r0, r1
+             14|
+             15|    ldr r2, numbers_address
+             16|    ldr r1, [r2], #4
+             17|      /* r0 + 10 */
+             18|    add r0, r0, r1
+             19|    ldr r1, [r2], #4
+             20|      /* r0 + 9 */
+             21|    add r0, r0, r1
+             22|    ldr r1, [r2], #4
+             23|      /* r0 + 8 */
+             24|    add r0, r0, r1
+             25|    ldr r1, [r2], #4
+             26|      /* r0 + 7 */
+             27|    add r0, r0, r1
+             28|    ldr r1, [r2], #4
+             29|      /* r0 + 6 */
+             30|    add r0, r0, r1
+             31|    ldr r1, [r2], #4
+             32|      /* r0 + 5 */
+             33|    add r0, r0, r1
+             34|    ldr r1, [r2], #4
+             35|      /* r0 + 4 */
+             36|    add r0, r0, r1
+             37|    ldr r1, [r2], #4
+             38|      /* r0 + 3 */
+             39|    add r0, r0, r1
+             40|    ldr r1, [r2], #4
+             41|      /* r0 + 2 */
+             42|    add r0, r0, r1
+             43|    ldr r1, [r2], #4
+             44|      /* r0 + 1 */
+             45|    add r0, r0, r1
+             46|
+             47|      /* Find the average */
+             48|    mov r1, #12
+             49|    udiv r0, r0, r1
+             50|
+             51|    bx lr
+             52|
+             53|  numbers_address: .word numbers
+            </input>
+          </program>
+        </listing>
+        <p> Compile and run the application.</p>
+      </project>
+      <exercise>
+        <statement>
+          What is the return value of the program?
+        </statement>
+        <answer>
+          5
+        </answer>
+      </exercise>
+      <exercise>
+        <statement>
+          Do the same calculations with a calculator, does the return value of the program match your own calculations?
+        </statement>
+        <answer>
+          No, the program returns 5, and the real answer is <m>5.41\overline{6}</m>.
+        </answer>
+        <solution>
+          <m>\frac{5+5+10+9+8+7+6+5+4+3+2+1}{12}=\frac{65}{12}=5.41\overline{6}</m>
+        </solution>
+      </exercise>
+      <p>
+        This addition to our program makes use of an unsigned division instruction, but as we can see, the returned value from our program doesn't include any decimal values. <c>r0</c> only contains the whole number portion of the quotient. When doing multiplication or division operations, there are special registers, and special rules, or tricks to make the process easier.
+      </p>
+      <aside>
+        <p>
+          We won't get too far into the weeds with how this works, but if you want to know more you can read more about <url href="https://thinkingeek.com/2013/08/11/arm-assembler-raspberry-pi-chapter-15/">ARM assembly division on the Raspberry Pi</url> or <url href="https://eclecticlight.co/2021/07/23/code-in-arm-assembly-floating-point-registers-and-conversions/">ARM assembly floating point registers</url>.
+        </p>
+      </aside>
+      <p>
+        With assembly, and even some high-level programming languages, it is very important to understand that there are signed, and unsigned ways of encoding the numbers you're working with. When working with unsigned values, you can add, and subtract, but you can't go into negative numbers. Additionally, there are often specific instructions to use when working with unsigned vs signed numbers.
+      </p>
+      <exercise>
+        <statement>
+          What is the return value for the program if we remove the division instruction, and replace the last 10 <c>add</c> instructions with <c>sub</c> instructions?
+        </statement>
+        <answer>
+          211
+        </answer>
+      </exercise>
+      <exercise>
+        <statement>
+          What is happening to <c>r0</c> that produces the value returned by this modification to the program?
+        </statement>
+        <answer>
+          We are experiencing a register overflow.
+        </answer>
+        <solution>
+          <p>
+            The maximum value of the register is apparently 255, or the maximum value for an 8-bit number.
+          </p>
+          <p><m>5+5-10-9-8-7-6-5-4-3-2-1=-45</m></p>
+          <p><m>256-45=211</m></p>
+        </solution>
+      </exercise>
+    </subsection>
+    <subsection>
+      <title>Logical Operations</title>
+      <p>For our last subject, we will explore a bit of logical operations.</p>
+      <p>
+        These are operations like shifting, or not, or, and and xor. These operations aren't as relateable as the arithmatic, or the <c>mov</c> commands you've explored so far, but they do have very important places in the computer world. Otherwise, they wouldn't have been implimented.
+      </p>
+      <project>
+        <p>
+          Add the following line before the <c>bx lr</c> line. Then compile and run the program.
+        </p>
+        <listing>
+          <program>
+            <input>
+              1|      /* Clear register 0 */
+              2|    eor r0, r0, r0
+            </input>
+          </program>
+        </listing>
+        <p>
+          Your code should look like this:
+        </p>
+        <listing>
+          <program>
+            <input>
+              0|  .data
+              1|  .balign 4
+              2|  numbers: .word 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+              3|
+              4|  .text
+              5|  .balign 4
+              6|  .global main
+              7|  .func main
+              8|
+              9|  main:
+             10|    mov r0, #5
+             11|    mov r1, #5
+             12|      /* r0 + 5 */
+             13|    add r0, r0, r1
+             14|
+             15|    ldr r2, numbers_address
+             16|    ldr r1, [r2], #4
+             17|      /* r0 + 10 */
+             18|    sub r0, r0, r1
+             19|    ldr r1, [r2], #4
+             20|      /* r0 + 9 */
+             21|    sub r0, r0, r1
+             22|    ldr r1, [r2], #4
+             23|      /* r0 + 8 */
+             24|    sub r0, r0, r1
+             25|    ldr r1, [r2], #4
+             26|      /* r0 + 7 */
+             27|    sub r0, r0, r1
+             28|    ldr r1, [r2], #4
+             29|      /* r0 + 6 */
+             30|    sub r0, r0, r1
+             31|    ldr r1, [r2], #4
+             32|      /* r0 + 5 */
+             33|    sub r0, r0, r1
+             34|    ldr r1, [r2], #4
+             35|      /* r0 + 4 */
+             36|    sub r0, r0, r1
+             37|    ldr r1, [r2], #4
+             38|      /* r0 + 3 */
+             39|    sub r0, r0, r1
+             40|    ldr r1, [r2], #4
+             41|      /* r0 + 2 */
+             42|    sub r0, r0, r1
+             43|    ldr r1, [r2], #4
+             44|      /* r0 + 1 */
+             45|    sub r0, r0, r1
+             46|
+             47|      /* Clear register 0 */
+             48|    eor r0, r0, r0
+             49|
+             50|    bx lr
+             51|
+             52|  numbers_address: .word numbers
+            </input>
+          </program>
+        </listing>
+      </project>
+      <exercise>
+        <statement>
+          What is the return value of the program?
+        </statement>
+        <answer>
+          0
+        </answer>
+      </exercise>>
+      <p>
+        This exclusive or <c>eor</c> takes the value that is in <c>r0</c> and xors it with the same value to produce an emptry register, or a register with a value of 0.
+      </p>
+      <p>
+        If you'd like to learn more about the logical operators, check out section <em>A4.4.1 Standard data-processing instructions</em> from the <url href="https://developer.arm.com/documentation/ddi0406/cd/?lang=en">ARM Architecture Reference Manual</url>
+      </p>
+    </subsection>
+    <subsection>
+      <title>C</title>
+      <p>
+        When dealing with embeded systems, even when using high-level programming languages, it is likely that you're going to have to make use of some of this low level manipulation. It may be a situation where you need to take advantage of some feature in a chip that isn't already abstracted by a library, or it could be when communicating with some peripherial. Whatever the case, having at least a basic knowledge of some of this is very useful.
+      </p>
+      <p>
+        However, it is a lot easier to get many of these basic functions accomplished with a high-level programming language. A language like C is one where you're still very intimate with the size, and signing of variables, but there are also abstractions for many of the most common operations that make using it much more desireable.
+      </p>
+      <p>Just as a quick example, I offer you this little program that adds up several values, and displays the output.</p>
+    </subsection>
+    <project>
+      <p>
+        If you care to, you can type this up in a filename <c>extra.c</c>, then compile and run it.
+      </p>
+      <listing>
+        <program>
+          <input>
+              0|  #include &lt;stdio.h&gt;
+              1|
+              2|  int main()
+              3|  {
+              4|   int numbers[] = {5, 5, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+              5|   int n = sizeof(numbers) / sizeof(numbers[0]);
+              6|
+              7|   float sum = 0;
+              8|   for (int i = 0; i &lt; n; i++)
+              9|     sum += numbers[i];
+             10|
+             11|   float avg = sum / n;
+             12|
+             13|   printf("The total of the added numbers is: %f\n", sum);
+             14|   printf("The average value of the numbers added up is: %f\n", avg);
+             15|  }
+          </input>
+        </program>
+      </listing>
+      <p>
+        The program can be compiled with the following command:
+      </p>
+      <listing>
+        <console>
+          <input>
+            gcc -o extra extra.c
+          </input>
+        </console>
+      </listing>
+    </project>
+    <p>
+      You can see that with a high level programming language like C, you can accomplish the same result, but with better output. In this case, we print out, onto the <c>stdout</c> a whole sentence that includes a decimal value of the calculations we made.
+    </p>
+    <p>
+      We will explore more of high-level programming languages in later experiments.
+    </p>
+  </section>
+  <section>
+    <title>Reflection</title>
+    <!-- Questions about the processes covered. -->
+    <exercise>
+      <prompt>
+        What are your thoughts on the assembly programming language?
+      </prompt>
+    </exercise>
   </section>
 </chapter>
