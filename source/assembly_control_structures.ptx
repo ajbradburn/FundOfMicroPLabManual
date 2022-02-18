@@ -11,6 +11,288 @@
   <xi:include href="./introductions/assembly_control_structures.ptx" />
 
   <section>
-
+    <title>Code</title>
+    <p>
+      As you'll have learned from the reading branching, and control structures are closely related. The reality is that looping, as well as if, then, and else statements are entirely dependent upon decisions made based upon evaluations of values in our input.
+    </p>
+    <subsection>
+      <title>Loops</title>
+      <p>
+        Loops are incredibly useful. Mostly because they allow us to re-use portions of code so that we aren't typing out millions of lines of instructions to handle the same process over and over again, but also because they can seriously simplify processes that would require repeated decision making, thus simplifying our code, and making it more human readable.
+      </p>
+      <p>
+        There are a couple of different approaches to loops, which you use may depend on the application.
+      </p>
+      <p>
+        The first, which will be the subject of our first project in this experiment, uses an index, and decrements that index as you itterate over the elements of the array. Once the index reaches a specific value, the loop exits. This method is generally most useful when you know exactly how much data you're working with. Either through a calculation, or through some predefined method.
+      </p>
+      <p>
+        The second looks for a specific value in the array, and when it is found, exits the loop. This approach is generally used for streams of data, or data with an undefined length.
+      </p>
+      <!-- 
+        Two program examples, one with an index that is decremented, and another that looks for a terminating string.
+      -->
+      <project>
+        <p>Transcribe this program, compile, and run it.</p>
+        <listing>
+          <program>
+            <input>
+              1|  .data
+              2|  .balign 4
+              3|  numbers: .word 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+              4|  .balign 4
+              5|  number_count: .word 10
+              6|
+              7|  .text
+              8|  .balign 4
+              9|  .global main
+             10|  .func main
+             11|
+             12|  main:
+             13|    mov r0, #5
+             14|    mov r1, #5
+             15|      /* r0 + 5 */
+             16|    add r0, r0, r1
+             17|
+             18|      /* Create an itteration counter that starts with the number count */
+             19|    ldr r3, =number_count
+             20|    ldr r3, [r3]
+             21|
+             22|    ldr r2, =numbers
+             23|  add_more:
+             24|    ldr r1, [r2], #4
+             25|    add r0, r0, r1
+             26|      /* Decriment our itteration counter. */
+             27|    sub r3, r3, #1
+             28|      /* Is our itteration counter equal to 0? */
+             29|    cmp r3, #0
+             30|      /* If yes/true, jump to the end of the program. */
+             31|    beq end
+             32|
+             33|      /* If no/false, do it again. */
+             34|    b add_more
+             35|  end:
+             36|
+             37|    bx lr
+            </input>
+          </program>
+        </listing>
+      </project>
+      <exercise>
+        <statement>
+          What is the value returned by the program?
+        </statement>
+        <answer>
+          65
+        </answer>
+      </exercise>
+      <exercise>
+        <statement>
+          What would happen if the index were initialized at 11, or 0 instead of 10?
+        </statement>
+        <answer>
+          ?
+        </answer>
+      </exercise>
+      <p>
+        In this example, we define an index value <c>number_count</c> on line 5 and load it into register <c>r3</c> on lines 19 and 20. Then, as we load, and add each element of the <c>numbers</c> array, we decriment <c>r3</c> by 1 on line 27. Next, we compare the value in <c>r3</c> to 0 to set flags. The <c>beq</c> command on line 31 will check the flags to see if <c>r3</c> and 0 are equal, if so, it will jump to the <c>end:</c> label. If not, it will advance to the <c>b add_more</c> instruction on line 34, which sends our program back to the <c>add_more:</c> label on line 23.
+      </p>
+      <figure>
+        <caption>The logical flow of the program.</caption>
+        <image source="generated/assembly_control_structures_img02" width="25%">
+          <description>
+            The logical flow of our application as described.
+          </description>
+        </image>
+      </figure>
+      <p>
+        Our next program illustrates the process of looking for a special value in an array, and exiting the loop when it is found.
+      </p>
+      <project>
+        <p>
+          Transcribe, compile and run the following program.
+        </p>
+        <listing>
+          <program>
+            <input>
+              1|  .data
+              2|  .balign 4
+              3|  numbers: .word 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
+              4|
+              5|  .text
+              6|  .balign 4
+              7|  .global main
+              8|  .func main
+              9|
+             10|  main:
+             11|    mov r0, #5
+             12|    mov r1, #5
+             13|      /* r0 + 5 */
+             14|    add r0, r0, r1
+             15|
+             16|    ldr r2, =numbers
+             17|  add_more:
+             18|    ldr r1, [r2], #4
+             19|      /* Is the new number equal to 0? */
+             20|    cmp r1, #0
+             21|    beq end
+             22|      /* Add new number. */
+             23|    add r0, r0, r1
+             24|      /* Do it again. */
+             25|    b add_more
+             26|  end:
+             27|
+             28|    bx lr
+            </input>
+          </program>
+        </listing>
+      </project>
+      <p>
+        In this example, we simply add a special character (0) at the end of our numbers array, and as we load each number, we check to see if the newly loaded value is equal to our special character. On line 20, we compare <c>r1</c> and 0 to set flags. Then on line 21 the <c>beq end</c> instruction checkes the flags, and if <c>r1</c> is equal to our special character, we jump to the <c>end:</c> label on line 26. Otherwise, the program advances, adds the new value to our running total in <c>r0</c> and then reaches <c>b add_mroe</c> on line 25 which sends the program back to the <c>add_more</c> label on line 17.
+      </p>
+      <figure>
+        <caption>The logical flow of the program.</caption>
+        <image source="generated/assembly_control_structures_img03" width="35%">
+          <description>
+            The logical flow of our application as described.
+          </description>
+        </image>
+      </figure>
+    </subsection>
+    <!--
+      Imagine we have a little microcontroller monitoring the temperature in an environment, and turning on a heater whenever it gets to cold, or an air conditioner when it gets too warm.
+    -->
+  </section>
+  <section>
+    <subsection>
+      <p>As we continue with our exploration of control structures in assembly, we are going to shift our frame of reference a bit, and use a different example.</p>
+      <p>
+        Let us imagine that we have a project that needs to control the temperature of an enclosure. We have a temperature sensor, two relays, and an alarm buzzer attached to a microconroller.
+      </p>
+      <p>
+        One of the relays enables power for a heating element. The other enables power for an air conditioning unit.
+      </p>
+      <p>
+        Our objective is to write a program for our little micro controller that takes a temperature reading from the sensor, and turns on the heat, the air conditioner, or does nothing, depending on defined conditions.
+      </p>
+      <p>
+        Our design takes into consideration that something may go wrong with our temperature control equipment, and so it is important that we include functionality that will alert us in the event that there is some sort of failure.
+      </p>
+      <p>
+        Our failure condition is: if we go to enable either the heater, or air conditioner, and it is already enabled. In either case, we may have a broken sensor, a broken temperature control circuit, or a compromised enclosure.
+      </p>
+      <project>
+        <p>
+          Transcribe, compile, and run the <program class=":w"></program>
+        </p>
+        <listing>
+          <program>
+            <input>
+              1|  .data
+              2|  temp_measurement: .word 130
+              3|  temp_upper: .word 150
+              4|  temp_lower: .word  100
+              5|
+              6|  .text
+              7|
+              8|  error:
+              9|    /* Send a signal to a connected monitoring device. */
+             10|    /* Turn on a red LED. */
+             11|    mov r0, #0
+             12|    b end
+             13|
+             14|  all_off:
+             15|    and r3, r7, #6
+             16|    eor r7, r7, r7
+             17|    mov r0, #1
+             18|    b end
+             19|
+             20|  cool_on:
+             21|    /* Check if cool is already enabled. */
+             22|    and r3, r7, #2
+             23|    cmp r3, #2
+             24|    /* If yes, go to error. */
+             25|    beq error
+             26|    /* if no, enable. */
+             27|    and r7, r7, #2
+             28|    mov r0, #2
+             29|    b end
+             30|
+             31|  heat_on:
+             32|    /* Check if heat is already enabled. */
+             33|    and r3, r7, #4
+             34|    cmp r3, #4
+             35|    /* If yes, go to error. */
+             36|    beq error
+             37|    /* if no, enable. */
+             38|    and r7, r7, #4
+             39|    mov r0, #3
+             40|    b end
+             41|
+            </input>
+          </program>
+        </listing>
+        <listing>
+          <program>
+            <input>
+              42|  .global main
+              43|  main:
+              44|    /* Check temperature reading. */
+              45|    ldr r1, =temp_measurement
+              46|    ldr r1, [r1]
+              47|
+              48|    /* If equal or above temp_upper, call cool. */
+              49|    ldr r2, =temp_upper
+              50|    ldr r2, [r2]
+              51|    /* cmp subtracts r1 from r2 */
+              52|    cmp r1, r2
+              53|    bhs cool_on
+              54|
+              55|    /* If equal or lower temp_lower, call heat. */
+              56|    ldr r2, =temp_lower
+              57|    ldr r2, [r2]
+              58|    cmp r1, r2
+              59|    bls heat_on
+              60|
+              61|    /* If neither, continue. */
+              62|    b all_off
+              63|  end:
+              64|    bx lr
+            </input>
+          </program>
+        </listing>
+      </project>
+      <exercise>
+        <statement>
+          What is the return value for the program as it is written?
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          What is the return value if you change the <c>temp_measurement</c> definition to 151?
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          What is the return value if you change the <c>temp_measurement</c> definition to 99?
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          What is the return value of the program if you insert <c>mov r7, #2</c> between lines 43, and 44, and change the <c>temp_measurement</c> definition to 200?
+        </statement>
+      </exercise>
+      <p>
+        The logic looks a bit like this:
+      </p>
+      <figure>
+        <caption>The logical flow of the program.</caption>
+        <image source="generated/assembly_control_structures_img04" width="75%">
+          <description>
+            The logical flow of our application as described.
+          </description>
+        </image>
+      </figure>
+    </subsection>
   </section>
 </chapter>
