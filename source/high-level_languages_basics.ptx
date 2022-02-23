@@ -11,6 +11,167 @@
   <xi:include href="./introductions/high-level_languages_basics.ptx" />
 
   <section>
+    <subsection>
+      <title>
+        High Level Programming Languages
+      </title>
+    <!-- 
+      Write a dice program.
 
+      Discuss the following topics.
+      Library Inclusions
+      Variables
+      Load settings from file.
+      Get User Input
+      Write to file.
+      Random values.
+      Select largest value.
+      Select min value.
+      Print output.
+    -->
+      <p>
+        High-level programming languages exist to make programming easier. They are ubiquitous, and when it comes to programming for personal computers, or embedded systems, learning to make use of them will be a fantastic boon to your project.
+      </p>
+      <p>
+        With the Raspberry Pi, you can make use of any number of programming-languages, but we are going to focus on Python. It is an interpreted language, this means that it isn't necessary to compile the program you write. Additionally, Python has comparatively liberal data typing, which makes it a bit easier for a beginner to deal with strings of letters, integers, and floats. While data typing is very important, and has it's place in Python, it is less of a learning hurdle with Python than with a language like C, or C++.
+      </p>
+      <p>
+        Before we get into the weeds of writing our own programs, I am going to introduce you to some of the basics of the Python programming language by showing you a program, and then describing some of the functions of the code blocks.
+      </p>
+      <listing>
+        <program>
+          <input>
+            1|  #!/usr/bin/python3
+            2|  
+            3|  import sys
+            4|  import getopt
+            5|  from os.path import exists
+            6|  import json
+            7|  import random
+            8|  
+            9|  def calc_combinations(roll_totals, remaining_die, cumulative_rolls):
+           10|      for r in range(1, 6 + 1):
+           11|          if remaining_die &gt; 1:
+           12|              die_left = remaining_die - 1
+           13|              calc_combinations(roll_totals, die_left, cumulative_rolls + r)
+           14|          else:
+           15|              roll_totals.append(cumulative_rolls + r)
+           16|  
+           17|  
+           18|  def main(argv):
+           19|      # Check if configuration file exists.
+           20|      file_name = 'die_stats.json'
+           21|      if(exists(file_name)):
+           22|          file_handle = open(file_name, 'r')
+           23|          stats = json.load(file_handle)
+           24|          file_handle.close()
+           25|          file_handle = open(file_name, 'w')
+           26|      else:
+           27|      # Initialize stats.
+           28|          file_handle = open(file_name, 'w')
+           29|          stats = {
+           30|                      '1':{
+           31|                          'run_count': 0,
+           32|                          '1':{"rolls":0, "percentage":16},
+           33|                          '2':{"rolls":0, "percentage":16},
+           34|                          '3':{"rolls":0, "percentage":16},
+           35|                          '4':{"rolls":0, "percentage":16},
+           36|                          '5':{"rolls":0, "percentage":16},
+           37|                          '6':{"rolls":0, "percentage":16},
+           38|                      }
+           39|                  }
+           40|  
+          </input>
+        </program>
+      </listing>
+      <listing>
+        <program>
+          <input>
+            41|      # Look for command line input of N die.
+            42|      help_string = 'output_with_format.py -i &lt;file_name&gt;'
+            43|      try:
+            44|          opts, args = getopt.getopt(argv, "hn:")
+            45|      except getopt.GetoptError:
+            46|          print(help_string)
+            47|          sys.exit(2)
+            48|  
+            49|      number_of_die = None
+            50|  
+            51|      for opt, arg in opts:
+            52|          if opt == '-h':
+            53|              print(help_string)
+            54|          elif opt in ("-n"):
+            55|              number_of_die = arg
+            56|  
+            57|      # If NO, ask for user input of N Die.
+            58|      if number_of_die == None:
+            59|          number_of_die = input("Enter the number of die you'd like to roll:")
+            60|  
+            61|      # Make sure that any input is an int.
+            62|      number_of_die = int(number_of_die)
+            63|      str_number_of_die = str(number_of_die)
+            64|  
+            65|      # Check the user input for a reasonable value.
+            66|      if number_of_die &lt; 1:
+            67|          print('You must enter a number greater than 1.')
+            68|          sys.exit(2)
+            69|  
+            70|      # Increment our run counter.
+            71|  
+            72|      if not str_number_of_die in stats:
+            73|          die_combinations = []
+            74|          calc_combinations(die_combinations, number_of_die, 0)
+            75|          roll_values = (list(set(die_combinations)))
+            76|  
+            77|          stats[str_number_of_die] = {}
+            78|          stats[str_number_of_die]['run_count'] = 0
+            79|          for rv in roll_values:
+            80|              roll_possibilities = len(die_combinations)
+            81|              roll_frequency = die_combinations.count(rv)
+            82|              roll_percentage = int(roll_frequency / roll_possibilities * 100)
+            83|              stats[str_number_of_die][str(rv)] = {"rolls":0, "percentage":roll_percentage}
+            84|  
+          </input>
+        </program>
+      </listing>
+      <listing>
+        <program>
+          <input>
+            85|      # Roll Die.
+            86|      print("Rolling {} die.".format(number_of_die))
+            87|  
+            88|      rolls = {}
+            89|      roll_total = 0
+            90|  
+            91|      for d in range(1, number_of_die + 1):
+            92|          rolls[d] = random.randint(1, 6)
+            93|          str_roll = str(rolls[d])
+            94|          stats['1'][str_roll]['rolls'] = stats['1'][str_roll]['rolls'] + 1
+            95|          stats['1']['run_count'] = stats['1']['run_count'] + 1
+            96|          roll_total = roll_total + rolls[d]
+            97|      str_roll_total = str(roll_total)
+            98|      stats[str_number_of_die][str_roll_total]['rolls'] = stats[str_number_of_die][str_roll_total]['rolls'] + 1
+            99|      stats[str_number_of_die]['run_count'] = stats[str_number_of_die]['run_count'] + 1
+           100|  
+           101|      # Output die results.
+           102|      for d in rolls:
+           103|          print("Die {} rolled a {}.".format(d, rolls[d]))
+           104|  
+           105|      # Output die statistics.
+           106|      str_actual_roll_percent = int((stats[str_number_of_die][str_roll_total]['rolls'] / stats[str_number_of_die]['run_count']) * 100)
+           107|      print("Out of the {} times that this program has been run {} has been rolled {} times, a percentage of {}. A roll of {} should occur {}% of the time.".format(stats[str_number_of_die]['run_count'], str_roll_total, stats[str_number_of_die][str_roll_total]['rolls'], str_actual_roll_percent, str_roll_total, stats[str_number_of_die][str_roll_total]['percentage']))
+           108|  
+           109|  
+           110|      # Save config and statistics to a file.
+           111|      stats_string = json.dumps(stats, indent=4)
+           112|      file_handle.truncate()
+           113|      file_handle.write(stats_string)
+           114|  
+           115|  if __name__ == "__main__":
+           116|      main(sys.argv[1:])
+          </input>
+        </program>
+      </listing>
+    </subsection>
   </section>
 </chapter>
