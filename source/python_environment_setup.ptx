@@ -10,7 +10,67 @@
   <!-- Introduction -->
   <xi:include href="./introductions/python_environment_setup.ptx" />
 
-  <section>
+  <!-- Open Thonny Python IDE. -->
+  <!-- Type Program (Simple Dice) -->
+  <!-- Run Program. -->
+  <!-- Useful functions for more information. -->
 
+  <section>
+    <title>
+      The Thonny Python IDE
+    </title>
+    <!-- File Window -->
+    <!-- Shell Window -->
+  </section>
+  <section>
+    <title>
+      Our First Python Program
+    </title>
+    <listing>
+      <program>
+        <input>
+          1|  # Import the random library.
+          2|  import random
+          3|
+          4|  # Ask the user for the number of die they want to roll.
+          5|  number_of_die = input("Enter the number of die you'd like to roll: ")
+          6|  number_of_die = int(number_of_die)
+          7|
+          8|  # Initialize some variables that will store our roll data.
+          9|  rolls = {}
+         10|  roll_total = 0
+         11|
+         12|  # Using a loop, roll each die, and save the roll results to the variables.
+         13|  for d in range(1, number_of_die + 1):
+         14|      rolls[d] = random.randint(1, 6)
+         15|      roll_total = roll_total + rolls[d]
+         16|
+         17|  # Output die results.
+         18|  # Output individual results.
+         19|  for d in rolls:
+         20|      print("Die {} rolled a {}.".format(d, rolls[d]))
+         21|  # Output the combined results.
+         22|  print("The roll total was: {}.".format(roll_total))
+        </input>
+      </program>
+    </listing>
+  </section>
+  <section>
+    <title>
+      Running a Python Program
+    </title>
+  </section>
+  <section>
+    <title>
+      Debugging with Thonny
+    </title>
+    <!-- If you set a break point, the program will advance to that automatically when you select debug. -->
+    <!-- If you don't have a break point set when you click debug, you'll have the option to click through each line of the program.-->
+  </section>
+  <section>
+    <title>
+      Debugging with Python
+    </title>
+    <!-- There are a number of functions available for dumping data about your program. -->
   </section>
 </chapter>

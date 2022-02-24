@@ -8,7 +8,7 @@
     <title>An Introduction to Embedded Systems and Applications</title>
     <subtitle>Through the Raspberry Pi</subtitle>
     
-    <xi:include href="./high-level_languages_basics.ptx" />
+
 
     <!--
     <xi:include href="./programming_basics.ptx" />
@@ -16,6 +16,10 @@
     <xi:include href="./assembly_basics.ptx" />
     <xi:include href="./assembly_control_structures.ptx" />
     <xi:include href="./high-level_languages_basics.ptx" />
+    -->    
+
+    <xi:include href="./python_environment_setup.ptx" />
+    <!--
     -->
 
   </book>

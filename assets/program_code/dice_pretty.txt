@@ -67,50 +67,49 @@
  67|          print('You must enter a number greater than 1.')
  68|          sys.exit(2)
  69|  
- 70|      # Increment our run counter.
- 71|  
- 72|      if not str_number_of_die in stats:
- 73|          die_combinations = []
- 74|          calc_combinations(die_combinations, number_of_die, 0)
- 75|          roll_values = (list(set(die_combinations)))
- 76|  
- 77|          stats[str_number_of_die] = {}
- 78|          stats[str_number_of_die]['run_count'] = 0
- 79|          for rv in roll_values:
- 80|              roll_possibilities = len(die_combinations)
- 81|              roll_frequency = die_combinations.count(rv)
- 82|              roll_percentage = int(roll_frequency / roll_possibilities * 100)
- 83|              stats[str_number_of_die][str(rv)] = {"rolls":0, "percentage":roll_percentage}
- 84|  
- 85|      # Roll Die.
- 86|      print("Rolling {} die.".format(number_of_die))
- 87|  
- 88|      rolls = {}
- 89|      roll_total = 0
- 90|  
- 91|      for d in range(1, number_of_die + 1):
- 92|          rolls[d] = random.randint(1, 6)
- 93|          str_roll = str(rolls[d])
- 94|          stats['1'][str_roll]['rolls'] = stats['1'][str_roll]['rolls'] + 1
- 95|          stats['1']['run_count'] = stats['1']['run_count'] + 1
- 96|          roll_total = roll_total + rolls[d]
- 97|      str_roll_total = str(roll_total)
- 98|      stats[str_number_of_die][str_roll_total]['rolls'] = stats[str_number_of_die][str_roll_total]['rolls'] + 1
- 99|      stats[str_number_of_die]['run_count'] = stats[str_number_of_die]['run_count'] + 1
-100|  
-101|      # Output die results.
-102|      for d in rolls:
-103|          print("Die {} rolled a {}.".format(d, rolls[d]))
-104|  
-105|      # Output die statistics.
-106|      str_actual_roll_percent = int((stats[str_number_of_die][str_roll_total]['rolls'] / stats[str_number_of_die]['run_count']) * 100)
-107|      print("Out of the {} times that this program has been run {} has been rolled {} times, a percentage of {}. A roll of {} should occur {}% of the time.".format(stats[str_number_of_die]['run_count'], str_roll_total, stats[str_number_of_die][str_roll_total]['rolls'], str_actual_roll_percent, str_roll_total, stats[str_number_of_die][str_roll_total]['percentage']))
+ 70|      # Initialize stats for N die if it doesn't already exist.
+ 71|      if not str_number_of_die in stats:
+ 72|          die_combinations = []
+ 73|          calc_combinations(die_combinations, number_of_die, 0)
+ 74|          roll_values = (list(set(die_combinations)))
+ 75|  
+ 76|          stats[str_number_of_die] = {}
+ 77|          stats[str_number_of_die]['run_count'] = 0
+ 78|          for rv in roll_values:
+ 79|              roll_possibilities = len(die_combinations)
+ 80|              roll_frequency = die_combinations.count(rv)
+ 81|              roll_percentage = int(roll_frequency / roll_possibilities * 100)
+ 82|              stats[str_number_of_die][str(rv)] = {"rolls":0, "percentage":roll_percentage}
+ 83|  
+ 84|      # Roll Die.
+ 85|      print("Rolling {} die.".format(number_of_die))
+ 86|  
+ 87|      rolls = {}
+ 88|      roll_total = 0
+ 89|  
+ 90|      for d in range(1, number_of_die + 1):
+ 91|          rolls[d] = random.randint(1, 6)
+ 92|          str_roll = str(rolls[d])
+ 93|          stats['1'][str_roll]['rolls'] = stats['1'][str_roll]['rolls'] + 1
+ 94|          stats['1']['run_count'] = stats['1']['run_count'] + 1
+ 95|          roll_total = roll_total + rolls[d]
+ 96|      str_roll_total = str(roll_total)
+ 97|      stats[str_number_of_die][str_roll_total]['rolls'] = stats[str_number_of_die][str_roll_total]['rolls'] + 1
+ 98|      stats[str_number_of_die]['run_count'] = stats[str_number_of_die]['run_count'] + 1
+ 99|  
+100|      # Output die results.
+101|      for d in rolls:
+102|          print("Die {} rolled a {}.".format(d, rolls[d]))
+103|  
+104|      # Output die statistics.
+105|      str_actual_roll_percent = int((stats[str_number_of_die][str_roll_total]['rolls'] / stats[str_number_of_die]['run_count']) * 100)
+106|      print("Out of the {} times that this program has been run {} has been rolled {} times, a percentage of {}. A roll of {} should occur {}% of the time.".format(stats[str_number_of_die]['run_count'], str_roll_total, stats[str_number_of_die][str_roll_total]['rolls'], str_actual_roll_percent, str_roll_total, stats[str_number_of_die][str_roll_total]['percentage']))
+107|  
 108|  
-109|  
-110|      # Save config and statistics to a file.
-111|      stats_string = json.dumps(stats, indent=4)
-112|      file_handle.truncate()
-113|      file_handle.write(stats_string)
-114|  
-115|  if __name__ == "__main__":
-116|      main(sys.argv[1:])
+109|      # Save config and statistics to a file.
+110|      stats_string = json.dumps(stats, indent=4)
+111|      file_handle.truncate()
+112|      file_handle.write(stats_string)
+113|  
+114|  if __name__ == "__main__":
+115|      main(sys.argv[1:])
