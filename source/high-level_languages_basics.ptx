@@ -36,7 +36,10 @@
         With the Raspberry Pi, you can make use of any number of programming-languages, but we are going to focus on Python. It is an interpreted language, this means that it isn't necessary to compile the program you write. Additionally, Python has comparatively liberal data typing, which makes it a bit easier for a beginner to deal with strings of letters, integers, and floats. While data typing is very important, and has it's place in Python, it is less of a learning hurdle with Python than with a language like C, or C++.
       </p>
       <p>
-        Before we get into the weeds of writing our own programs, I am going to introduce you to some of the basics of the Python programming language by showing you a program, and then describing some of the functions of the code blocks.
+        Before we get into the weeds of writing our own programs, I am going to introduce you to some of the basics of the Python programming language by showing you a program, and then describing some of the functions of the code.
+      </p>
+      <p>
+        Program: dice.py
       </p>
       <listing>
         <program>
@@ -81,28 +84,28 @@
            38|                      }
            39|                  }
            40|  
+           41|      # Look for command line input of N die.
+           42|      help_string = 'output_with_format.py -i &lt;file_name&gt;'
+           43|      try:
+           44|          opts, args = getopt.getopt(argv, "hn:")
+           45|      except getopt.GetoptError:
+           46|          print(help_string)
+           47|          sys.exit(2)
+           48|  
+           49|      number_of_die = None
+           50|  
+           51|      for opt, arg in opts:
+           52|          if opt == '-h':
+           53|              print(help_string)
+           54|          elif opt in ("-n"):
+           55|              number_of_die = arg
+           56|  
           </input>
         </program>
       </listing>
       <listing>
         <program>
           <input>
-            41|      # Look for command line input of N die.
-            42|      help_string = 'output_with_format.py -i &lt;file_name&gt;'
-            43|      try:
-            44|          opts, args = getopt.getopt(argv, "hn:")
-            45|      except getopt.GetoptError:
-            46|          print(help_string)
-            47|          sys.exit(2)
-            48|  
-            49|      number_of_die = None
-            50|  
-            51|      for opt, arg in opts:
-            52|          if opt == '-h':
-            53|              print(help_string)
-            54|          elif opt in ("-n"):
-            55|              number_of_die = arg
-            56|  
             57|      # If NO, ask for user input of N Die.
             58|      if number_of_die == None:
             59|          number_of_die = input("Enter the number of die you'd like to roll:")
@@ -131,12 +134,6 @@
             82|              roll_percentage = int(roll_frequency / roll_possibilities * 100)
             83|              stats[str_number_of_die][str(rv)] = {"rolls":0, "percentage":roll_percentage}
             84|  
-          </input>
-        </program>
-      </listing>
-      <listing>
-        <program>
-          <input>
             85|      # Roll Die.
             86|      print("Rolling {} die.".format(number_of_die))
             87|  
@@ -157,6 +154,12 @@
            102|      for d in rolls:
            103|          print("Die {} rolled a {}.".format(d, rolls[d]))
            104|  
+          </input>
+        </program>
+      </listing>
+      <listing>
+        <program>
+          <input>
            105|      # Output die statistics.
            106|      str_actual_roll_percent = int((stats[str_number_of_die][str_roll_total]['rolls'] / stats[str_number_of_die]['run_count']) * 100)
            107|      print("Out of the {} times that this program has been run {} has been rolled {} times, a percentage of {}. A roll of {} should occur {}% of the time.".format(stats[str_number_of_die]['run_count'], str_roll_total, stats[str_number_of_die][str_roll_total]['rolls'], str_actual_roll_percent, str_roll_total, stats[str_number_of_die][str_roll_total]['percentage']))
@@ -172,6 +175,46 @@
           </input>
         </program>
       </listing>
+    </subsection>
+    <subsection>
+      <p>
+        This program will effectively roll dice. It takes user input in the form of the number of die that the user wants to roll, and randomly generates numbers in the range of 1, to 6 for each die. For a lark, it will track the number of times each total is rolled, and save those statistics in a file. At its conclusion, the program will output the roll total, the roll for each die, as well as some information about the statistics for that total.
+      </p>
+      <p>
+        The first part of the application, in lines 3 to 7 import libraries that include functions that we will make use of in our application.
+      </p>
+      <listing>
+        <program>
+          <input>
+            3|  import sys
+            4|  import getopt
+            5|  from os.path import exists
+            6|  import json
+            7|  import random
+          </input>
+        </program>
+      </listing>
+      <p>
+        Line 6 imports a library that will read, or write our statistics from our file, doing so in a data format that is widely used, and human readable. It will eliminate the need for us to design our own method for saving the statistics for our rolls.
+      </p>
+      <p>
+        Line 7 imports a library that will generate "random" numbers for us. We specify a range, and it returns a number. While it is beyond the scope of this material, the idea of truely random numbers is a whole subject of it's own, and I just encourage you to appreciate the amount of work that this library saves you, and to take a moment to enjoy the fact that someoen has already gone through the trouble of writing the code to accomplish it.
+      </p>
+    </subsection>
+    <subsection>
+      <p>
+        Next, we define two functions. The first that you see occurs on line 9, the second on line 18. When discussing Assembly, we touched on the idea of reusing code. Functions allow us to group instructions, and to re-use instructions in a way that saves us convoluted code, and improves the readability of our work.
+      </p>
+      <p>
+        The function <c>calc_combinations</c> on line 9 makes use of a concept called recursion to calculate all of the possible rolls for any number of die. It is called later to generate some stats, like the possible roll values, and how often those values may occur.
+      </p>
+      <p>
+        The function <c>main</c> is our program function, and will be called when the program is run. You'll notice that the full definition <c>def main(argv):</c> has parenthesis with a word between them. If you look at the <c>def calc_combinations(roll_totals, remaining_die, cumulative_rolls):</c> function definition, you'll see the same thing. These words between the parenthasis are called parameters, and are "local" variable names for data that needs to be handed off, or pointed to, for the function to do its work.
+      </p>
+      <!-- Variable Scope, and data references. -->
+      <p>
+        Variable scope and the way that the data passed into a function are referenced are their own subject for study, but they are beyond the scope of this exploration. Know that variables defiend in functions are only useable/visible within the same function. If a variable that is defined in your program has the same name as a variable in a function, they don't share data, unless you pass that variable to the function when you call it.
+      </p>
     </subsection>
   </section>
 </chapter>
