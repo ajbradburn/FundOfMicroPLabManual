@@ -14,63 +14,327 @@
   <!-- Type Program (Simple Dice) -->
   <!-- Run Program. -->
   <!-- Useful functions for more information. -->
-
+  <section>
+    <title>
+      Raspi Config
+    </title>
+    <!-- Enable I2C -->
+    <p>
+      In order to use the GPIO pins that we will need for our next couple of experiments we need to enable some features of the Raspberry Pi.
+    </p>
+    <subsection>
+      <p>To perform the next few steps, we will need to open the <em>Terminal</em> application.</p>
+      <figure>
+        <caption>Opening the Terminal application.</caption>
+        <image source="screenshots/raspi_config/main_menu-terminal.png">
+          <description>The navigation path for the Terminal.</description>
+        </image>
+      </figure>
+      <ol>
+        <li>Click <em>main menu</em> (Raspberry Pi Icon on the Taskbar)</li>
+        <li>... <em>Accessories</em></li>
+        <li>... <em>Terminal</em></li>
+      </ol>
+    </subsection>
+    <subsection>
+      <p>
+        Next, launch the Raspberry Pi Software Configuration Tool by typing the following:
+      </p>
+      <listing>
+        <console>
+          <input>
+            sudo raspi-config
+          </input>
+        </console>
+      </listing>
+    </subsection>
+    <subsection>
+      <p>
+        When the configuration tool is displayed, use your arrow, and enter keys to execute the following commands.
+      </p>
+      <figure>
+        <caption>Opening the Terminal application.</caption>
+        <image source="screenshots/raspi_config/raspi_config-interface_options.png">
+          <description>Raspberry Pi Software Configuration Tool main menu.</description>
+        </image>
+      </figure>
+      <ol>
+        <li>Select <em>Interface Options</em>.</li>
+      </ol>
+    </subsection>
+    <subsection>
+      <figure>
+        <caption>Opening the Terminal application.</caption>
+        <image source="screenshots/raspi_config/raspi_config-i2c_enable.png">
+          <description>Raspberry Pi Software Configuration Tool interface options menu.</description>
+        </image>
+      </figure>
+      <ol>
+        <li>Select <em>Enable/disable automatic loading of I2C kernel module</em>.</li>
+        <li>On the following screen, select <em>Yes</em>.</li>
+        <li>Finally, select <em>Ok</em>.</li>
+      </ol>
+      <p>
+        After going through those steps, you should be returned to the main menu of the Raspberry Pi Software Configuration Tool. You can either press <em>Esc</em> on the keyboard to return to the terminal prompt, or close out the window.
+      </p>
+    </subsection>
+  </section>
+  <section>
+    <title>
+      Installing Python Libraries
+    </title>
+    <subsection>
+      <p>
+        In order to interface with the GPIO of the Raspberry Pi with Python, as well as to communicate with some peripherial devices in the later lab, we are going to need to install some Python libraries.
+      </p>
+      <p>
+        Open the <em>Terminal</em> application, and type the following line:
+      </p>
+      <listing>
+        <console>
+          <input>
+            pip3 install board adafruit-circuitpython-ssd1306 adafruit_ssd1306 adafruit-circuitpython-ahtx0
+          </input>
+        </console>
+      </listing>
+      <p>
+        The Raspberry Pi will find the libraries and download them. When done, you can close out the <em>Terminal</em> window.
+      </p>
+    </subsection>
+  </section>
   <section>
     <title>
       The Thonny Python IDE
     </title>
-    <!-- File Window -->
-    <!-- Shell Window -->
-  </section>
-  <section>
-    <title>
-      Our First Python Program
-    </title>
-    <listing>
-      <program>
-        <input>
-          1|  # Import the random library.
-          2|  import random
-          3|
-          4|  # Ask the user for the number of die they want to roll.
-          5|  number_of_die = input("Enter the number of die you'd like to roll: ")
-          6|  number_of_die = int(number_of_die)
-          7|
-          8|  # Initialize some variables that will store our roll data.
-          9|  rolls = {}
-         10|  roll_total = 0
-         11|
-         12|  # Using a loop, roll each die, and save the roll results to the variables.
-         13|  for d in range(1, number_of_die + 1):
-         14|      rolls[d] = random.randint(1, 6)
-         15|      roll_total = roll_total + rolls[d]
-         16|
-         17|  # Output die results.
-         18|  # Output individual results.
-         19|  for d in rolls:
-         20|      print("Die {} rolled a {}.".format(d, rolls[d]))
-         21|  # Output the combined results.
-         22|  print("The roll total was: {}.".format(roll_total))
-        </input>
-      </program>
-    </listing>
-  </section>
-  <section>
-    <title>
-      Running a Python Program
-    </title>
-  </section>
-  <section>
-    <title>
-      Debugging with Thonny
-    </title>
-    <!-- If you set a break point, the program will advance to that automatically when you select debug. -->
-    <!-- If you don't have a break point set when you click debug, you'll have the option to click through each line of the program.-->
+    <subsection>
+      <p>
+        The Thonny Python IDE is already included with a fresh installation of the Raspberry Pi OS. To get started, you only need to launch the application from the main menu.
+      </p>
+      <figure>
+        <caption>Selecting the Thonny Python IDE in the Raspberry Pi OS main menu.</caption>
+        <image source="screenshots/thonny_first_program/main_menu-thonny.png">
+          <description>The navigation path for the Thonny Python IDE.</description>
+        </image>
+      </figure>
+      <ol>
+        <li> Click <em>main menu</em> (Raspberry Pi Icon on the Taskbar)</li>
+        <li>... <em>Programming</em></li>
+        <li>... <em>Thonny Python IDE</em></li>
+      </ol>
+    </subsection>
+    <subsection>
+      <p>
+        Once Thonny is open, save the new empty file.
+      </p>
+      <figure>
+        <caption>Saving the new program.</caption>
+        <image source="screenshots/thonny_first_program/thonny-save.png">
+          <description>The navigation path for saving the new program.</description>
+        </image>
+      </figure>
+      <ol>
+        <li> Click <em>Save</em> in the shortcut bar.</li>
+      </ol>
+      <p>
+        When the <em>Save as</em> window opens:
+      </p>
+      <figure>
+        <caption>The <em>Save as</em> window.</caption>
+        <image source="screenshots/thonny_first_program/thonny-save_name.png">
+          <description>A view of the Save as winow.</description>
+        </image>
+      </figure>
+      <ol>
+        <li>Navigate to an appropriate place for saving your files.</li>
+        <li>Type <em>dice</em> in the <em>Name:</em> field.</li>
+        <li>Click <em>OK</em>.</li>
+      </ol>
+    </subsection>
+    <subsection>
+      <p>With your new program saved, type out the following program, and save your progress.</p>
+      <listing>
+        <program>
+          <input>
+            1|  # Import the random library.
+            2|  import random
+            3|
+            4|  # Ask the user for the number of die they want to roll.
+            5|  number_of_die = input("Enter the number of die you'd like to roll: ")
+            6|  number_of_die = int(number_of_die)
+            7|
+            8|  # Initialize some variables that will store our roll data.
+            9|  rolls = {}
+           10|  roll_total = 0
+           11|
+           12|  # Using a loop, roll each die, and save the roll results to the variables.
+           13|  for d in range(1, number_of_die + 1):
+           14|      rolls[d] = random.randint(1, 6)
+           15|      roll_total = roll_total + rolls[d]
+           16|
+           17|  # Output die results.
+           18|  # Output individual results.
+           19|  for d in rolls:
+           20|      print("Die {} rolled a {}.".format(d, rolls[d]))
+           21|  # Output the combined results.
+           22|  print("The roll total was: {}.".format(roll_total))
+          </input>
+        </program>
+      </listing>
+    </subsection>
+    <subsection>
+      <title>
+        Running a Python Program
+      </title>
+      <p>
+        Now that the program is written, you can simply click the <em>Run</em> button in the shortcut bar.
+      </p>
+      <figure>
+        <caption>Running your python program.</caption>
+        <image source="screenshots/thonny_first_program/thonny-run.png">
+          <description>The shortcut bar, with the Run button highlighted.</description>
+        </image>
+      </figure>
+      <p>
+        In this case, you should see a prompt in the <em>Shell</em> pane below the code editor pane.
+      </p>
+      <p>
+        Enter a number, like 2, and press <em>Enter</em>.
+      </p>
+      <p>
+        The program will generate some random numbers, and output the results.
+      </p>
+      <p>
+        You may find that there are occasions where you need to manually quit the program. If you find yourself accidently stuck in an infinite loop, or waiting for an input that never comes, you can click the <em>Stop</em> button in the shortcut bar, and your program will exit.
+      </p>
+      <figure>
+        <caption>Stopping your python program.</caption>
+        <image source="screenshots/thonny_first_program/thonny-stop.png">
+          <description>The shortcut bar, with the Stop button highlighted.</description>
+        </image>
+      </figure>
+    </subsection>
+    <subsection>
+      <title>
+        Debugging with Thonny
+      </title>
+      <p>
+        As with Assembly, there is a near certainty that you're going to need to debug your program. Thonny has a very handy set of features for exactly this.
+      </p>
+      <p>
+        To debug, you can simply click the <em>Debug</em> button in the shortcut bar. When you do, your program will start, but will wait on the first instruction line for your instruction. Additionally, a new <em>Variables</em> pane will open to the right of the code editor pane.
+      </p>
+      <figure>
+        <caption>Debuggin your python program.</caption>
+        <image source="screenshots/thonny_first_program/thonny-debug.png">
+          <description>The shortcut bar, with the Debug button highlighted.</description>
+        </image>
+      </figure>
+      <p>
+        To advance to the next instruction, click the <em>Over</em> button in the shortcut bar.
+      </p>
+      <figure>
+        <caption>Advancing the debugger to the next instruction.</caption>
+        <image source="screenshots/thonny_first_program/thonny-over.png">
+          <description>The shortcut bar, with the Over button highlighted.</description>
+        </image>
+      </figure>
+      <p>
+        As you click through the lines of the program, you will see variables be added to the list in the <em>Variables</em> pane. This helps you keep track of what variables have been decarled, and what their values are.
+      </p>
+      <p>
+        You'll notice that the <c>number_of_die</c> variable is initially loaded with a string value of <c>'2'</c>, and then changed to an int value of <c>2</c>. The difference is subtle, but very important.
+      </p>
+      <p>
+        If you're dealing with a larger program, or just want to focus on debugging a specific part of the program, you can add a break point by double-clicking the line number in the index to the left of the code. When you click <em>Debug</em> again, the debugger will run through the program up until the breakpoint, then wait for your instruction.
+      </p>
+      <p>
+        When you're ready to return to editing your code, you will need to click the <em>Stop</em> button to exit the debugger.
+      </p>
+    </subsection>
   </section>
   <section>
     <title>
       Debugging with Python
     </title>
-    <!-- There are a number of functions available for dumping data about your program. -->
+    <p>
+      While the Thonny Python IDE has some very powerful features that make debugging easy, there are some tricks that you should be aware of that will help you as you explore programming with Python.
+    </p>
+    <p>
+      The first thing to understand is that simple concepts like a sentence are in fact, incredibly complex structure that we often take for granted. When it comes to working with text, or any other data structure in python, there are typically a myriad of operations that are built in to make working with them easier.
+    </p>
+    <listing>
+      <program>
+        <input>
+          1|  text = "This is a STRING."
+          2|
+          3|  print(text)
+        </input>
+      </program>>
+    </listing>
+    <p>
+      For example, if you wrote the above program, we would see "This is a string" in the <em>Shell</em> output.
+    </p>
+    <p>
+      Now, if we wanted to search for a word or character within, break it up into multiple sections, change the case from upper to lower, or many other common operations, there are functions built into the Python <c>string</c> object that can help us.
+    </p>
+    <listing>
+      <program>
+        <input>
+          1|  text = "This is a STRING."
+          2|
+          3|  text = text.upper()
+          4|  print(text)
+          5|
+          6|  print(text.lower())
+        </input>
+      </program>
+    </listing>
+    <p>
+      If you run the code above, you'll see the same sentence in different cases.
+    </p>
+    <listing>
+      <console>
+        <output>
+          THIS IS A STRING.
+          this is a string.
+        </output>
+      </console>
+    </listing>
+    <p>
+      Now, to find these functions, you can, and should feel empowered to search online. However, you can also use some built-in Python tools. 
+    </p>
+    <listing>
+      <program>
+        <input>
+          1|  from pprint import pprint
+          2|
+          3|  text = "This is a STRING."
+          4|
+          5|  pprint(dir(text))
+        </input>
+      </program>
+    </listing>
+    <p>
+      The <c>dir</c> function that is used above is the star of the program. This function will list all of the functions that the object has for you to use. In the output of the program, you'll see the functions <c>upper</c> and <c>lower</c> that were used in the previous example.
+    </p>
+    <p>
+      There is a similar function <c>vars</c> that will also output the variables in the object. But it will only work on Python objects that have been setup to be compatible with it.
+    </p>
+    <listing>
+      <program>
+        <input>
+            1|  from pprint import pprint
+            2|  import random
+            3|
+            4|  pprint(vars(random))
+        </input>
+      </program>
+    </listing>
+    <p>
+      The above program will output pages of information about the random Python object.
+    </p>
+    <p>
+      Between these two functions, you can explore and learn quite a bit about how to use, or the state of the data in your program.
+    </p>
   </section>
 </chapter>
