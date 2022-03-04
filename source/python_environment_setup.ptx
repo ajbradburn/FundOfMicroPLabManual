@@ -272,7 +272,7 @@
       </program>>
     </listing>
     <p>
-      For example, if you wrote the above program, we would see "This is a string" in the <em>Shell</em> output.
+      For example, if you wrote the above program, we would see "This is a STRING." in the <em>Shell</em> output.
     </p>
     <p>
       Now, if we wanted to search for a word or character within, break it up into multiple sections, change the case from upper to lower, or many other common operations, there are functions built into the Python <c>string</c> object that can help us.

@@ -16,10 +16,12 @@
     <xi:include href="./assembly_basics.ptx" />
     <xi:include href="./assembly_control_structures.ptx" />
     <xi:include href="./high-level_languages_basics.ptx" />
+    <xi:include href="./python_environment_setup.ptx" />
+     <xi:include href="./python_basic_programs.ptx" />
     -->    
 
 
-    <xi:include href="./python_environment_setup.ptx" />
+    <xi:include href="./interfacing_basics.ptx" />
     <!--
     -->
 
