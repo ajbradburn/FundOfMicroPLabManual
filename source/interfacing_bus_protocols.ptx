@@ -11,6 +11,476 @@
   <xi:include href="./introductions/interfacing_bus_protocols.ptx" />
 
   <section>
-
+    <p>
+      This lab builds upon the last by adding some components and making changes to the code.
+    </p>
+    <p>
+      When it comes to interfacing with external micro-controllers it is necessary to communicate with very specific sequences 1s and 0s. The methods for accomplishing this are defined by the communication protocol, and the micro controller itself. This data can be found in the datasheet for said micro controller.
+    </p>
+    <p>
+      It may eventually be necessary for you to write your own code for interfacing with such a device, but right now we are going to gloss over the tedious details of doing so, and rely upon the work of other skilled people. We will import libraries for an OLED display as well as an AHT20 Temperature and Humidity sensor. These libraries take care of sending and receiving the bytes of data that are necessary to make these useful to us. We are going to focus on the process of wiring up these new sensors on the <m>I^2C</m> bus, and making use of them for our own purposes.
+    </p>
+    <subsection>
+      <title>
+        Required Equipment
+      </title>
+      <p>
+        These are the required components.
+      </p>
+      <table>
+        <tabular>
+        <row>
+          <cell>Amount</cell>
+          <cell>Part Type</cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>Breadboard</cell>
+        </row>
+        <row>
+            <cell>1</cell>
+            <cell>128x32 I2C Monochrome OLED Display</cell>
+        </row>
+        <row>
+            <cell>1</cell>
+            <cell>AHT20 Temperature and Humidity Sensor</cell>
+        </row>
+        <row>
+            <cell>1</cell>
+            <cell>Film/Foil Capacitor</cell>
+        </row>
+        <row>
+            <cell>6</cell>
+            <cell>Red LED</cell>
+        </row>
+        <row>
+            <cell>6</cell>
+            <cell>470Ω Resistor</cell>
+        </row>
+        <row>
+            <cell>1</cell>
+            <cell>10KΩ Resistor</cell>
+        </row>
+        <row>
+            <cell>1</cell>
+            <cell>Raspberry Pi 3</cell>
+        </row>
+        <row>
+            <cell>1</cell>
+            <cell>Pushbutton</cell>
+        </row>
+        <row>
+          <cell>Handful</cell>
+          <cell>Male to Female Jumper Wires</cell>
+        </row>
+        <row>
+          <cell>Handful</cell>
+          <cell>Solid Core Jumper Wires</cell>
+        </row>
+      </tabular>
+    </table>
+  </subsection>
+  <subsection>
+    <title>
+      The Design
+    </title>
+    <p>
+      We have two objectives. The first is to make use of the OLED display to display the roll results for our dice program. The second is to read the temperature and humidity from our AHT20 sensor, and then display that data on the OLED display.
+    </p>
+    <p>
+      This is what we are aiming for:
+    </p>
+    <figure>
+      <caption>The Completed Circuit</caption>
+      <image source="photographs/interfacing_bus_protocols_bb.jpg">
+        <description>A Raspberry Pi 3 with GPIO pins connected to an array of LEDs and a momentary switch.</description>
+      </image>
+    </figure>
+    <figure>
+      <caption>The Completed Circuit</caption>
+      <image source="generated/interfacing_bus_protocols_bb">
+        <description>A Raspberry Pi 3 with GPIO pins connected to an array of LEDs and a momentary switch.</description>
+      </image>
+    </figure>
+  </subsection>
+  <subsection>
+    <title>Raspberry Pi GPIO Connections</title>
+    <p>
+      In order to match the code that will follow, special care will be needed with matching the correct GPIO to the proper components.
+    </p>
+    <figure>
+      <caption>Raspberry Pi 3 GPIO Pinout</caption>
+      <image source="images/gpiopinsv3withpi">
+        <description>The GPIO pinout for the Raspberry Pi 3.</description>
+      </image>
+    </figure>
+    <table>
+      <tabular>
+        <row>
+          <cell>GPIO Designation</cell>
+          <cell>Header Pin</cell>
+          <cell>Component</cell>
+        </row>
+        <row>
+          <cell>GPIO2/SDA1</cell>
+          <cell>Pin 3</cell>
+          <cell>SDA (OLED/AHT20)</cell>
+        </row>
+        <row>
+          <cell>GPIO3/SCL1</cell>
+          <cell>Pin 5</cell>
+          <cell>SCL (OLED/AHT20)</cell>
+        </row>
+        <row>
+          <cell>3.3V</cell>
+          <cell>1</cell>
+          <cell>VCC/VIN (OLED/AHT20)</cell>
+        </row>
+        <row>
+          <cell>GND</cell>
+          <cell>Pin 9</cell>
+          <cell>GND (Shared)</cell>
+        </row>
+        <row>
+          <cell>GPIO25</cell>
+          <cell>Pin 22</cell>
+          <cell>Switch</cell>
+        </row>
+        <row>
+          <cell>GPIO13</cell>
+          <cell>Pin 33</cell>
+          <cell>LED 1</cell>
+        </row>
+        <row>
+          <cell>GPIO16</cell>
+          <cell>Pin 36</cell>
+          <cell>LED 2</cell>
+        </row>
+        <row>
+          <cell>GPIO19</cell>
+          <cell>Pin 35</cell>
+          <cell>LED 3</cell>
+        </row>
+        <row>
+          <cell>GPIO20</cell>
+          <cell>Pin 38</cell>
+          <cell>LED 4</cell>
+        </row>
+        <row>
+          <cell>GPIO26</cell>
+          <cell>Pin 37</cell>
+          <cell>LED 5</cell>
+        </row>
+        <row>
+          <cell>GPIO21</cell>
+          <cell>Pin 40</cell>
+          <cell>LED 6</cell>
+        </row>
+      </tabular>
+    </table>
+  </subsection>
+  <subsection>
+    <p>
+      Using the schematics, and details provided, wire up the components to the Raspberry Pi. When done, boot it up, and proceed to the next section.
+    </p>
+  </subsection>
+  </section>
+  <section>
+    <p>With everything wired up, trascribe the following program and run it.</p>
+    <p>
+      The majority of this code is a replication of the previous experiment. This includes some new library imports, a new class definition, and a couple of lines in the roll_dice function.
+    </p>
+    <listing>
+      <program>
+        <input>
+          1|  import signal
+          2|  import sys
+          3|  import RPi.GPIO as GPIO
+          4|  from time import sleep
+          5|  import random
+          &gt;&gt;&gt; NEW
+          6|  import board
+          7|  from PIL import Image, ImageDraw, ImageFont
+          8|  import adafruit_ssd1306
+          &lt;&lt;&lt; END NEW
+          9|
+         10|  # Define a class to handle displaying a number on the LED array.
+         11|  class led_display:
+         12|      # Define LED pins. There are a number of ways to do this
+         13|      # I am doing it this way because I want it to be readable, and meaningful.
+         14|      lp1 = 13 # pin for LED 1
+         15|      lp2 = 16
+         16|      lp3 = 19
+         17|      lp4 = 20
+         18|      lp5 = 26
+         19|      lp6 = 21
+         20|      lp = [lp1, lp2, lp3, lp4, lp5, lp6] # An array of all LED pins in LED order.
+         21|
+         22|      # Class constructor function.
+         23|      # Initialize essential settings.
+         24|      def __init__(self):
+         25|          GPIO.setmode(GPIO.BCM)
+         26|          for l in self.lp:
+         27|              GPIO.setup(l, GPIO.OUT)
+         28|
+         29|      # Class Destructor function.
+         30|      # Do things that should be done with stopping.
+         31|      def __del__(self):
+         32|          GPIO.cleanup()
+         33|          return
+         34|
+         35|      # Display function: Illuminate n LEDs based upon a number provided.
+         36|      def display(self, number):
+         37|          if number &lt; 0:
+         38|              return False
+         39|
+         40|          for i in range(0, len(self.lp)):
+         41|              n = i + 1
+         42|              if n &lt;= number:
+         43|                  GPIO.output(self.lp[i], 1)
+         44|              else:
+         45|                  GPIO.output(self.lp[i], 0)
+         46|
+        </input>
+      </program>
+    </listing>
+    <listing>
+      <program>
+        <input>
+           47|      # An animation to indicate something is happening.
+           48|      def interlude(self):
+           49|          # Clear all of the LEDs quickly.
+           50|          for l in self.lp:
+           51|              GPIO.output(l, 0)
+           52|          sleep(0.100)
+           53|          # Turn on each LED with a small pause between each.
+           54|          for l in self.lp:
+           55|              GPIO.output(l, 1)
+           56|              sleep(0.020)
+           57|          # Turn off each LED with a small pause between each.
+           58|          for l in self.lp:
+           59|              GPIO.output(l, 0)
+           60|              sleep(0.020)
+           61|
+           &gt;&gt;&gt; NEW
+           62|  class oled_display():
+           63|      # Dimensions for OLED Display.
+           64|      width = 128
+           65|      height = 32
+           66|      border = 0
+           67|
+           68|      i2c = None
+           69|      oled = None
+           70|
+           71|      def __init__(self):
+           72|          # Initialize the I1iC bus.
+           73|          self.i2c = board.I2C()
+           74|          self.oled = adafruit_ssd1306.SSD1306_I2C(self.width, self.height, self.i2c, addr=0x3C)
+           75|
+           76|      def display_none(self):
+           77|          # Reset Display/Clear
+           78|          self.oled.fill(0)
+           79|          self.oled.show()
+           80|
+        </input>
+      </program>
+    </listing>
+    <listing>
+      <program>
+        <input>
+          81|      def display_string(self, text):
+          82|          # Reset display.
+          83|          self.display_none()
+          84|
+          85|          # Create blank image with 0-bit color.
+          86|          image = Image.new("1", (self.oled.width, self.oled.height))
+          87|
+          88|          # Get drawing object to draw on image.
+          89|          draw = ImageDraw.Draw(image)
+          90|
+          91|          if self.border &gt; 0:
+          92|              # Draw a white background
+          93|              draw.rectangle((0, 0, self.oled.width, self.oled.height), outline=255, fill=255)
+          94|
+          95|              # Draw a smaller inner rectangle
+          96|              draw.rectangle(
+          97|                  (border, border, self.oled.width - self.border - 1, self.oled.height - self.border - 1),
+          98|                  outline=0,
+          99|                  fill=0,
+         100|                  )
+         101|
+         102|          # Load default font.
+         103|          font = ImageFont.load_default()
+         104|
+         105|          # Draw Some Text
+         106|          (font_width, font_height) = font.getsize(text)
+         107|          draw.text(
+         108|              (self.oled.width // 2 - font_width // 2, self.oled.height // 2 - font_height // 2),
+         109|              text,
+         110|              font=font,
+         111|              fill=10,
+         112|              )
+         113|
+         114|          # Display image
+         115|          self.oled.image(image)
+         116|          self.oled.show()
+         &lt;&lt;&lt; END NEW
+        </input>
+      </program>
+    </listing>
+    <listing>
+      <program>
+        <input>
+          117|
+          118|  button_pin = 25
+          119|
+          120|  # Upon Ctrl-C, exit the application.
+          121|  def signal_handler(sig, frame):
+          122|      global led_display
+          123|      del led_display
+          124|      sys.exit(0)
+          125|
+          126|  def roll_dice(channel):
+          127|      led_display.interlude()
+          128|      roll = random.randint(1, 6)
+          &gt;&gt;&gt; NEW
+          129|      text = "Rolled a {}.".format(roll)
+          130|      oled_display.display_string(text)
+          &lt;&lt;&lt; END NEW
+          131|      led_display.display(roll)
+          132|      print("New roll of: {}.".format(roll))
+          133|
+          134|  # Start monitoring for, and responding to, a button press.
+          &gt;&gt;&gt; CHANGED
+          135|  def start(button_pin, led_display, oled_display):
+          &gt;&gt;&gt; END CHANGED
+          136|      GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+          137|      # Monitor the button pin, and when it is pressed for 100ms, call the function roll_dice.
+          138|      GPIO.add_event_detect(button_pin, GPIO.FALLING, callback=roll_dice, bouncetime=100)
+          139|      signal.signal(signal.SIGINT, signal_handler)
+          140|      signal.pause()
+          141|
+          142|  led_display = led_display()
+          &gt;&gt;&gt; NEW
+          143|  oled_display = oled_display()
+          &gt;&gt;&gt; END NEW
+          &gt;&gt;&gt; CHANGED
+          144|  start(button_pin, led_display, oled_display)
+          &gt;&gt;&gt; END CHANGED
+        </input>
+      </program>
+    </listing>
+    <subsection>
+      <title>
+        Explaination
+      </title>
+      <p>
+        Lines 6, 7, and 8 import libraries needed for interfacing with the OLED display. <c>board</c> provides the <m>I^2C</m> protocol support, <c>PIL</c> provides libraries for creating images that will be sent to the OLED display, and <c>adafruit_ssd1306</c> provides the handlers for sending data to the OLED display over <m>I^2C</m>.
+      </p>
+      <p>
+        Next, we declare a class that will handle sending our roll results to the display. The main function is <c>display_string</c> which will take a pre-formatted sentence, incorporate it into an image, and send that image to the OLED display.
+      </p>
+      <p>
+        In the <c>roll_dice</c> function we've added two lines. The first formats a string of text that includes our rolled number. The next passes that text to the <c>display_string</c> function discussed previously.
+      </p>
+      <p>
+        Finally, to interact with the OLED display, we've modified the <c>start</c> function to allow an <c>oled_display</c> object to be passed to it, and we've initialized a variable that points to an instance of our <c>oled_display</c> class we defined earlier.
+      </p>
+    </subsection>
+    <!-- Explore I2C, or SPI a bit more. Demonstrate the bus protocol in graphic form. Show some captures of the bus. -->
+  </section>
+  <section>
+    <p>
+      With everything wired up, transcribe the following program, and run it.
+    </p>
+    <subsection>
+      <listing>
+        <program>
+          <input>
+             1|  import board
+             2|  from PIL import Image, ImageDraw, ImageFont
+             3|  import adafruit_ssd1306
+             4|  import time
+             5|  import adafruit_ahtx0
+             6|
+             7|  # Dimensions for OLED Display.
+             8|  WIDTH = 128
+             9|  HEIGHT = 32
+            10|  BORDER = 0
+            11|
+            12|  # Use for I2C.
+            13|  i2c = board.I2C()
+            14|  oled = adafruit_ssd1306.SSD1306_I2C(WIDTH, HEIGHT, i2c, addr=0x3C)
+            15|  sensor = adafruit_ahtx0.AHTx0(i2c)
+            16|
+            17|  def display_none():
+            18|    # Reset Display/Clear
+            19|    oled.fill(0)
+            20|    oled.show()
+            21|
+          </input>
+        </program>
+      </listing>
+      <listing>
+        <program>
+          <input>
+            22|  def display_temp():
+            23|    # Create blank image with 1-bit color.
+            24|    image = Image.new("1", (oled.width, oled.height))
+            25|
+            26|    # Get drawing object to draw on image.
+            27|    draw = ImageDraw.Draw(image)
+            28|
+            29|    # Draw a white background
+            30|    draw.rectangle((0, 0, oled.width, oled.height), outline=255, fill=255)
+            31|
+            32|    # Draw a smaller inner rectangle
+            33|    draw.rectangle(
+            34|      (BORDER, BORDER, oled.width - BORDER - 1, oled.height - BORDER - 1),
+            35|      outline=0,
+            36|      fill=0,
+            37|      )
+            38|
+            39|    # Read the temperature.
+            40|    temp = sensor.temperature
+            41|    # Read the humidity.
+            42|    hum = sensor.relative_humidity
+            43|
+            44|    text = " T:{:.1f}C|H:{:.1f}% ".format(temp, hum)
+            45|
+            46|    # Load default font.
+            47|    font = ImageFont.load_default()
+            48|
+            49|    # Draw Some Text
+            50|    (font_width, font_height) = font.getsize(text)
+            51|    draw.text(
+            52|      (oled.width // 2 - font_width // 2, oled.height // 2 - font_height // 2),
+            53|      text,
+            54|      font=font,
+            55|      fill=255,
+            56|      )
+            57|
+            58|    # Display image
+            59|    oled.image(image)
+            60|    oled.show()
+            61|
+            62|  while(True):
+            63|    display_temp()
+            64|    time.sleep(1)
+          </input>
+        </program>
+      </listing>
+    </subsection>
+    <subsection>
+      <p>
+        This little program re-uses the class we created for the OLED display in the last experiment.
+      </p>
+      <p>
+        On line 5 we import a new library that will allow us to read from the AHT20 sensor.
+      </p>
+      <p>
+        On line 62 we establish a continuous loop that reads the temperature, and relative humidity from the sensor, then formats the values in a text string, and sends it to the OLED display.
+      </p>
+    </subsection>
   </section>
 </chapter>

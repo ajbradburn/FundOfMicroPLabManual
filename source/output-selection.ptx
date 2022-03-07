@@ -21,7 +21,7 @@
     -->    
 
 
-    <xi:include href="./interfacing_basics.ptx" />
+    <xi:include href="./interfacing_bus_protocols.ptx" />
     <!--
     -->
 

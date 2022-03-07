@@ -39,14 +39,6 @@
           </row>
           <row>
               <cell>1</cell>
-              <cell>128x32 I2C Monochrome OLED Display</cell>
-          </row>
-          <row>
-              <cell>1</cell>
-              <cell>AHT20 Temperature and Humidity Sensor</cell>
-          </row>
-          <row>
-              <cell>1</cell>
               <cell>Film/Foil Capacitor</cell>
           </row>
           <row>
@@ -135,6 +127,11 @@
             <cell>GPIO Designation</cell>
             <cell>Header Pin</cell>
             <cell>Component</cell>
+          </row>
+          <row>
+            <cell>GND</cell>
+            <cell>Pin 9</cell>
+            <cell>GND (Shared)</cell>
           </row>
           <row>
             <cell>GPIO25</cell>
@@ -279,9 +276,47 @@
       </program>
     </listing>
     <p>
-      The <c>RPi.GPIO</c> library offers two different ways to refer to the pins that you want to use. The <c>GPIO.BCM</c> mode that is used in our example program on line 2
+      This program, unlike the rest we've done so far, will not end until you stop it manually. While it is running, you can press the button on the bread board, and then view the numerical output.
     </p>
   </section>
+  <section>
+    <subsection>
+      <p>
+        The <c>RPi.GPIO</c> library offers two different ways to refer to the pins that you want to use. The <c>GPIO.BCM</c> mode that is used in our example program on line 22 sets up the program to use the pins as they are known by the Broadcom chip on the Raspberry Pi. The other option, <c>GPIO.BOARD</c> allows you to refer to the pins by their header number. In a later experiment, we will make use of some more advanced features that require the <c>GPIO.BCM</c> mode. For that reason, we are using it here.
+      </p>
+    </subsection>
+    <subsection>
+      <p>
+        Next, on line 17, you'll observe that we created a list that contains all 6 pin numbers attached to our LEDs. On line 23, we use a for loop to itterate over that list, and call <c>GPIO.setup([pin number], GPIO.OUT)</c>. This function configures the pin to operate in output mode. When your intent is to control something with the pin, output mode is what you want. However, if you're looking to read a value, or detect a button press, input mode is needed.
+      </p>
+      <p>
+        On line 75, we use the <c>GPIO.setup()</c> function again, but for the button. In this case we use the input mode, and add a parameter that also configures a pullup resistor. If you're not familiar with it, a pullup resistor is a high value resistor connected to a voltage source and causes the signal line to rest at the high value instead of floating when not used. The alternative is a pulldown resistor which is just a high value resistor connected to GND and causes the line to stay at a low value when not used.
+      </p>
+    </subsection>
+    <subsection>
+      <p>
+        There are a number of possible approaches to determining when the button is pressed, but the most reliable way will generally always be one that relies upon hardware interrupts. On line 77, we make use of the <c>GPIO.add_event_detect()</c> function to monitor the button pin for a transition from high to low. What that happens, the function <c>roll_dice</c> will be called.
+      </p>
+      <p>
+        Upon being called, the <c>roll_dice</c> function will roll a random number, and display the number on the LED display we've created.
+      </p>
+      <!-- Add an appendix for? -->
+      <!-- Analog Read, Digital Read -->
+      <!-- Analog Write, Digital Write -->
+      <!-- Debouncing -->
+    </subsection>
+  </section>
+  <!-- 
+    GPIO libraries and modes.
+    IN vs OUT
+    Read vs Detect
+    Analogue Read vs Digital Read
+    PWM out, vs Digital Out
+    Classes, definition and usage.
+        Putting the class definition in a seperate file, you'd have a much smaller program?
+        Construction, Destruction
+    Variable Scope. global keyword.
+  -->
   <section>
     <title>
       Troubleshooting
