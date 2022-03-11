@@ -192,83 +192,83 @@
           6|
           7|  # Define a class to handle displaying a number on the LED array.
           8|  class led_display:
-          9|      # Define LED pins. There are a number of ways to do this
-         10|      # I am doing it this way because I want it to be readable, and meaningful.
-         11|      lp1 = 13 # pin for LED 1
-         12|      lp2 = 16
-         13|      lp3 = 19
-         14|      lp4 = 20
-         15|      lp5 = 26
-         16|      lp6 = 21
-         17|      lp = [lp1, lp2, lp3, lp4, lp5, lp6] # An array of all LED pins in LED order.
+          9|    # Define LED pins. There are a number of ways to do this
+         10|    # I am doing it this way because I want it to be readable, and meaningful.
+         11|    lp1 = 13 # pin for LED 1
+         12|    lp2 = 16
+         13|    lp3 = 19
+         14|    lp4 = 20
+         15|    lp5 = 26
+         16|    lp6 = 21
+         17|    lp = [lp1, lp2, lp3, lp4, lp5, lp6] # An array of all LED pins in LED order.
          18|
-         19|      # Class constructor function.
-         20|      # Initialize essential settings.
-         21|      def __init__(self):
-         22|          GPIO.setmode(GPIO.BCM)
-         23|          for l in self.lp:
-         24|              GPIO.setup(l, GPIO.OUT)
+         19|    # Class constructor function.
+         20|    # Initialize essential settings.
+         21|    def __init__(self):
+         22|      GPIO.setmode(GPIO.BCM)
+         23|      for l in self.lp:
+         24|        GPIO.setup(l, GPIO.OUT)
          25|
-         26|      # Class Destructor function.
-         27|      # Do things that should be done with stopping.
-         28|      def __del__(self):
-         29|          GPIO.cleanup()
-         30|          return
+         26|    # Class Destructor function.
+         27|    # Do things that should be done with stopping.
+         28|    def __del__(self):
+         29|      GPIO.cleanup()
+         30|      return
          31|
-         32|      # Display function: Illuminate n LEDs based upon a number provided.
-         33|      def display(self, number):
-         34|          if number &lt; 0:
-         35|              return False
+         32|    # Display function: Illuminate n LEDs based upon a number provided.
+         33|    def display(self, number):
+         34|      if number &lt; 0:
+         35|        return False
          36|
-         37|          for i in range(0, len(self.lp)):
-         38|              n = i + 1
-         39|              if n &lt;= number:
-         40|                  GPIO.output(self.lp[i], 1)
-         41|              else:
-         42|                  GPIO.output(self.lp[i], 0)
+         37|      for i in range(0, len(self.lp)):
+         38|        n = i + 1
+         39|        if n &lt;= number:
+         40|          GPIO.output(self.lp[i], 1)
+         41|        else:
+         42|          GPIO.output(self.lp[i], 0)
          43|
-         44|      # An animation to indicate something is happening.
-         45|      def interlude(self):
-         46|          # Clear all of the LEDs quickly.
-         47|          for l in self.lp:
-         48|              GPIO.output(l, 0)
-         49|          sleep(0.100)
-         50|          # Turn on each LED with a small pause between each.
-         51|          for l in self.lp:
-         52|              GPIO.output(l, 1)
-         53|              sleep(0.020)
-         54|          # Turn off each LED with a small pause between each.
-         55|          for l in self.lp:
-         56|              GPIO.output(l, 0)
-         57|              sleep(0.020)
         </input>
       </program>
     </listing>
     <listing>
       <program>
         <input>
+          44|    # An animation to indicate something is happening.
+          45|    def interlude(self):
+          46|      # Clear all of the LEDs quickly.
+          47|      for l in self.lp:
+          48|        GPIO.output(l, 0)
+          49|      sleep(0.100)
+          50|      # Turn on each LED with a small pause between each.
+          51|      for l in self.lp:
+          52|        GPIO.output(l, 1)
+          53|        sleep(0.020)
+          54|      # Turn off each LED with a small pause between each.
+          55|      for l in self.lp:
+          56|        GPIO.output(l, 0)
+          57|        sleep(0.020)
           58|
           59|  button_pin = 25
           60|
           61|  # Upon Ctrl-C, exit the application.
           62|  def signal_handler(sig, frame):
-          63|      global led_display
-          64|      del led_display
-          65|      sys.exit(0)
+          63|    global led_display
+          64|    del led_display
+          65|    sys.exit(0)
           66|
           67|  def roll_dice(channel):
-          68|      led_display.interlude()
-          69|      roll = random.randint(1, 6)
-          70|      led_display.display(roll)
-          71|      print("New roll of: {}.".format(roll))
+          68|    led_display.interlude()
+          69|    roll = random.randint(1, 6)
+          70|    led_display.display(roll)
+          71|    print("New roll of: {}.".format(roll))
           72|
           73|  # Start monitoring for, and responding to, a button press.
           74|  def start(button_pin, led_display):
-          75|      GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-          76|      # Monitor the button pin, and when it is pressed for 100ms, call the function roll_dice.
-          77|      GPIO.add_event_detect(button_pin, GPIO.FALLING, callback=roll_dice, bouncetime=100)
-          78|      signal.signal(signal.SIGINT, signal_handler)
-          79|      signal.pause()
+          75|    GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+          76|    # Monitor the button pin, and when it is pressed for 100ms, call the function roll_dice.
+          77|    GPIO.add_event_detect(button_pin, GPIO.FALLING, callback=roll_dice, bouncetime=100)
+          78|    signal.signal(signal.SIGINT, signal_handler)
+          79|    signal.pause()
           80|
           81|  led_display = led_display()
           82|  start(button_pin, led_display)

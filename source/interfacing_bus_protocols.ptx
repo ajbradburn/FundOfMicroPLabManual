@@ -198,48 +198,46 @@
           3|  import RPi.GPIO as GPIO
           4|  from time import sleep
           5|  import random
-          &gt;&gt;&gt; NEW
           6|  import board
           7|  from PIL import Image, ImageDraw, ImageFont
           8|  import adafruit_ssd1306
-          &lt;&lt;&lt; END NEW
           9|
          10|  # Define a class to handle displaying a number on the LED array.
          11|  class led_display:
-         12|      # Define LED pins. There are a number of ways to do this
-         13|      # I am doing it this way because I want it to be readable, and meaningful.
-         14|      lp1 = 13 # pin for LED 1
-         15|      lp2 = 16
-         16|      lp3 = 19
-         17|      lp4 = 20
-         18|      lp5 = 26
-         19|      lp6 = 21
-         20|      lp = [lp1, lp2, lp3, lp4, lp5, lp6] # An array of all LED pins in LED order.
+         12|    # Define LED pins. There are a number of ways to do this
+         13|    # I am doing it this way because I want it to be readable, and meaningful.
+         14|    lp1 = 13 # pin for LED 1
+         15|    lp2 = 16
+         16|    lp3 = 19
+         17|    lp4 = 20
+         18|    lp5 = 26
+         19|    lp6 = 21
+         20|    lp = [lp1, lp2, lp3, lp4, lp5, lp6] # An array of all LED pins in LED order.
          21|
-         22|      # Class constructor function.
-         23|      # Initialize essential settings.
-         24|      def __init__(self):
-         25|          GPIO.setmode(GPIO.BCM)
-         26|          for l in self.lp:
-         27|              GPIO.setup(l, GPIO.OUT)
+         22|    # Class constructor function.
+         23|    # Initialize essential settings.
+         24|    def __init__(self):
+         25|      GPIO.setmode(GPIO.BCM)
+         26|      for l in self.lp:
+         27|        GPIO.setup(l, GPIO.OUT)
          28|
-         29|      # Class Destructor function.
-         30|      # Do things that should be done with stopping.
-         31|      def __del__(self):
-         32|          GPIO.cleanup()
-         33|          return
+         29|    # Class Destructor function.
+         30|    # Do things that should be done with stopping.
+         31|    def __del__(self):
+         32|      GPIO.cleanup()
+         33|      return
          34|
-         35|      # Display function: Illuminate n LEDs based upon a number provided.
-         36|      def display(self, number):
-         37|          if number &lt; 0:
-         38|              return False
+         35|    # Display function: Illuminate n LEDs based upon a number provided.
+         36|    def display(self, number):
+         37|      if number &lt; 0:
+         38|        return False
          39|
-         40|          for i in range(0, len(self.lp)):
-         41|              n = i + 1
-         42|              if n &lt;= number:
-         43|                  GPIO.output(self.lp[i], 1)
-         44|              else:
-         45|                  GPIO.output(self.lp[i], 0)
+         40|      for i in range(0, len(self.lp)):
+         41|        n = i + 1
+         42|        if n &lt;= number:
+         43|          GPIO.output(self.lp[i], 1)
+         44|        else:
+         45|          GPIO.output(self.lp[i], 0)
          46|
         </input>
       </program>
@@ -247,126 +245,116 @@
     <listing>
       <program>
         <input>
-           47|      # An animation to indicate something is happening.
-           48|      def interlude(self):
-           49|          # Clear all of the LEDs quickly.
-           50|          for l in self.lp:
-           51|              GPIO.output(l, 0)
-           52|          sleep(0.100)
-           53|          # Turn on each LED with a small pause between each.
-           54|          for l in self.lp:
-           55|              GPIO.output(l, 1)
-           56|              sleep(0.020)
-           57|          # Turn off each LED with a small pause between each.
-           58|          for l in self.lp:
-           59|              GPIO.output(l, 0)
-           60|              sleep(0.020)
-           61|
-           &gt;&gt;&gt; NEW
-           62|  class oled_display():
-           63|      # Dimensions for OLED Display.
-           64|      width = 128
-           65|      height = 32
-           66|      border = 0
-           67|
-           68|      i2c = None
-           69|      oled = None
-           70|
-           71|      def __init__(self):
-           72|          # Initialize the I1iC bus.
-           73|          self.i2c = board.I2C()
-           74|          self.oled = adafruit_ssd1306.SSD1306_I2C(self.width, self.height, self.i2c, addr=0x3C)
-           75|
-           76|      def display_none(self):
-           77|          # Reset Display/Clear
-           78|          self.oled.fill(0)
-           79|          self.oled.show()
-           80|
+          47|    # An animation to indicate something is happening.
+          48|    def interlude(self):
+          49|      # Clear all of the LEDs quickly.
+          50|      for l in self.lp:
+          51|        GPIO.output(l, 0)
+          52|      sleep(0.100)
+          53|      # Turn on each LED with a small pause between each.
+          54|      for l in self.lp:
+          55|        GPIO.output(l, 1)
+          56|        sleep(0.020)
+          57|      # Turn off each LED with a small pause between each.
+          58|      for l in self.lp:
+          59|        GPIO.output(l, 0)
+          60|        sleep(0.020)
+          61|
+          62|  class oled_display():
+          63|    # Dimensions for OLED Display.
+          64|    width = 128
+          65|    height = 32
+          66|    border = 0
+          67|
+          68|    i2c = None
+          69|    oled = None
+          70|
+          71|    def __init__(self):
+          72|      # Initialize the I1iC bus.
+          73|      self.i2c = board.I2C()
+          74|      self.oled = adafruit_ssd1306.SSD1306_I2C(self.width, self.height, self.i2c, addr=0x3C)
+          75|
+          76|    def display_none(self):
+          77|      # Reset Display/Clear
+          78|      self.oled.fill(0)
+          79|      self.oled.show()
+          80|
         </input>
       </program>
     </listing>
     <listing>
       <program>
         <input>
-          81|      def display_string(self, text):
-          82|          # Reset display.
-          83|          self.display_none()
+          81|    def display_string(self, text):
+          82|      # Reset display.
+          83|      self.display_none()
           84|
-          85|          # Create blank image with 0-bit color.
-          86|          image = Image.new("1", (self.oled.width, self.oled.height))
+          85|      # Create blank image with 0-bit color.
+          86|      image = Image.new("1", (self.oled.width, self.oled.height))
           87|
-          88|          # Get drawing object to draw on image.
-          89|          draw = ImageDraw.Draw(image)
+          88|      # Get drawing object to draw on image.
+          89|      draw = ImageDraw.Draw(image)
           90|
-          91|          if self.border &gt; 0:
-          92|              # Draw a white background
-          93|              draw.rectangle((0, 0, self.oled.width, self.oled.height), outline=255, fill=255)
+          91|      if self.border &gt; 0:
+          92|        # Draw a white background
+          93|        draw.rectangle((0, 0, self.oled.width, self.oled.height), outline=255, fill=255)
           94|
-          95|              # Draw a smaller inner rectangle
-          96|              draw.rectangle(
-          97|                  (border, border, self.oled.width - self.border - 1, self.oled.height - self.border - 1),
-          98|                  outline=0,
-          99|                  fill=0,
-         100|                  )
+          95|        # Draw a smaller inner rectangle
+          96|        draw.rectangle(
+          97|          (border, border, self.oled.width - self.border - 1, self.oled.height - self.border - 1),
+          98|          outline=0,
+          99|          fill=0,
+         100|          )
          101|
-         102|          # Load default font.
-         103|          font = ImageFont.truetype('DejaVuSansMono.ttf', 16)
+         102|      # Load default font.
+         103|      font = ImageFont.truetype('DejaVuSansMono.ttf', 16)
          104|
-         105|          # Draw Some Text
-         106|          (font_width, font_height) = font.getsize(text)
-         107|          draw.text(
-         108|              (self.oled.width // 2 - font_width // 2, self.oled.height // 2 - font_height // 2),
-         109|              text,
-         110|              font=font,
-         111|              fill=10,
-         112|              )
+         105|      # Draw Some Text
+         106|      (font_width, font_height) = font.getsize(text)
+         107|      draw.text(
+         108|        (self.oled.width // 2 - font_width // 2, self.oled.height // 2 - font_height // 2),
+         109|        text,
+         110|        font=font,
+         111|        fill=10,
+         112|        )
          113|
-         114|          # Display image
-         115|          self.oled.image(image)
-         116|          self.oled.show()
-         &lt;&lt;&lt; END NEW
+         114|      # Display image
+         115|      self.oled.image(image)
+         116|      self.oled.show()
+         117|
         </input>
       </program>
     </listing>
     <listing>
       <program>
         <input>
-          117|
           118|  button_pin = 25
           119|
-          120|  # Upon Ctrl-C, exit the application.
+          120|  # Upon Ctrl-C, exit the application
           121|  def signal_handler(sig, frame):
-          122|      global led_display
-          123|      del led_display
-          124|      sys.exit(0)
+          122|    global led_display
+          123|    del led_display
+          124|    sys.exit(0)
           125|
           126|  def roll_dice(channel):
-          127|      led_display.interlude()
-          128|      roll = random.randint(1, 6)
-          &gt;&gt;&gt; NEW
-          129|      text = "Rolled a {}.".format(roll)
-          130|      oled_display.display_string(text)
-          &lt;&lt;&lt; END NEW
-          131|      led_display.display(roll)
-          132|      print("New roll of: {}.".format(roll))
+          127|    led_display.interlude()
+          128|    roll = random.randint(1, 6)
+          129|    text = "Rolled a {}.".format(roll)
+          130|    oled_display.display_string(text)
+          131|    led_display.display(roll)
+          132|    print("New roll of: {}.".format(roll))
           133|
           134|  # Start monitoring for, and responding to, a button press.
-          &gt;&gt;&gt; CHANGED
           135|  def start(button_pin, led_display, oled_display):
-          &gt;&gt;&gt; END CHANGED
-          136|      GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-          137|      # Monitor the button pin, and when it is pressed for 100ms, call the function roll_dice.
-          138|      GPIO.add_event_detect(button_pin, GPIO.FALLING, callback=roll_dice, bouncetime=100)
-          139|      signal.signal(signal.SIGINT, signal_handler)
-          140|      signal.pause()
+          136|    GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+          137|    # Monitor the button pin, and when it is pressed for 100ms, call the function roll_dice.
+          138|    GPIO.add_event_detect(button_pin, GPIO.FALLING, callback=roll_dice, bouncetime=100)
+          139|    signal.signal(signal.SIGINT, signal_handler)
+          140|    signal.pause()
           141|
           142|  led_display = led_display()
-          &gt;&gt;&gt; NEW
           143|  oled_display = oled_display()
-          &gt;&gt;&gt; END NEW
-          &gt;&gt;&gt; CHANGED
           144|  start(button_pin, led_display, oled_display)
-          &gt;&gt;&gt; END CHANGED
         </input>
       </program>
     </listing>
