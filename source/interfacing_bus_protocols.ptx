@@ -310,7 +310,7 @@
          100|                  )
          101|
          102|          # Load default font.
-         103|          font = ImageFont.load_default()
+         103|          font = ImageFont.truetype('DejaVuSansMono.ttf', 16)
          104|
          105|          # Draw Some Text
          106|          (font_width, font_height) = font.getsize(text)
