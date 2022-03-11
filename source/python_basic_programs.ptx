@@ -13,7 +13,7 @@
   <section>
     <subsection>
       <p>
-        When programming with Assembly, we used labels and branching to change the flow of our program based upon conditions. With high-level programming languages, the equivelent operation is achieved with something called a function. Like jumps and labels in Assembly, you define a name, call it to execute some instructions, and then are returned to the original position to continue with your program.
+        When programming with Assembly, we used labels and branching to change the flow of our program based upon conditions. With high-level programming languages, the equivalent operation is achieved with something called a function. Like jumps and labels in Assembly, you define a name, call it to execute some instructions, and then are returned to the original position to continue with your program.
       </p>
       <p>
         With high-level programming languages, so much of the basic computer operation is abstracted into functions that they are nearly all that you'll work with. In this lab, we will explore this subject with a simple Python program.
@@ -21,7 +21,7 @@
     </subsection>
     <project>
       <p>
-        Trascribe this program into the Thonny Python IDE, and run it.
+        Transcribe this program into the Thonny Python IDE, and run it.
       </p>
       <listing>
         <program>
@@ -95,7 +95,7 @@
         For the sake of our dice rolling program, we have to convert this string into a number. And then we have to check this number value, to ensure that the value we have makes sense. For example, we can't roll a negative number of die.
       </p>
       <p>
-        The conversion from string to number is done in a lazy way, by simply calling the <c>int</c> function which does quite a bit of background work to determine what interger value it should return for the string value we provided. If you advance the debugger one more time, you'll notice that the <em>'22'</em> changes to <em>22</em>.
+        The conversion from string to number is done in a lazy way, by simply calling the <c>int</c> function which does quite a bit of background work to determine what integer value it should return for the string value we provided. If you advance the debugger one more time, you'll notice that the <em>'22'</em> changes to <em>22</em>.
       </p>
       <p>
         While it may not seem like much, the change from a string to a int has quite a bit of background work being done for us, and has a very significant impact on how we can use that data in later steps.
@@ -114,10 +114,10 @@
         Checking User Input
       </title>
       <p>
-        Whenever dealing with external data, it is best practice to double check it for incorrect values. This is important because it will go a long way to prevent crashes, or uninteded program behavior. It is also important because there are many cases where unchecked input can result in someone gaining access to the computer, and using it for malicious purposes.
+        Whenever dealing with external data, it is best practice to double check it for incorrect values. This is important because it will go a long way to prevent crashes, or unintended program behavior. It is also important because there are many cases where unchecked input can result in someone gaining access to the computer, and using it for malicious purposes.
       </p>
       <p>
-        For our simple program, we may not need to worry about someone hacking our computer with carefully crafted input, but we do have to worry about somone entering characters that don't correspond to numbers, or negative numbers. If that happened, our program wouldn't perform the way we expect, and we want to guide our users to a successful experience.
+        For our simple program, we may not need to worry about someone hacking our computer with carefully crafted input, but we do have to worry about someone entering characters that don't correspond to numbers, or negative numbers. If that happened, our program wouldn't perform the way we expect, and we want to guide our users to a successful experience.
       </p>
       <listing>
         <program>
@@ -141,7 +141,7 @@
         </program>
       </listing>
       <p>
-        We do something similar later in the program, on line 20. In this case, we check if the value that the user entered for the sides of the die is in a list of pre-appreoved values. If the value stored in <c>sides_of_die</c> is <c>not in</c> the list <c>die_faces</c>, the program will execute some code that again provides information to the user, and exits.
+        We do something similar later in the program, on line 20. In this case, we check if the value that the user entered for the sides of the die is in a list of preappreoved values. If the value stored in <c>sides_of_die</c> is <c>not in</c> the list <c>die_faces</c>, the program will execute some code that again provides information to the user, and exits.
       </p>
       <exercise>
         <statement>
@@ -168,7 +168,7 @@
         </program>
       </listing>
       <p>
-        On line 25 we make use of a print function that is designed to output the provided value to the <em>stdout</em>. In other cases, you may use functions deisnged to write the data to a file, or send it to a server on the internet. Howver, when calling the function, we create, and pass a string of text in a way that is worth closer examination.
+        On line 25 we make use of a print function that is designed to output the provided value to the <em>stdout</em>. In other cases, you may use functions designed to write the data to a file, or send it to a server on the internet. However, when calling the function, we create, and pass a string of text in a way that is worth closer examination.
       </p>
       <p>
         In Python, string objects have a built in function called <c>format</c> that takes any number of parameters, and will sequentially replace and <c>{}</c> curly bracket pairs that it finds in the string. Special formatting instructions can be included in the curly brackets, and extensive documentation for this can be found in the Python documentation and other sources.

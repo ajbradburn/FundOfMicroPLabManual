@@ -15,7 +15,7 @@
       This lab builds upon the last by adding some components and making changes to the code.
     </p>
     <p>
-      When it comes to interfacing with external micro-controllers it is necessary to communicate with very specific sequences 1s and 0s. The methods for accomplishing this are defined by the communication protocol, and the micro controller itself. This data can be found in the datasheet for said micro controller.
+      When it comes to interfacing with external micro-controllers it is necessary to communicate with very specific sequences 1s and 0s. The methods for accomplishing this are defined by the communication protocol, and the micro controller itself. This data can be found in the data sheet for said micro controller.
     </p>
     <p>
       It may eventually be necessary for you to write your own code for interfacing with such a device, but right now we are going to gloss over the tedious details of doing so, and rely upon the work of other skilled people. We will import libraries for an OLED display as well as an AHT20 Temperature and Humidity sensor. These libraries take care of sending and receiving the bytes of data that are necessary to make these useful to us. We are going to focus on the process of wiring up these new sensors on the <m>I^2C</m> bus, and making use of them for our own purposes.
@@ -67,7 +67,7 @@
         </row>
         <row>
             <cell>1</cell>
-            <cell>Pushbutton</cell>
+            <cell>Push button</cell>
         </row>
         <row>
           <cell>Handful</cell>
@@ -186,7 +186,7 @@
   </subsection>
   </section>
   <section>
-    <p>With everything wired up, trascribe the following program and run it.</p>
+    <p>With everything wired up, transcribe the following program and run it.</p>
     <p>
       The majority of this code is a replication of the previous experiment. This includes some new library imports, a new class definition, and a couple of lines in the roll_dice function.
     </p>
@@ -360,13 +360,13 @@
     </listing>
     <subsection>
       <title>
-        Explaination
+        Explanation
       </title>
       <p>
         Lines 6, 7, and 8 import libraries needed for interfacing with the OLED display. <c>board</c> provides the <m>I^2C</m> protocol support, <c>PIL</c> provides libraries for creating images that will be sent to the OLED display, and <c>adafruit_ssd1306</c> provides the handlers for sending data to the OLED display over <m>I^2C</m>.
       </p>
       <p>
-        Next, we declare a class that will handle sending our roll results to the display. The main function is <c>display_string</c> which will take a pre-formatted sentence, incorporate it into an image, and send that image to the OLED display.
+        Next, we declare a class that will handle sending our roll results to the display. The main function is <c>display_string</c> which will take a preformatted sentence, incorporate it into an image, and send that image to the OLED display.
       </p>
       <p>
         In the <c>roll_dice</c> function we've added two lines. The first formats a string of text that includes our rolled number. The next passes that text to the <c>display_string</c> function discussed previously.

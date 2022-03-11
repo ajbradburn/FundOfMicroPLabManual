@@ -89,7 +89,7 @@
       <figure>
         <caption>Code::Blocks IDE Layout</caption>
         <image source="screenshots/codeblocks_first_program/codeblocks-layout.png">
-          <description>A view of a newly opened codeblocks window.</description>
+          <description>A view of a newly opened CodeBlocks window.</description>
         </image>
       </figure>
   </subsection>
@@ -351,7 +351,7 @@
       Run the program in debug mode.
     </p>
     <figure>
-      <caption>The <em>Debug / Contue</em> shortcut in the toolbar.</caption>
+      <caption>The <em>Debug / Continue</em> shortcut in the toolbar.</caption>
       <image source="screenshots/codeblocks_first_program/codeblocks-click_debug.png">
         <description></description>
       </image>
@@ -455,7 +455,7 @@
     </task>
     <task>
       <statement>
-        The Rapsberry Pi uses an ARM processor. What are some other popular microprocessor designers?
+        The Raspberry Pi uses an ARM processor. What are some other popular microprocessor designers?
       </statement>
     </task>
   </exercise>

@@ -85,7 +85,7 @@
     </title>
     <subsection>
       <p>
-        In order to interface with the GPIO of the Raspberry Pi with Python, as well as to communicate with some peripherial devices in the later lab, we are going to need to install some Python libraries.
+        In order to interface with the GPIO of the Raspberry Pi with Python, as well as to communicate with some peripheral devices in the later lab, we are going to need to install some Python libraries.
       </p>
       <p>
         Open the <em>Terminal</em> application, and type the following line:
@@ -141,7 +141,7 @@
       <figure>
         <caption>The <em>Save as</em> window.</caption>
         <image source="screenshots/thonny_first_program/thonny-save_name.png">
-          <description>A view of the Save as winow.</description>
+          <description>A view of the Save as window.</description>
         </image>
       </figure>
       <ol>
@@ -204,7 +204,7 @@
         The program will generate some random numbers, and output the results.
       </p>
       <p>
-        You may find that there are occasions where you need to manually quit the program. If you find yourself accidently stuck in an infinite loop, or waiting for an input that never comes, you can click the <em>Stop</em> button in the shortcut bar, and your program will exit.
+        You may find that there are occasions where you need to manually quit the program. If you find yourself accidentally stuck in an infinite loop, or waiting for an input that never comes, you can click the <em>Stop</em> button in the shortcut bar, and your program will exit.
       </p>
       <figure>
         <caption>Stopping your python program.</caption>
@@ -224,7 +224,7 @@
         To debug, you can simply click the <em>Debug</em> button in the shortcut bar. When you do, your program will start, but will wait on the first instruction line for your instruction. Additionally, a new <em>Variables</em> pane will open to the right of the code editor pane.
       </p>
       <figure>
-        <caption>Debuggin your python program.</caption>
+        <caption>Debugging your python program.</caption>
         <image source="screenshots/thonny_first_program/thonny-debug.png">
           <description>The shortcut bar, with the Debug button highlighted.</description>
         </image>
@@ -239,13 +239,13 @@
         </image>
       </figure>
       <p>
-        As you click through the lines of the program, you will see variables be added to the list in the <em>Variables</em> pane. This helps you keep track of what variables have been decarled, and what their values are.
+        As you click through the lines of the program, you will see variables be added to the list in the <em>Variables</em> pane. This helps you keep track of what variables have been declared, and what their values are.
       </p>
       <p>
         You'll notice that the <c>number_of_die</c> variable is initially loaded with a string value of <c>'2'</c>, and then changed to an int value of <c>2</c>. The difference is subtle, but very important.
       </p>
       <p>
-        If you're dealing with a larger program, or just want to focus on debugging a specific part of the program, you can add a break point by double-clicking the line number in the index to the left of the code. When you click <em>Debug</em> again, the debugger will run through the program up until the breakpoint, then wait for your instruction.
+        If you're dealing with a larger program, or just want to focus on debugging a specific part of the program, you can add a break point by double-clicking the line number in the index to the left of the code. When you click <em>Debug</em> again, the debugger will run through the program up until the break point, then wait for your instruction.
       </p>
       <p>
         When you're ready to return to editing your code, you will need to click the <em>Stop</em> button to exit the debugger.

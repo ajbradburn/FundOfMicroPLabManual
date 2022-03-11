@@ -24,7 +24,7 @@
         There are a couple of different approaches to loops, which you use may depend on the application.
       </p>
       <p>
-        The first, which will be the subject of our first project in this experiment, uses an index, and decrements that index as you itterate over the elements of the array. Once the index reaches a specific value, the loop exits. This method is generally most useful when you know exactly how much data you're working with. Either through a calculation, or through some predefined method.
+        The first, which will be the subject of our first project in this experiment, uses an index, and decrements that index as you iterate over the elements of the array. Once the index reaches a specific value, the loop exits. This method is generally most useful when you know exactly how much data you're working with. Either through a calculation, or through some predefined method.
       </p>
       <p>
         The second looks for a specific value in the array, and when it is found, exits the loop. This approach is generally used for streams of data, or data with an undefined length.
@@ -95,7 +95,7 @@
         </answer>
       </exercise>
       <p>
-        In this example, we define an index value <c>number_count</c> on line 5 and load it into register <c>r3</c> on lines 19 and 20. Then, as we load, and add each element of the <c>numbers</c> array, we decriment <c>r3</c> by 1 on line 27. Next, we compare the value in <c>r3</c> to 0 to set flags. The <c>beq</c> command on line 31 will check the flags to see if <c>r3</c> and 0 are equal, if so, it will jump to the <c>end:</c> label. If not, it will advance to the <c>b add_more</c> instruction on line 34, which sends our program back to the <c>add_more:</c> label on line 23.
+        In this example, we define an index value <c>number_count</c> on line 5 and load it into register <c>r3</c> on lines 19 and 20. Then, as we load, and add each element of the <c>numbers</c> array, we decrement <c>r3</c> by 1 on line 27. Next, we compare the value in <c>r3</c> to 0 to set flags. The <c>beq</c> command on line 31 will check the flags to see if <c>r3</c> and 0 are equal, if so, it will jump to the <c>end:</c> label. If not, it will advance to the <c>b add_more</c> instruction on line 34, which sends our program back to the <c>add_more:</c> label on line 23.
       </p>
       <figure>
         <caption>The logical flow of the program.</caption>
@@ -148,7 +148,7 @@
         </listing>
       </project>
       <p>
-        In this example, we simply add a special character (0) at the end of our numbers array, and as we load each number, we check to see if the newly loaded value is equal to our special character. On line 20, we compare <c>r1</c> and 0 to set flags. Then on line 21 the <c>beq end</c> instruction checkes the flags, and if <c>r1</c> is equal to our special character, we jump to the <c>end:</c> label on line 26. Otherwise, the program advances, adds the new value to our running total in <c>r0</c> and then reaches <c>b add_mroe</c> on line 25 which sends the program back to the <c>add_more</c> label on line 17.
+        In this example, we simply add a special character (0) at the end of our numbers array, and as we load each number, we check to see if the newly loaded value is equal to our special character. On line 20, we compare <c>r1</c> and 0 to set flags. Then on line 21 the <c>beq end</c> instruction checks the flags, and if <c>r1</c> is equal to our special character, we jump to the <c>end:</c> label on line 26. Otherwise, the program advances, adds the new value to our running total in <c>r0</c> and then reaches <c>b add_mroe</c> on line 25 which sends the program back to the <c>add_more</c> label on line 17.
       </p>
       <figure>
         <caption>The logical flow of the program.</caption>
@@ -167,7 +167,7 @@
     <subsection>
       <p>As we continue with our exploration of control structures in assembly, we are going to shift our frame of reference a bit, and use a different example.</p>
       <p>
-        Let us imagine that we have a project that needs to control the temperature of an enclosure. We have a temperature sensor, two relays, and an alarm buzzer attached to a microconroller.
+        Let us imagine that we have a project that needs to control the temperature of an enclosure. We have a temperature sensor, two relays, and an alarm buzzer attached to a microcontroller.
       </p>
       <p>
         One of the relays enables power for a heating element. The other enables power for an air conditioning unit.

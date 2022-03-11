@@ -54,10 +54,10 @@
       So, again, to provide useful instructions, you have to be still more explicit.
     </p>
     <p>
-      This process can seem tedious, but it is at the root of making computers do what you want them to do. Take a moment to reflect on just how difficult it would be to explain to a 2 year old the process of making a peanut butter and jelly sandwich. The explaination would require details for everything from the process of growing peanuts, making peanut butter, baking bread,  preparing jellies, to slicing bread, and the proper tools for applying the core ingredients. Now, take a second to reflect on just how difficult it is to explain the same process to a rock.
+      This process can seem tedious, but it is at the root of making computers do what you want them to do. Take a moment to reflect on just how difficult it would be to explain to a 2 year old the process of making a peanut butter and jelly sandwich. The explanation would require details for everything from the process of growing peanuts, making peanut butter, baking bread,  preparing jellies, to slicing bread, and the proper tools for applying the core ingredients. Now, take a second to reflect on just how difficult it is to explain the same process to a rock.
     </p>
     <p>
-      At the core of our modern technology is a whole bunch of different configurations of digital circuits etched into silicon crystals. These rocks don't do anything more than what they are designed to do. Things like microprocessors, while incredibly useful for so many tasks, are less useful than a baghdad battery unless provided with a program that brings their design to use.
+      At the core of our modern technology is a whole bunch of different configurations of digital circuits etched into silicon crystals. These rocks don't do anything more than what they are designed to do. Things like microprocessors, while incredibly useful for so many tasks, are less useful than a Baghdad battery unless provided with a program that brings their design to use.
     </p>
     <p>
       [transition]
@@ -69,10 +69,10 @@
       Now that the importance of being explicit is understood, we will move on to a topic that applies to programming, as well as any project you will work on. That is, defining the problem, and framing the solution.
     </p>
     <p>
-      The concept of defining the problem may seem silly, as silly as decribing how to make a peanut butter and jelly sandwich, but it can honestly be quite tricky.
+      The concept of defining the problem may seem silly, as silly as describing how to make a peanut butter and jelly sandwich, but it can honestly be quite tricky.
     </p>
     <p>
-      The problem may come from a client, that lacks the knowledge to properly explain what they need, or it may come from your own observations and desires. Whatever the souce, it usually pays to step back, and study the problem before working on a solution.
+      The problem may come from a client, that lacks the knowledge to properly explain what they need, or it may come from your own observations and desires. Whatever the source, it usually pays to step back, and study the problem before working on a solution.
     </p>
     <p>
       Let us return to our peanut butter and jelly sandwich example, from a slightly different perspective for a moment.
@@ -140,7 +140,7 @@
       </image>
     </figure>
     <p>
-      Depending on the complexity of the project, what componenents are involved, etc. The documentation of the solution can become quite the production, but is typically even more valueable in the long run.
+      Depending on the complexity of the project, what components are involved, etc. The documentation of the solution can become quite the production, but is typically even more valuable in the long run.
     </p>
     <historical>
       <p>
@@ -205,7 +205,7 @@
       With a programming project of any size, you're going to end up using functions to handle repeated work. We haven't covered this topic yet, but they can be described as a grouping of programming that can be re-used.
     </p>
     <p>
-      For example, we don't have to describe how to make jelly, because that process is self-contained. We just need to say, get a jar of jelly, and all the different steps that went into that jar of jelly are sorta hidden in the background. This sort of simplicity is good for our sanity, and effecient for programming.
+      For example, we don't have to describe how to make jelly, because that process is self-contained. We just need to say, get a jar of jelly, and all the different steps that went into that jar of jelly are sorta hidden in the background. This sort of simplicity is good for our sanity, and efficient for programming.
     </p>
     <p>
       Lists, in the form of pseudo code, have a limited scope of utility. Large programs can't easily be described with lists, because the relationships between sections of code, and the jumps they make to functions, or obscured bits of the program, aren't included in them. This is where the importance of flowcharts comes back to the forefront.
@@ -223,7 +223,7 @@
       This set of exercises will introduce you to a couple of different programming paradigms. The first is low-level programming languages that really covers very simple steps, but doesn't get you very far very quickly, thus, it is pretty difficult to go from idea to finished product. The second is high-level programming language that has lots of inbuilt functionality, and enables you to program a solution quickly, but does abstract away a lot of the underlying principles of the machine.
     </p>
     <p>
-      If this was programming instruction at it's core, or if the curriculum was more focused on the Arduino, it would be very valueable for you to be exposed to the C programming language, a third paradigm which lies somewhere in between.
+      If this was programming instruction at it's core, or if the curriculum was more focused on the Arduino, it would be very valuable for you to be exposed to the C programming language, a third paradigm which lies somewhere in between.
     </p>
     <figure>
       <caption>Illustration of the basic relationship between different programming languages.</caption>
@@ -232,10 +232,10 @@
       </image>
     </figure>
     <p>
-      The first programming language we will be exploring is called Assembly. Assembly is just one layer above machine code. It requires mind-numbing levels of detail to accomplish anything of great significance on a modern computer. However, it can be everything you need for smaller embeded microcontrollers in the right environment. A microwave isn't a complex electronic circuit. Assembly on a tiny 8-pin microcontroller interfacing with a few buttons, and controlling operation would be perfectly reasonable.
+      The first programming language we will be exploring is called Assembly. Assembly is just one layer above machine code. It requires mind-numbing levels of detail to accomplish anything of great significance on a modern computer. However, it can be everything you need for smaller embedded microcontrollers in the right environment. A microwave isn't a complex electronic circuit. Assembly on a tiny 8-pin microcontroller interfacing with a few buttons, and controlling operation would be perfectly reasonable.
     </p>
     <p>
-      Once you start getting into meaningful human interactions, interfacing with data, or peripherial systems, a language like C, or C++ is much more approachable. While the level of detail for these languages is still pretty high, it includes a lot of abstraction in the base libraries. Processes like getting user input, or providing output are made significantly easier.
+      Once you start getting into meaningful human interactions, interfacing with data, or peripheral systems, a language like C, or C++ is much more approachable. While the level of detail for these languages is still pretty high, it includes a lot of abstraction in the base libraries. Processes like getting user input, or providing output are made significantly easier.
     </p>
     <p>
       Finally, there are a whole slew of scripting, or interpreted languages that abstract away a lot of the detail from programming. In doing so, you loose some control, but for most general purpose applications, that control isn't needed. In exchange, they make processes like getting data from the internet, or displaying images on a screen a breeze.

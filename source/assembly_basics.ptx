@@ -77,7 +77,7 @@
         The values that are moved into the registers <c>r0</c> and <c>r1</c> in the first example are immediate values, or values that are defined in the program code. More often than not, the values you'll be working with won't be defined in the code, but will instead be stored in memory, and will need to be retrieved before performing operations on them.
       </p>
       <project>
-        <p>Trascribe the following program, compile and run it.</p>
+        <p>Transcribe the following program, compile and run it.</p>
         <listing>
           <program>
             <input>
@@ -126,7 +126,7 @@
         Our next example addresses accessing values from the memory. In doing so, we first initialize an array, or list of numbers that we will use for our calculations. When doing so, we specify the byte length for each element (number) which is <c>.word</c> or 4 bytes each. We also provide an assembler directive of <c>.balign 4</c> which tells the assembler that our data should be arranged with addresses that are multiples of 4 bytes. You can read more about <url href="http://web.mit.edu/gnu/doc/html/as_7.html">assembler directives</url> if you're interested.
       </p>
       <p>
-        While <c>numbers</c> identifies our variable for later reference, we can't use that to access the memory address directly, so we add the line <c>numbers_address: .word numbers</c> at the bottom that provides another variable that we can use. The explaination for this is found in the book.
+        While <c>numbers</c> identifies our variable for later reference, we can't use that to access the memory address directly, so we add the line <c>numbers_address: .word numbers</c> at the bottom that provides another variable that we can use. The explanation for this is found in the book.
       </p>
       <p>
         Finally, we start accessing our numbers from memory with the <c>ldr r2, numbers_address</c> command. This places the address of our first element. It is important to understand that even though our first element is 10, <c>r2</c> only contains the memory address to it, but not the actual value <c>10</c>.
@@ -152,9 +152,9 @@
       </exercise>
     </subsection>
     <subsection>
-      <title>Arithmatic Functions</title>
+      <title>Arithmetic Functions</title>
       <p>
-        So far, we've made great use of the addition instruction. But, as you know, there are more arithmatic operations.
+        So far, we've made great use of the addition instruction. But, as you know, there are more arithmetic operations.
       </p>
       <project>
         <p>
@@ -292,7 +292,7 @@
       <title>Logical Operations</title>
       <p>For our last subject, we will explore a bit of logical operations.</p>
       <p>
-        These are operations like shifting, or not, or, and and xor. These operations aren't as relateable as the arithmatic, or the <c>mov</c> commands you've explored so far, but they do have very important places in the computer world. Otherwise, they wouldn't have been implimented.
+        These are operations like shifting, or not, or, and and xor. These operations aren't as relatable as the arithmetic, or the <c>mov</c> commands you've explored so far, but they do have very important places in the computer world. Otherwise, they wouldn't have been implemented.
       </p>
       <project>
         <p>
@@ -378,7 +378,7 @@
         </answer>
       </exercise>>
       <p>
-        This exclusive or <c>eor</c> takes the value that is in <c>r0</c> and xors it with the same value to produce an emptry register, or a register with a value of 0.
+        This exclusive or <c>eor</c> takes the value that is in <c>r0</c> and xors it with the same value to produce an empty register, or a register with a value of 0.
       </p>
       <p>
         If you'd like to learn more about the logical operators, check out section <em>A4.4.1 Standard data-processing instructions</em> from the <url href="https://developer.arm.com/documentation/ddi0406/cd/?lang=en">ARM Architecture Reference Manual</url>
@@ -387,10 +387,10 @@
     <subsection>
       <title>C</title>
       <p>
-        When dealing with embeded systems, even when using high-level programming languages, it is likely that you're going to have to make use of some of this low level manipulation. It may be a situation where you need to take advantage of some feature in a chip that isn't already abstracted by a library, or it could be when communicating with some peripherial. Whatever the case, having at least a basic knowledge of some of this is very useful.
+        When dealing with embedded systems, even when using high-level programming languages, it is likely that you're going to have to make use of some of this low level manipulation. It may be a situation where you need to take advantage of some feature in a chip that isn't already abstracted by a library, or it could be when communicating with some peripheral. Whatever the case, having at least a basic knowledge of some of this is very useful.
       </p>
       <p>
-        However, it is a lot easier to get many of these basic functions accomplished with a high-level programming language. A language like C is one where you're still very intimate with the size, and signing of variables, but there are also abstractions for many of the most common operations that make using it much more desireable.
+        However, it is a lot easier to get many of these basic functions accomplished with a high-level programming language. A language like C is one where you're still very intimate with the size, and signing of variables, but there are also abstractions for many of the most common operations that make using it much more desirable.
       </p>
       <p>Just as a quick example, I offer you this little program that adds up several values, and displays the output.</p>
     </subsection>

@@ -195,7 +195,7 @@
       <p>
         While this program isn't exactly short, it abstracts away tens of thousands of machine code instructions, and represents hundreds of hours of work from minds better than my own, as well as thousands of hours of my own time saved due to the reuse of code.
       </p>
-      <p>If you'd like to play with the program, you can find the code in the <url href="https://github.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/blob/master/python_high-level_programming/dice.py">Intro to Embedded Systems Github Repo</url>.</p>
+      <p>If you'd like to play with the program, you can find the code in the <url href="https://github.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/blob/master/python_high-level_programming/dice.py">Intro to Embedded Systems GitHub Repo</url>.</p>
     </subsection>
     <subsection>
       <title>Libraries</title>
@@ -220,7 +220,7 @@
         Line 6 imports a library that will read, or write our statistics from our file, doing so in a data format that is widely used, and human readable. It will eliminate the need for us to design our own method for saving the statistics for our rolls.
       </p>
       <p>
-        Line 7 imports a library that will generate "random" numbers for us. We specify a range, and it returns a number. While it is beyond the scope of this material, the idea of truely random numbers is a whole subject of it's own, and I just encourage you to appreciate the amount of work that this library saves you, and to take a moment to enjoy the fact that someoen has already gone through the trouble of writing the code to accomplish it.
+        Line 7 imports a library that will generate "random" numbers for us. We specify a range, and it returns a number. While it is beyond the scope of this material, the idea of truly random numbers is a whole subject of it's own, and I just encourage you to appreciate the amount of work that this library saves you, and to take a moment to enjoy the fact that someone has already gone through the trouble of writing the code to accomplish it.
       </p>
     </subsection>
     <subsection>
@@ -245,14 +245,14 @@
         </program>
       </listing>
       <p>
-        The function <c>main</c> is our program function, and will be called when the program is run. You'll notice that the full definition <c>def main(argv):</c> has parenthesis with the word "argv" between them. If you look at the <c>def calc_combinations(roll_totals, remaining_die, cumulative_rolls):</c> function definition, you'll see the same pattern, with different words, separated by commas. These words between the parenthasis are called parameters, and are "local" variable names for data that needs to be handed off, or pointed to, for the function to do its work.
+        The function <c>main</c> is our program function, and will be called when the program is run. You'll notice that the full definition <c>def main(argv):</c> has parenthesis with the word "argv" between them. If you look at the <c>def calc_combinations(roll_totals, remaining_die, cumulative_rolls):</c> function definition, you'll see the same pattern, with different words, separated by commas. These words between the parenthesis are called parameters, and are "local" variable names for data that needs to be handed off, or pointed to, for the function to do its work.
       </p>
       <p>
-        The parameters that are defined with the function are names that you give to data that you, or someone else will provide when the function is called. You use those local names to do the work you need to do in your function. When the function is called, the data that is passed into the function can have any variable name, it doesn't have to match the names of the parameters. On line 73, <c>calc_combinations</c> is called with <c>calc_combinations(die_combinations, number_of_die, 0)</c>. None of the names passed match the names used in the fucntion definition, in fact, one of them is just an integer. The function gives each of them it's own name, and does the work it needs to do.
+        The parameters that are defined with the function are names that you give to data that you, or someone else will provide when the function is called. You use those local names to do the work you need to do in your function. When the function is called, the data that is passed into the function can have any variable name, it doesn't have to match the names of the parameters. On line 73, <c>calc_combinations</c> is called with <c>calc_combinations(die_combinations, number_of_die, 0)</c>. None of the names passed match the names used in the function definition, in fact, one of them is just an integer. The function gives each of them it's own name, and does the work it needs to do.
       </p>
       <!-- Variable Scope, and data references. -->
       <p>
-        Variable scope and the way that the data passed into a function are referenced are their own subject for study and are beyond the scope of this exploration. Know that variables defined in functions as parameters or otherwise, are only useable/visible within the same function. If a variable that is defined in your program has the same name as a variable in a function, they don't share data unless you pass that variable to the function when you call it.
+        Variable scope and the way that the data passed into a function are referenced are their own subject for study and are beyond the scope of this exploration. Know that variables defined in functions as parameters or otherwise, are only usable/visible within the same function. If a variable that is defined in your program has the same name as a variable in a function, they don't share data unless you pass that variable to the function when you call it.
       </p>
     </subsection>
     <subsection>
@@ -260,13 +260,13 @@
         Variables
       </title>
       <p>
-        When discussing Assembly, we touched on the concept of variables as names given to data that we could use later. In Assembly, it was necessary to decide the type of data that was going to be referenced by the variable at the time that it was declared. That is the case with several high-level programming languages also. However, in Python, PHP, Javascript, as well as others, that requirement doesn't exist. However, it is still necessary to pay attention to data types, and we will touch on that more later.
+        When discussing Assembly, we touched on the concept of variables as names given to data that we could use later. In Assembly, it was necessary to decide the type of data that was going to be referenced by the variable at the time that it was declared. That is the case with several high-level programming languages also. However, in Python, PHP, JavaScript, as well as others, that requirement doesn't exist. However, it is still necessary to pay attention to data types, and we will touch on that more later.
       </p>
       <p>
         In Python, to set up a variable, you simply write a name for it, and assign it a value. The type of data that it can reference can be an int, float, character, or an object such as a string, list, dictionary, file, etc. You can also change the type of data that a variable references by simply reassigning it. This approach is quite different from C based languages, but that discussion is beyond the scope of this exploration.
       </p>
       <p>
-        On line 20 of our program, we declare a variable <c>file_name = 'die_stats.json'</c>. This creates a string object, and makes it available to use with the name file_name. On the next line, we pass this variable to a function <c>exists(file_name)</c> which looks at the filesystem of the computer, and checks to see if a file with that name already exists. If it does, we declare a new variable, that will point to another object that represents a connection to the file for reading its contents with <c>file_handle = open(file_name, 'r')</c>
+        On line 20 of our program, we declare a variable <c>file_name = 'die_stats.json'</c>. This creates a string object, and makes it available to use with the name file_name. On the next line, we pass this variable to a function <c>exists(file_name)</c> which looks at the file system of the computer, and checks to see if a file with that name already exists. If it does, we declare a new variable, that will point to another object that represents a connection to the file for reading its contents with <c>file_handle = open(file_name, 'r')</c>
       </p>
       <p>
         If the file doesn't exist, we go ahead and create a new file with <c>file_handle = open(file_name, 'w')</c>, and initialize another variable <c>stats</c> that will point to a data structure called a dictionary. The dictionary itself is composed of many different variables: Characters '1' through '6', 'rolls', and 'percentage'.
@@ -283,7 +283,7 @@
         There are a couple of control structures available, and they are pretty much universal to all programming languages. The first that we will discuss, and that we encounter in our program is the <c>if</c> statement, and it's variations.
       </p>
       <p>
-        On line 11 we have <c>if remaining_die &gt; 1:</c>. This statement is composed of a call to <c>if</c> with a test condition. At its simplest implimentation, this is all you need to have some code executed based upon the truth of the test condition. There are situations where you want code to execute only when a condition is true, and then ther are situations where you will want to choose a path for your program based upon the test condition, and maybe subsequent test conditions. In those cases, you'd add an <c>else if:</c> or <c>else:</c> statement like the one seen on line 14.
+        On line 11 we have <c>if remaining_die &gt; 1:</c>. This statement is composed of a call to <c>if</c> with a test condition. At its simplest implementation, this is all you need to have some code executed based upon the truth of the test condition. There are situations where you want code to execute only when a condition is true, and then there are situations where you will want to choose a path for your program based upon the test condition, and maybe subsequent test conditions. In those cases, you'd add an <c>else if:</c> or <c>else:</c> statement like the one seen on line 14.
       </p>
       <listing>
         <program>
@@ -304,7 +304,7 @@
         The while loop will execute forever, as long as a condition exists. There are times where you won't know when you'll want to exit at the time that you start you loop. The while is most useful for these situations. As an example, if you wanted to monitor a stream of data, you could use a while loop that looks for some value in the stream, and exits when the condition is met.
       </p>
       <p>
-        The for loop is useful for situations where you know how many elements you're going to be dealing with ahead of time. As an example, if you have a list of items, and you want to perform an operations for each item in the list, using a for loop is very convenient, as it will execute the code in the loop once for each item in the list, and make that item available to you for use. On line 78 a for loop is used to itterate over a list of every possible roll of N die. With each itteration of the loop, the item in the list is made available in the variabe <c>rv</c>. That variable is then used to do some calcuations related to probability, and the data is saved to the stats data structure for later use.
+        The for loop is useful for situations where you know how many elements you're going to be dealing with ahead of time. As an example, if you have a list of items, and you want to perform an operations for each item in the list, using a for loop is very convenient, as it will execute the code in the loop once for each item in the list, and make that item available to you for use. On line 78 a for loop is used to iterate over a list of every possible roll of N die. With each iteration of the loop, the item in the list is made available in the variable <c>rv</c>. That variable is then used to do some calculations related to probability, and the data is saved to the stats data structure for later use.
       </p>
     </subsection>
     <subsection>
@@ -318,7 +318,7 @@
         When writing Python programs, it is essential that you pay attention to the indentation level of the line you're writing. Failure to do so will result in code that doesn't work the way you expect it to.
       </p>
       <p>
-        It is noteable that Python is unique in the use of whitespace for this purpose. Most programming languages use curly brackets to group lines of code.
+        It is notable that Python is unique in the use of white space for this purpose. Most programming languages use curly brackets to group lines of code.
       </p>
       <listing>
         <program>

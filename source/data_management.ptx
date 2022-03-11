@@ -12,7 +12,7 @@
 
   <section>
     <p>
-      The complexity of an embeded system grows dramatically when you begin to integrate communication and human interaction. However, it is an important part of the modern infrastructure, and so it is better to get a basic understanding of how such a thing is achieved.
+      The complexity of an embedded system grows dramatically when you begin to integrate communication and human interaction. However, it is an important part of the modern infrastructure, and so it is better to get a basic understanding of how such a thing is achieved.
     </p>
   </section>
   <section>
@@ -256,10 +256,10 @@
       There are a myriad ways to communicate over the internet. One of the more common methods is through what is called a REST API. Starting on line 12 we create a class with a single method that will get the forecasts for our area from the national weather service through a series of HTTP requests to different APIs.
     </p>
     <p>
-      The first request is to a ip geo-location service as identified in the URL on line 18. This service will take the public ip address that is making the request, and find the best estimate of the geographic location in terms of latitude and longitude. It will return this data in the form of a JSON object. If you uncomment line 23, and run the program, you can see what this response looks like.
+      The first request is to a IP geolocation service as identified in the URL on line 18. This service will take the public IP address that is making the request, and find the best estimate of the geographic location in terms of latitude and longitude. It will return this data in the form of a JSON object. If you uncomment line 23, and run the program, you can see what this response looks like.
     </p>
     <p>
-      When we get the geo-location response, we extract the latitude and longitude as seen on lines 24 and 25. We then use this information to make another request to the National Weather Service (as seen on line 31) so that we can get the office that is responsible for providing the forecasts, as well as the grid coordinates for our location. This request will return another JSON formatted data object that will contain the information we need. If you uncomment line 38 and run the application, you can see what the response looks like.
+      When we get the geolocation response, we extract the latitude and longitude as seen on lines 24 and 25. We then use this information to make another request to the National Weather Service (as seen on line 31) so that we can get the office that is responsible for providing the forecasts, as well as the grid coordinates for our location. This request will return another JSON formatted data object that will contain the information we need. If you uncomment line 38 and run the application, you can see what the response looks like.
     </p>
     <p>
       Next, we extract the office id, and grid coordinates as seen on lines 41, 42 and 43. We then use this data to make our final request as seen on line 45. The response for this will contain the data for a 7 day forecast. However, since we are only interested in the immediate forecast, we extract the first forecast in the list (at index 0) as seen on line 55, and return that to the requester.
@@ -267,13 +267,13 @@
   </section>
   <section>
     <p>
-      The objective of this application is to display the inside temp, log the inside temp and humidity to a file, and also occasionally show the forecasted high temperature along with the forecast. Measuring and displaying the inside temperature occurs every 10 seconds, except when the forecast is being displayed. The logging is done every 30 seconds. The display of the forecast is done every minute. In order to accurately control the timing of all of these functions we make extensive use of timers, and the functions lines 134, 137, and 145 help us with that.
+      The objective of this application is to display the inside temp, log the inside temp and humidity to a file, and also occasionally show the forecast high temperature along with the forecast. Measuring and displaying the inside temperature occurs every 10 seconds, except when the forecast is being displayed. The logging is done every 30 seconds. The display of the forecast is done every minute. In order to accurately control the timing of all of these functions we make extensive use of timers, and the functions lines 134, 137, and 145 help us with that.
     </p>
     <p>
       The threading library provides the functions for declaring timers. The declaration includes the function name that you want to be called, and the number of seconds until the timer executes the function call. Each timer is executed only once, so when the functions are called, we create a new timer so that the process is repeated.
     </p>
     <p>
-      When the <c>get_weather</c> function is called, it cancels the <c>temp_timer</c> so that the display of the forecast isn't interrupted. This is only necessary because both of them make use of the OLED display. The <c>log_timer</c> isn't cancelled because there is no conflict in the resources used.
+      When the <c>get_weather</c> function is called, it cancels the <c>temp_timer</c> so that the display of the forecast isn't interrupted. This is only necessary because both of them make use of the OLED display. The <c>log_timer</c> isn't canceled because there is no conflict in the resources used.
     </p>
   </section>
   <section>
