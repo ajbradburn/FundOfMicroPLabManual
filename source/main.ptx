@@ -48,6 +48,8 @@
         https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf
         Chapter 2: ARM Registers
         Chapter 3: Memory
+        https://developer.arm.com/documentation/den0013/d/ARM-Thumb-Unified-Assembly-Language-Instructions?lang=en
+        Chapter 5: ARM/Thumb Unified Assembly Language Instructions
         https://developer.arm.com/documentation/den0024/a/The-A64-instruction-set
         Chapter 6: The A64 instruction set
 
@@ -134,7 +136,7 @@
         Chapter 10: Lists
         Chapter 12: Tuples
         
-        https://www.ti.com/lit/an/slva704/slva704.pdf?ts=1644352222854&ref_url=https%253A%252F%252Fwww.google.com%252F
+        https://www.ti.com/lit/an/slva704/slva704.pdf
         https://www.egr.msu.edu/classes/ece480/capstone/fall09/group03/AN_hemmanur.pdf
         I2C Bus Description
       

@@ -10,74 +10,129 @@
   <!-- Introduction -->
   <xi:include href="./introductions/assembly_basics.ptx" />
 
-      <!--
-      Assembly Basics:
-        Registers
-        Basic Math
-        Writing to Memory
-        Getting from Memory
-          
-      Material:
-        https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf
-        Chapter 2: ARM Registers
-        Chapter 3: Memory
-        https://developer.arm.com/documentation/den0024/a/The-A64-instruction-set
-        Chapter 6: The A64 instruction set
+  <!--
+  Assembly Basics:
+    Registers
+    Basic Math
+    Writing to Memory
+    Getting from Memory
+      
+  Material:
+    https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf
+    Chapter 2: ARM Registers
+    Chapter 3: Memory
+    https://developer.arm.com/documentation/den0013/d/ARM-Thumb-Unified-Assembly-Language-Instructions?lang=en
+    Chapter 5: ARM/Thumb Unified Assembly Language Instructions
+    https://developer.arm.com/documentation/den0024/a/The-A64-instruction-set
+    Chapter 6: The A64 instruction set
 
-      Exercise:
-        Moving data around, and adding up values.
-    -->
-
+  Exercise:
+    Moving data around, and adding up values.
+  -->
+  
   <section>
-    <title>Code</title>
-    <!-- The starting program. -->
-    <p>
-      As you will have learned through the reading, assembly is oriented around very basic operations. Moving data into a register, out of a register, performing some sort of calculation on the value of one or more registers, etc.
-    </p>
-    <project>
-      <p>
-        Open your IDE, and type this first application. Compile it, and run it.
-      </p>
-      <listing>
-        <program>
-          <input>
-            0|  .global main
-            1|  .func main
-            2|
-            3|  main:
-            4|    mov r0, #5
-            5|    mov r1, #5
-            6|    add r0, r0, r1
-            7|    bx lr
-          </input>
-        </program>
-      </listing>
-    </project>
-    <exercise>
-      <statement>
-        What is the return value of the program?
-      </statement>
-      <answer>
-        10
-      </answer>
-    </exercise>
-    <p>
-      The first program is very simple. It loads two values into register 0, and 1, and then adds the two values placing the sum into register 0. We will build off of this as we progress through the experiment.
-    </p>
-    <p>
-      Once you've got it running, proceed to the next section.
-    </p>
+    <title>
+      Associated Reading
+    </title>
+    <ul>
+      <li>
+        <url href="https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf">Raspberry Pi Assembler</url>
+      </li>
+      <ul>
+        <li>
+          Chapter 2: ARM Registers
+        </li>
+        <li>
+          Chapter 3: Memory
+        </li>
+      </ul>
+      <li>
+          <url href="https://developer.arm.com/documentation/den0013/d/ARM-Thumb-Unified-Assembly-Language-Instructions?lang=en">ARMv7-A (32-bit) Programmer's Guide</url>
+      </li>
+      <ul>
+        <li>
+          Chapter 5: ARM/Thumb Unified Assembly Language Instructions
+        </li>
+      </ul>
+      <li>
+        <url href="https://developer.arm.com/documentation/den0024/a/The-A64-instruction-set">ARMv8-A (64-bit) Programmer's Guide</url>
+      </li>
+      <ul>
+        <li>
+          Chapter 6: The A64 instruction set
+        </li>
+      </ul>
+    </ul>
   </section>
   <section>
-    <title>Exploration</title>
-    <!-- Make some changes to the program. -->
+    <title>Basic Operations and Composition</title>
+    <!-- The starting program. -->
     <subsection>
-      <title>Memory Addressing</title>
+      <title>Dicsussion</title>
+      <p>
+        As you will have learned through the reading, assembly is oriented around very basic operations. Moving data into a register, out of a register, performing some sort of calculation on the value of one or more registers, etc.
+      </p>
+    </subsection>
+    <subsection>
+      <title>Code</title>
+      <project>
+        <p>
+          Transcribe, compile, and run the program.
+        </p>
+        <p>
+          <url href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/assembly_basics/p1.s">Download the Source</url>
+        </p>
+        <listing>
+          <program>
+            <input>
+              0|  .global main
+              1|  .func main
+              2|
+              3|  main:
+              4|    mov r0, #5
+              5|    mov r1, #5
+              6|    add r0, r0, r1
+              7|    bx lr
+            </input>
+          </program>
+        </listing>
+      </project>
+    </subsection>
+    <subsection>
+      <title>Exploration</title>
+      <exercise>
+        <statement>
+          What is the return value of the program?
+        </statement>
+        <answer>
+          10
+        </answer>
+      </exercise>
+      <p>
+        The first program is very simple. It loads two values into register 0, and 1, and then adds the two values placing the sum into register 0. We will build off of this as we progress through the experiment.
+      </p>
+      <p>
+        Once you've got it running, proceed to the next section.
+      </p>
+    </subsection>
+  </section>
+  <section>
+    <title>Memory Addressing</title>
+    <subsection>
+      <title>Discussion</title>
       <p>
         The values that are moved into the registers <c>r0</c> and <c>r1</c> in the first example are immediate values, or values that are defined in the program code. More often than not, the values you'll be working with won't be defined in the code, but will instead be stored in memory, and will need to be retrieved before performing operations on them.
       </p>
+    </subsection>
+    <subsection>
+      <title>Code</title>
       <project>
-        <p>Transcribe the following program, compile and run it.</p>
+        <p>
+          Transcribe, compile, and run the program.
+        </p>
+        <p>
+          <url href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/assembly_basics/p2.s">Download the Source</url>
+        </p>
         <listing>
           <program>
             <input>
@@ -114,6 +169,9 @@
           </program>
         </listing>
       </project>
+    </subsection>
+    <subsection>
+      <title>Exploration</title>
       <exercise>
         <statement>
           What is the return value of the program?
@@ -123,7 +181,7 @@
         </answer>
       </exercise>
       <p>
-        Our next example addresses accessing values from the memory. In doing so, we first initialize an array, or list of numbers that we will use for our calculations. When doing so, we specify the byte length for each element (number) which is <c>.word</c> or 4 bytes each. We also provide an assembler directive of <c>.balign 4</c> which tells the assembler that our data should be arranged with addresses that are multiples of 4 bytes. You can read more about <url href="http://web.mit.edu/gnu/doc/html/as_7.html">assembler directives</url> if you're interested.
+        This example addresses accessing values from the memory. In doing so, we first initialize an array, or list of numbers that we will use for our calculations. When doing so, we specify the byte length for each element (number) which is <c>.word</c> or 4 bytes each. We also provide an assembler directive of <c>.balign 4</c> which tells the assembler that our data should be arranged with addresses that are multiples of 4 bytes. You can read more about <url href="http://web.mit.edu/gnu/doc/html/as_7.html">assembler directives</url> if you're interested.
       </p>
       <p>
         While <c>numbers</c> identifies our variable for later reference, we can't use that to access the memory address directly, so we add the line <c>numbers_address: .word numbers</c> at the bottom that provides another variable that we can use. The explanation for this is found in the book.
@@ -141,6 +199,9 @@
         <p>
             The sample addition of our list of numbers stops at 8, add the remaining lines of code so that all of the numbers of our list are added to our running total in <c>r0</c>.
         </p>
+        <p>
+          <url href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/assembly_basics/p3.s">Download the Source</url>
+        </p>
       </project>
       <exercise>
         <statement>
@@ -151,11 +212,17 @@
         </answer>
       </exercise>
     </subsection>
+  </section>
+  <section>
+    <title>Arithmetic Functions</title>
     <subsection>
-      <title>Arithmetic Functions</title>
+      <title>Discussion</title>
       <p>
         So far, we've made great use of the addition instruction. But, as you know, there are more arithmetic operations.
       </p>
+    </subsection>
+    <subsection>
+      <title>Code</title>
       <project>
         <p>
           Add the following lines before <c>bx lr</c> in the previous example to calculate the average value for the numbers we've added up.
@@ -171,6 +238,9 @@
         </listing>
         <p>
           Your final code should look something like this:
+        </p>
+        <p>
+          <url href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/assembly_basics/p4.s">Download the Source</url>
         </p>
         <listing>
           <program>
@@ -232,8 +302,13 @@
             </input>
           </program>
         </listing>
-        <p> Compile and run the application.</p>
+        <p>
+          Compile, and run the program.
+        </p>
       </project>
+    </subsection>
+    <subsection>
+      <title>Exploration</title>
       <exercise>
         <statement>
           What is the return value of the program?
@@ -267,6 +342,7 @@
       <exercise>
         <statement>
           What is the return value for the program if we remove the division instruction, and replace the last 10 <c>add</c> instructions with <c>sub</c> instructions?
+          <url href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/assembly_basics/p4.s">Download the Source</url>
         </statement>
         <answer>
           211
@@ -288,12 +364,18 @@
         </solution>
       </exercise>
     </subsection>
+  </section>
+  <section>
+    <title>Logical Operations</title>
     <subsection>
-      <title>Logical Operations</title>
+      <title>Discussion</title>
       <p>For our last subject, we will explore a bit of logical operations.</p>
       <p>
         These are operations like shifting, or not, or, and and xor. These operations aren't as relatable as the arithmetic, or the <c>mov</c> commands you've explored so far, but they do have very important places in the computer world. Otherwise, they wouldn't have been implemented.
       </p>
+    </subsection>
+    <subsection>
+      <title>Code</title>
       <project>
         <p>
           Add the following line before the <c>bx lr</c> line. Then compile and run the program.
@@ -308,6 +390,9 @@
         </listing>
         <p>
           Your code should look like this:
+        </p>
+        <p>
+          <url href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/assembly_basics/p6.s">Download the Source</url>
         </p>
         <listing>
           <program>
@@ -368,7 +453,13 @@
             </input>
           </program>
         </listing>
+        <p>
+          Compile, and run the program.
+        </p>
       </project>
+    </subsection>
+    <subsection>
+      <title>Exploration</title>
       <exercise>
         <statement>
           What is the return value of the program?
@@ -376,7 +467,7 @@
         <answer>
           0
         </answer>
-      </exercise>>
+      </exercise>
       <p>
         This exclusive or <c>eor</c> takes the value that is in <c>r0</c> and xors it with the same value to produce an empty register, or a register with a value of 0.
       </p>
@@ -384,8 +475,11 @@
         If you'd like to learn more about the logical operators, check out section <em>A4.4.1 Standard data-processing instructions</em> from the <url href="https://developer.arm.com/documentation/ddi0406/cd/?lang=en">ARM Architecture Reference Manual</url>
       </p>
     </subsection>
+  </section>
+  <section>
+    <title>C</title>
     <subsection>
-      <title>C</title>
+      <title>Discussion</title>
       <p>
         When dealing with embedded systems, even when using high-level programming languages, it is likely that you're going to have to make use of some of this low level manipulation. It may be a situation where you need to take advantage of some feature in a chip that isn't already abstracted by a library, or it could be when communicating with some peripheral. Whatever the case, having at least a basic knowledge of some of this is very useful.
       </p>
@@ -394,49 +488,58 @@
       </p>
       <p>Just as a quick example, I offer you this little program that adds up several values, and displays the output.</p>
     </subsection>
-    <project>
+    <subsection>
+      <title>Code</title>
+      <project>
+        <p>
+          If you care to, you can type this up in a filename <c>extra.c</c>, then compile and run it.
+        </p>
+        <p>
+          <url href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/assembly_basics/extra.c">Download the Source</url>
+        </p>
+        <listing>
+          <program>
+            <input>
+                0|  #include &lt;stdio.h&gt;
+                1|
+                2|  int main()
+                3|  {
+                4|   int numbers[] = {5, 5, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+                5|   int n = sizeof(numbers) / sizeof(numbers[0]);
+                6|
+                7|   float sum = 0;
+                8|   for (int i = 0; i &lt; n; i++)
+                9|     sum += numbers[i];
+              10|
+              11|   float avg = sum / n;
+              12|
+              13|   printf("The total of the added numbers is: %f\n", sum);
+              14|   printf("The average value of the numbers added up is: %f\n", avg);
+              15|  }
+            </input>
+          </program>
+        </listing>
+        <p>
+          The program can be compiled with the following command:
+        </p>
+        <listing>
+          <console>
+            <input>
+              gcc -o extra extra.c
+            </input>
+          </console>
+        </listing>
+      </project>
+    </subsection>
+    <subsection>
+      <title>Exploration</title>
       <p>
-        If you care to, you can type this up in a filename <c>extra.c</c>, then compile and run it.
+        You can see that with a high level programming language like C, you can accomplish the same result, but with better output. In this case, we print out, onto the <c>stdout</c> a whole sentence that includes a decimal value of the calculations we made.
       </p>
-      <listing>
-        <program>
-          <input>
-              0|  #include &lt;stdio.h&gt;
-              1|
-              2|  int main()
-              3|  {
-              4|   int numbers[] = {5, 5, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-              5|   int n = sizeof(numbers) / sizeof(numbers[0]);
-              6|
-              7|   float sum = 0;
-              8|   for (int i = 0; i &lt; n; i++)
-              9|     sum += numbers[i];
-             10|
-             11|   float avg = sum / n;
-             12|
-             13|   printf("The total of the added numbers is: %f\n", sum);
-             14|   printf("The average value of the numbers added up is: %f\n", avg);
-             15|  }
-          </input>
-        </program>
-      </listing>
       <p>
-        The program can be compiled with the following command:
+        We will explore more of high-level programming languages in later experiments.
       </p>
-      <listing>
-        <console>
-          <input>
-            gcc -o extra extra.c
-          </input>
-        </console>
-      </listing>
-    </project>
-    <p>
-      You can see that with a high level programming language like C, you can accomplish the same result, but with better output. In this case, we print out, onto the <c>stdout</c> a whole sentence that includes a decimal value of the calculations we made.
-    </p>
-    <p>
-      We will explore more of high-level programming languages in later experiments.
-    </p>
+    </subsection>
   </section>
   <section>
     <title>Reflection</title>

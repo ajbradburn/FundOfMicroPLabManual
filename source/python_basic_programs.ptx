@@ -10,6 +10,27 @@
   <!-- Introduction -->
   <xi:include href="./introductions/python_basic_programs.ptx" />
 
+  <!-- 
+    Material:
+      https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist
+      Chapter 3: Functions
+  -->
+
+  <section>
+    <title>
+      Associated Reading
+    </title>
+    <ul>
+      <li>
+        <url href="https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist">Think Python: How to Think Like a Computer Scientist. 2nd Edition</url>
+      </li>
+      <ul>
+        <li>
+          Chapter 3: Functions
+        </li>
+      </ul>
+    </ul>
+  </section>
   <section>
     <subsection>
       <p>

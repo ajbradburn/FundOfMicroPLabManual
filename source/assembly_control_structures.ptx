@@ -9,14 +9,38 @@
 
   <!-- Introduction -->
   <xi:include href="./introductions/assembly_control_structures.ptx" />
-
+  
+  <!-- 
+    Material:
+      https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf
+      Chapter 5: Branching
+      Chapter 6: Control structures
+  -->
   <section>
-    <title>Code</title>
+    <title>
+      Associated Reading
+    </title>
+    <ul>
+      <li>
+        <url href="https://personal.utdallas.edu/~pervin/RPiA/RPiA.pdf">Raspberry Pi Assembler</url>
+      </li>
+      <ul>
+        <li>
+          Chapter 5: Branching
+        </li>
+        <li>
+          Chapter 6: Control Structures
+        </li>
+      </ul>
+    </ul>
+  </section>
+  <section>
+    <title>Loops</title>
     <p>
       As you'll have learned from the reading branching, and control structures are closely related. The reality is that looping, as well as if, then, and else statements are entirely dependent upon decisions made based upon evaluations of values in our input.
     </p>
     <subsection>
-      <title>Loops</title>
+      <title>Discussion</title>
       <p>
         Loops are incredibly useful. Mostly because they allow us to re-use portions of code so that we aren't typing out millions of lines of instructions to handle the same process over and over again, but also because they can seriously simplify processes that would require repeated decision making, thus simplifying our code, and making it more human readable.
       </p>
@@ -29,11 +53,16 @@
       <p>
         The second looks for a specific value in the array, and when it is found, exits the loop. This approach is generally used for streams of data, or data with an undefined length.
       </p>
-      <!-- 
-        Two program examples, one with an index that is decremented, and another that looks for a terminating string.
-      -->
+    </subsection>
+    <subsection>
+      <title>Code</title>
       <project>
-        <p>Transcribe this program, compile, and run it.</p>
+        <p>
+          Transcribe, compile, and run the program.
+        </p>
+        <p>
+          <url href="https://github.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/raw/master/assembly_control_structures/p1.s">Download the Source</url>
+        </p>
         <listing>
           <program>
             <input>
@@ -46,38 +75,52 @@
               7|  .text
               8|  .balign 4
               9|  .global main
-             10|  .func main
-             11|
-             12|  main:
-             13|    mov r0, #5
-             14|    mov r1, #5
-             15|      /* r0 + 5 */
-             16|    add r0, r0, r1
-             17|
-             18|      /* Create an itteration counter that starts with the number count */
-             19|    ldr r3, =number_count
-             20|    ldr r3, [r3]
-             21|
-             22|    ldr r2, =numbers
-             23|  add_more:
-             24|    ldr r1, [r2], #4
-             25|    add r0, r0, r1
-             26|      /* Decriment our itteration counter. */
-             27|    sub r3, r3, #1
-             28|      /* Is our itteration counter equal to 0? */
-             29|    cmp r3, #0
-             30|      /* If yes/true, jump to the end of the program. */
-             31|    beq end
-             32|
-             33|      /* If no/false, do it again. */
-             34|    b add_more
-             35|  end:
-             36|
-             37|    bx lr
+              10|  .func main
+              11|
+              12|  main:
+              13|    mov r0, #5
+              14|    mov r1, #5
+              15|      /* r0 + 5 */
+              16|    add r0, r0, r1
+              17|
+              18|      /* Create an itteration counter that starts with the number count */
+              19|    ldr r3, =number_count
+              20|    ldr r3, [r3]
+              21|
+              22|    ldr r2, =numbers
+              23|  add_more:
+              24|    ldr r1, [r2], #4
+              25|    add r0, r0, r1
+              26|      /* Decriment our itteration counter. */
+              27|    sub r3, r3, #1
+              28|      /* Is our itteration counter equal to 0? */
+              29|    cmp r3, #0
+              30|      /* If yes/true, jump to the end of the program. */
+              31|    beq end
+              32|
+              33|      /* If no/false, do it again. */
+              34|    b add_more
+              35|  end:
+              36|
+              37|    bx lr
             </input>
           </program>
         </listing>
       </project>
+    </subsection>
+    <subsection>
+      <title>Exploration</title>
+      <p>
+        In this example, we define an index value <c>number_count</c> on line 5 and load it into register <c>r3</c> on lines 19 and 20. Then, as we load, and add each element of the <c>numbers</c> array, we decrement <c>r3</c> by 1 on line 27. Next, we compare the value in <c>r3</c> to 0 to set flags. The <c>beq</c> command on line 31 will check the flags to see if <c>r3</c> and 0 are equal, if so, it will jump to the <c>end:</c> label. If not, it will advance to the <c>b add_more</c> instruction on line 34, which sends our program back to the <c>add_more:</c> label on line 23.
+      </p>
+      <figure>
+        <caption>The logical flow of the program.</caption>
+        <image source="generated/assembly_control_structures_img02" width="25%">
+          <description>
+            The logical flow of our application as described.
+          </description>
+        </image>
+      </figure>
       <exercise>
         <statement>
           What is the value returned by the program?
@@ -94,23 +137,29 @@
           ?
         </answer>
       </exercise>
+    </subsection>
+    <subsection>
+      <title>Discussion</title>
       <p>
-        In this example, we define an index value <c>number_count</c> on line 5 and load it into register <c>r3</c> on lines 19 and 20. Then, as we load, and add each element of the <c>numbers</c> array, we decrement <c>r3</c> by 1 on line 27. Next, we compare the value in <c>r3</c> to 0 to set flags. The <c>beq</c> command on line 31 will check the flags to see if <c>r3</c> and 0 are equal, if so, it will jump to the <c>end:</c> label. If not, it will advance to the <c>b add_more</c> instruction on line 34, which sends our program back to the <c>add_more:</c> label on line 23.
+        Our next program illustrates the process of looking for a special value in an array, and exiting the loop when it is found.
       </p>
       <figure>
         <caption>The logical flow of the program.</caption>
-        <image source="generated/assembly_control_structures_img02" width="25%">
+        <image source="generated/assembly_control_structures_img03" width="35%">
           <description>
             The logical flow of our application as described.
           </description>
         </image>
       </figure>
-      <p>
-        Our next program illustrates the process of looking for a special value in an array, and exiting the loop when it is found.
-      </p>
+    </subsection>
+    <subsection>
+      <title>Code</title>>
       <project>
         <p>
-          Transcribe, compile and run the following program.
+          Transcribe, compile, and run the program.
+        </p>
+        <p>
+          <url href="https://github.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/raw/master/assembly_control_structures/p2.s">Download the Source</url>
         </p>
         <listing>
           <program>
@@ -124,47 +173,41 @@
               7|  .global main
               8|  .func main
               9|
-             10|  main:
-             11|    mov r0, #5
-             12|    mov r1, #5
-             13|      /* r0 + 5 */
-             14|    add r0, r0, r1
-             15|
-             16|    ldr r2, =numbers
-             17|  add_more:
-             18|    ldr r1, [r2], #4
-             19|      /* Is the new number equal to 0? */
-             20|    cmp r1, #0
-             21|    beq end
-             22|      /* Add new number. */
-             23|    add r0, r0, r1
-             24|      /* Do it again. */
-             25|    b add_more
-             26|  end:
-             27|
-             28|    bx lr
+              10|  main:
+              11|    mov r0, #5
+              12|    mov r1, #5
+              13|      /* r0 + 5 */
+              14|    add r0, r0, r1
+              15|
+              16|    ldr r2, =numbers
+              17|  add_more:
+              18|    ldr r1, [r2], #4
+              19|      /* Is the new number equal to 0? */
+              20|    cmp r1, #0
+              21|    beq end
+              22|      /* Add new number. */
+              23|    add r0, r0, r1
+              24|      /* Do it again. */
+              25|    b add_more
+              26|  end:
+              27|
+              28|    bx lr
             </input>
           </program>
         </listing>
       </project>
+    </subsection>
+    <subsection>
+      <title>Exploration</title>
       <p>
         In this example, we simply add a special character (0) at the end of our numbers array, and as we load each number, we check to see if the newly loaded value is equal to our special character. On line 20, we compare <c>r1</c> and 0 to set flags. Then on line 21 the <c>beq end</c> instruction checks the flags, and if <c>r1</c> is equal to our special character, we jump to the <c>end:</c> label on line 26. Otherwise, the program advances, adds the new value to our running total in <c>r0</c> and then reaches <c>b add_mroe</c> on line 25 which sends the program back to the <c>add_more</c> label on line 17.
       </p>
-      <figure>
-        <caption>The logical flow of the program.</caption>
-        <image source="generated/assembly_control_structures_img03" width="35%">
-          <description>
-            The logical flow of our application as described.
-          </description>
-        </image>
-      </figure>
     </subsection>
-    <!--
-      Imagine we have a little microcontroller monitoring the temperature in an environment, and turning on a heater whenever it gets to cold, or an air conditioner when it gets too warm.
-    -->
   </section>
   <section>
+    <title>Branching</title>
     <subsection>
+      <title>Discussion</title>
       <p>As we continue with our exploration of control structures in assembly, we are going to shift our frame of reference a bit, and use a different example.</p>
       <p>
         Let us imagine that we have a project that needs to control the temperature of an enclosure. We have a temperature sensor, two relays, and an alarm buzzer attached to a microcontroller.
@@ -181,9 +224,26 @@
       <p>
         Our failure condition is: if we go to enable either the heater, or air conditioner, and it is already enabled. In either case, we may have a broken sensor, a broken temperature control circuit, or a compromised enclosure.
       </p>
+      <p>
+        The logic looks a bit like this:
+      </p>
+      <figure>
+        <caption>The logical flow of the program.</caption>
+        <image source="generated/assembly_control_structures_img04" width="75%">
+          <description>
+            The logical flow of our application as described.
+          </description>
+        </image>
+      </figure>
+    </subsection>
+    <subsection>
+      <title>Code</title>
       <project>
         <p>
-          Transcribe, compile, and run the <program class=":w"></program>
+          Transcribe, compile, and run the program.
+        </p>
+        <p>
+          <url href="https://github.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/raw/master/assembly_control_structures/p3.s">Download the Source</url>
         </p>
         <listing>
           <program>
@@ -262,37 +322,45 @@
           </program>
         </listing>
       </project>
+    </subsection>
+    <subsection>
+      <title>Exploration</title>
       <exercise>
         <statement>
           What is the return value for the program as it is written?
         </statement>
+        <answer>
+          ?
+        </answer>
       </exercise>
       <exercise>
         <statement>
           What is the return value if you change the <c>temp_measurement</c> definition to 151?
         </statement>
+        <answer>
+          ?
+        </answer>
       </exercise>
       <exercise>
         <statement>
           What is the return value if you change the <c>temp_measurement</c> definition to 99?
         </statement>
+        <answer>
+          ?
+        </answer>
       </exercise>
       <exercise>
         <statement>
           What is the return value of the program if you insert <c>mov r7, #2</c> between lines 43, and 44, and change the <c>temp_measurement</c> definition to 200?
         </statement>
+        <answer>
+          ?
+        </answer>
       </exercise>
-      <p>
-        The logic looks a bit like this:
-      </p>
-      <figure>
-        <caption>The logical flow of the program.</caption>
-        <image source="generated/assembly_control_structures_img04" width="75%">
-          <description>
-            The logical flow of our application as described.
-          </description>
-        </image>
-      </figure>
+    </subsection>
+    <subsection>
+      <title>Reflection</title>
+
     </subsection>
   </section>
 </chapter>

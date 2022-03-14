@@ -10,6 +10,31 @@
   <!-- Introduction -->
   <xi:include href="./introductions/high-level_languages_basics.ptx" />
 
+  <!-- 
+    Material:
+      https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist
+      Chapter 1: The way of the program
+      Chapter 2: Variable, expressions and statements
+  -->
+
+  <section>
+    <title>
+      Associated Reading
+    </title>
+    <ul>
+      <li>
+        <url href="https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist">Think Python: How to Think Like a Computer Scientist. 2nd Edition</url>
+      </li>
+      <ul>
+        <li>
+          Chapter 1: The way of the program
+        </li>
+        <li>
+          Chapter 2: Variable, expressions and statements
+        </li>
+      </ul>
+    </ul>
+  </section>
   <section>
     <subsection>
       <title>

@@ -10,10 +10,6 @@
   <!-- Introduction -->
   <xi:include href="./introductions/python_environment_setup.ptx" />
 
-  <!-- Open Thonny Python IDE. -->
-  <!-- Type Program (Simple Dice) -->
-  <!-- Run Program. -->
-  <!-- Useful functions for more information. -->
   <section>
     <title>
       Raspi Config

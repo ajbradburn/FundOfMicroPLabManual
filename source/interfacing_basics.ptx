@@ -10,6 +10,31 @@
   <!-- Introduction -->
   <xi:include href="./introductions/interfacing_basics.ptx" />
 
+  <!-- 
+    Material:
+      https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist
+      Chapter 7: Itteration
+      Chapter 8: Strings
+  -->
+
+  <section>
+    <title>
+      Associated Reading
+    </title>
+    <ul>
+      <li>
+        <url href="https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist">Think Python: How to Think Like a Computer Scientist. 2nd Edition</url>
+      </li>
+      <ul>
+        <li>
+          Chapter 7: Itteration
+        </li>
+        <li>
+          Chapter 8: Strings
+        </li>
+      </ul>
+    </ul>
+  </section>
   <section>
     <p>
       Before we can start programming, and seeing the fruits of our labor on something other than a computer screen, it is necessary to attach our Raspberry Pi to peripherals. As you know, when working with electronics, you have to be aware of the power limitations of the components you're working with. You have to design your circuits with this in mind.

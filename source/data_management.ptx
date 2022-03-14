@@ -10,6 +10,31 @@
   <!-- Introduction -->
   <xi:include href="./introductions/data_management.ptx" />
 
+  <!-- 
+    Material:
+      https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist
+      Chapter 11: Dictionaries
+      Chapter 14: Files
+  -->
+
+  <section>
+    <title>
+      Associated Reading
+    </title>
+    <ul>
+      <li>
+        <url href="https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist">Think Python: How to Think Like a Computer Scientist. 2nd Edition</url>
+      </li>
+      <ul>
+        <li>
+          Chapter 11: Dictionaries
+        </li>
+        <li>
+          Chapter 14: Files
+        </li>
+      </ul>
+    </ul>
+  </section>
   <section>
     <p>
       The complexity of an embedded system grows dramatically when you begin to integrate communication and human interaction. However, it is an important part of the modern infrastructure, and so it is better to get a basic understanding of how such a thing is achieved.

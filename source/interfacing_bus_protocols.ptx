@@ -10,6 +10,41 @@
   <!-- Introduction -->
   <xi:include href="./introductions/interfacing_bus_protocols.ptx" />
 
+  <!-- 
+    Material:
+      https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist
+      Chapter 10: Lists
+      Chapter 12: Tuples
+      
+      https://www.ti.com/lit/an/slva704/slva704.pdf
+      https://www.egr.msu.edu/classes/ece480/capstone/fall09/group03/AN_hemmanur.pdf
+      I2C Bus Description
+  -->
+
+  <section>
+    <title>
+      Associated Reading
+    </title>
+    <ul>
+      <li>
+        <url href="https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist">Think Python: How to Think Like a Computer Scientist. 2nd Edition</url>
+      </li>
+      <ul>
+        <li>
+          Chapter 10: Lists
+        </li>
+        <li>
+          Chapter 12: Tuples
+        </li>
+      </ul>
+      <li>
+        <url href="https://www.ti.com/lit/an/slva704/slva704.pdf">Understanding the <m>I^2C</m> Bus</url>
+      </li>
+      <li>
+        <url href="https://www.egr.msu.edu/classes/ece480/capstone/fall09/group03/AN_hemmanur.pdf">Inter-Integrated Circuit</url>
+      </li>
+    </ul>
+  </section>
   <section>
     <p>
       This lab builds upon the last by adding some components and making changes to the code.
