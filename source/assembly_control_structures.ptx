@@ -358,9 +358,14 @@
         </answer>
       </exercise>
     </subsection>
-    <subsection>
-      <title>Reflection</title>
-
-    </subsection>
+  </section>
+  <section>
+    <title>Reflection</title>
+    <!-- Questions about the processes covered. -->
+    <exercise>
+      <prompt>
+        [Something to write a bit about.]
+      </prompt>
+    </exercise>
   </section>
 </chapter>
