@@ -36,278 +36,287 @@
     </ul>
   </section>
   <section>
+    <title>Connecting to the Internet</title>
+    <subsection>
+      <title>Discussion</title>
     <p>
       The complexity of an embedded system grows dramatically when you begin to integrate communication and human interaction. However, it is an important part of the modern infrastructure, and so it is better to get a basic understanding of how such a thing is achieved.
     </p>
+    </subsection>
+    <subsection>
+      <title>Code</title>
+      <p>
+        Transcribe the program, and run it.
+      </p>
+      <listing>
+        <program>
+          <input>
+            1|  import math
+            2|  import requests
+            3|  import json
+            4|  import board
+            5|  from PIL import Image, ImageDraw, ImageFont
+            6|  import adafruit_ssd1306
+            7|  from time import sleep
+            8|  from datetime import datetime
+            9|  import adafruit_ahtx0
+          10|  import threading
+          11|
+          </input>
+        </program>
+      </listing>
+      <listing>
+        <program>
+          <input>
+            12|  class nws_forecast():
+            13|    # Get the National Weather Service Forecast based upon the Geolocation.
+            14|    # Geolocation is found by using the public IP address for the network that this device is attached to.
+            15|    def get(self):
+            16|      # Get the geolocation for your IP Address.
+            17|      # API Documentation: https://ip-api.com/docs/api:json
+            18|      URL = 'http://ip-api.com/json'
+            19|
+            20|      r = requests.get(url = URL)
+            21|      data = r.json()
+            22|      # For debuggin purposes.
+            23|      #print(json.dumps(data, indent=2))
+            24|      latitude = data['lat']
+            25|      longitude = data['lon']
+            26|
+            27|      # Get the National Weather Service Office, and grid for your location.
+            28|      # API Documentation: https://www.weather.gov/documentation/services-web-api#
+            29|      HEADERS = {'user-agent': '(IntroductionToEmbeddedSystems, ajbradburn@gmail.com)'}
+            30|
+            31|      URL = 'https://api.weather.gov/points/{},{}'
+            32|      URL = URL.format(latitude, longitude)
+            33|
+            34|      r = requests.get(url = URL, headers=HEADERS)
+            35|
+            36|      data = r.json()
+            37|      # For debugging purposes.
+            38|      #print(json.dumps(data, indent=2))
+            39|
+            40|      # Using the data from the last request, get the forcast for your area.
+            41|      office = data['properties']['gridId']
+            42|      loc_x = data['properties']['gridX']
+            43|      loc_y = data['properties']['gridY']
+            44|
+            45|      URL = 'https://api.weather.gov/gridpoints/{}/{},{}/forecast'
+            46|      URL = URL.format(office, loc_x, loc_y)
+            47|
+            48|      r = requests.get(url = URL, headers=HEADERS)
+            49|
+            50|      data = r.json()
+            51|      # For debugging purposes.
+            52|      #print(json.dumps(data, indent=2))
+            53|
+            54|      # Return only the current, or most immediate forecast.
+            55|      return data['properties']['periods'][0]
+            56|
+          </input>
+        </program>
+      </listing>
+      <listing>
+        <program>
+          <input>
+            57|  class oled_display():
+            58|    width = 128
+            59|    height = 32
+            60|
+            61|    oled = None
+            62|
+            63|    def __init__(self):
+            64|      self.oled = adafruit_ssd1306.SSD1306_I2C(self.width, self.height, board.I2C(), addr=0x3C)
+            65|
+            66|    def display_none(self):
+            67|      self.oled.fill(0)
+            68|      self.oled.show()
+            69|
+            70|    def display_string(self, text, font = None, size = 10, height = None, width = None):
+            71|      image = Image.new("1", (self.oled.width, self.oled.height))
+            72|
+            73|      draw = ImageDraw.Draw(image)
+            74|
+            75|      if height == None or width == None:
+            76|        dimensions = self.text_size(text, font, size)
+            77|
+            78|        if width == None:
+            79|          width = dimensions[0]
+            80|
+            81|        if height == None:
+            82|          height = dimensions[1]
+            83|
+            84|      if font == None:
+            85|        font = ImageFont.load_default()
+            86|      else:
+            87|        font = ImageFont.truetype(font, size)
+            88|
+            89|      draw.text(
+            90|        (self.oled.width // 2 - width // 2, self.oled.height // 2 - height // 2),
+            91|        text,
+            92|        font=font,
+            93|        fill=10,
+            94|        )
+            95|
+            96|      self.oled.image(image)
+            97|      self.oled.show()
+            98|
+          </input>
+        </program>
+      </listing>
+      <listing>
+        <program>
+          <input>
+            99|    def text_size(self, text, font = None, size = 10):
+            100|      if font == None:
+            101|        font = ImageFont.load_default()
+            102|      else:
+            103|        font = ImageFont.truetype(font, size)
+            104|      return font.getsize(text)
+            105|
+            106|    def scroll_string(self, text, font = None, size = 10, delay = 0.01):
+            107|      text_len = len(text)
+            108|      dimensions = self.text_size(text, font, size)
+            109|      window_length = math.floor(self.oled.width / (dimensions[0] / text_len))
+            110|      start = 0
+            111|      height = dimensions[1]
+            112|      width = window_length * (dimensions[0] / text_len)
+            113|      padding = ' ' * window_length
+            114|      text = padding + text + padding
+            115|      text_len = len(text)
+            116|      while start + window_length &lt;= text_len:
+            117|        sub_string = text[start:start + window_length]
+            118|        start = start + 1
+            119|        self.display_string(sub_string, font, size, width=width, height=height)
+            120|        sleep(delay)
+            121|      return
+            122|
+            123|    def display_with_intro(self, intro, text, font = None, size = 10):
+            124|      self.display_string(intro, font, size)
+            125|      sleep(1)
+            126|      self.scroll_string(text, font, size)
+            127|
+          </input>
+        </program>
+      </listing>
+      <listing>
+        <program>
+          <input>
+            128|  default_font = 'DejaVuSansMono.ttf'
+            129|
+            130|  # Initialize objects.
+            131|  oled_display = oled_display()
+            132|  sensor = adafruit_ahtx0.AHTx0(board.I2C())
+            133|
+            134|  def start_log_timer():
+            135|    log_timer = threading.Timer(30, log_measurements).start()
+            136|
+            137|  def start_forecast_timer():
+            138|    forecast_timer = threading.Timer(60, get_weather).start()
+            139|
+            140|  def start_temp_timer():
+            141|    global temp_timer
+            142|    temp_timer = threading.Timer(10, display_temp)
+            143|    temp_timer.start()
+            144|
+            145|  def get_weather():
+            146|    # Start a new timer.
+            147|    start_forecast_timer()
+            148|
+            149|    # Cancel the temp_timer so that it doesn't interfere with our forecast display.
+            150|    global temp_timer
+            151|    temp_timer.cancel()
+            152|
+            153|    # Get the forecast and display it.
+            154|    global oled_display
+            155|    global sensor
+            156|    weather = nws_forecast()
+            157|    forecast = weather.get()
+            158|    oled_display.display_string('High: {}°F'.format(forecast['temperature']), default_font, 16)
+            159|    sleep(2)
+            160|    oled_display.display_string('Inside: {}°F'.format(int(sensor.temperature * 9 / 5 + 32)), default_font, 16)
+            161|    sleep(2)
+            162|    oled_display.display_with_intro('Forecast:', forecast['detailedForecast'], default_font, 16)
+            163|
+            164|    # Resume the display of temperature, and start a new temp_timer.
+            165|    display_temp()
+            166|
+          </input>
+        </program>
+      </listing>
+      <listing>
+        <program>
+          <input>
+            167|  def display_temp():
+            168|    # Start a new timer.
+            169|    start_temp_timer()
+            170|
+            171|    # Read the temperature and display it.
+            172|    global default_font
+            173|    temperature = sensor.temperature
+            174|    humidity = sensor.relative_humidity
+            175|    oled_display.display_string('Inside: {:.2f}°F'.format(temperature * 9 / 5 + 32), default_font, 12)
+            176|
+            177|  def log_measurements():
+            178|    # Start a new timer.
+            179|    start_log_timer()
+            180|
+            181|    # Read temperature and humidity. Log it with the date/time to a file in csv format.
+            182|    global sensor
+            183|    temperature = sensor.temperature
+            184|    humidity = sensor.relative_humidity
+            185|    string = '\"{}\",{:.2f},{:.2f}\n'.format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"), temperature, humidity)
+            186|    file = open('log.csv', 'a')
+            187|    file.write(string)
+            188|    file.close()
+            189|
+            190|  # A variable to hold the temp_timer so that we can reference it later, and cancel the timer when needed.
+            191|  temp_timer = None
+            192|
+            193|  start_log_timer()
+            194|  display_temp()
+            195|  start_forecast_timer()
+          </input>
+        </program>
+      </listing>
+    </subsection>
+    <subsection>
+      <title>Exploration</title>
+      <subsubsection>
+        <p>
+          There are a myriad ways to communicate over the internet. One of the more common methods is through what is called a REST API. Starting on line 12 we create a class with a single method that will get the forecasts for our area from the national weather service through a series of HTTP requests to different APIs.
+        </p>
+        <p>
+          The first request is to a IP geolocation service as identified in the URL on line 18. This service will take the public IP address that is making the request, and find the best estimate of the geographic location in terms of latitude and longitude. It will return this data in the form of a JSON object. If you uncomment line 23, and run the program, you can see what this response looks like.
+        </p>
+        <p>
+          When we get the geolocation response, we extract the latitude and longitude as seen on lines 24 and 25. We then use this information to make another request to the National Weather Service (as seen on line 31) so that we can get the office that is responsible for providing the forecasts, as well as the grid coordinates for our location. This request will return another JSON formatted data object that will contain the information we need. If you uncomment line 38 and run the application, you can see what the response looks like.
+        </p>
+        <p>
+          Next, we extract the office id, and grid coordinates as seen on lines 41, 42 and 43. We then use this data to make our final request as seen on line 45. The response for this will contain the data for a 7 day forecast. However, since we are only interested in the immediate forecast, we extract the first forecast in the list (at index 0) as seen on line 55, and return that to the requester.
+        </p>
+      </subsubsection>
+      <subsubsection>
+        <p>
+          The objective of this application is to display the inside temp, log the inside temp and humidity to a file, and also occasionally show the forecast high temperature along with the forecast. Measuring and displaying the inside temperature occurs every 10 seconds, except when the forecast is being displayed. The logging is done every 30 seconds. The display of the forecast is done every minute. In order to accurately control the timing of all of these functions we make extensive use of timers, and the functions lines 134, 137, and 145 help us with that.
+        </p>
+        <p>
+          The threading library provides the functions for declaring timers. The declaration includes the function name that you want to be called, and the number of seconds until the timer executes the function call. Each timer is executed only once, so when the functions are called, we create a new timer so that the process is repeated.
+        </p>
+        <p>
+          When the <c>get_weather</c> function is called, it cancels the <c>temp_timer</c> so that the display of the forecast isn't interrupted. This is only necessary because both of them make use of the OLED display. The <c>log_timer</c> isn't canceled because there is no conflict in the resources used.
+        </p>
+        <p>
+          With the <c>log_measurements</c> function, the inside temperature and humidity are combined with the current date and time into a CSV (Comma Separated Values) string, and appended to a file. This is a common data exchange format, and it can be read by a number of different applications. A common one is Microsoft Excel. If you open this fine in Excel, or LibreOffice Calc you can easily use it to create a graph that will show the changes in temperature and humidity in your immediate environment over time.
+        </p>
+      </subsubsection>
+   </subsection>
   </section>
   <section>
-    <p>
-      Transcribe the program, and run it.
-    </p>
-    <listing>
-      <program>
-        <input>
-          1|  import math
-          2|  import requests
-          3|  import json
-          4|  import board
-          5|  from PIL import Image, ImageDraw, ImageFont
-          6|  import adafruit_ssd1306
-          7|  from time import sleep
-          8|  from datetime import datetime
-          9|  import adafruit_ahtx0
-         10|  import threading
-         11|
-        </input>
-      </program>
-    </listing>
-    <listing>
-      <program>
-        <input>
-          12|  class nws_forecast():
-          13|    # Get the National Weather Service Forecast based upon the Geolocation.
-          14|    # Geolocation is found by using the public IP address for the network that this device is attached to.
-          15|    def get(self):
-          16|      # Get the geolocation for your IP Address.
-          17|      # API Documentation: https://ip-api.com/docs/api:json
-          18|      URL = 'http://ip-api.com/json'
-          19|
-          20|      r = requests.get(url = URL)
-          21|      data = r.json()
-          22|      # For debuggin purposes.
-          23|      #print(json.dumps(data, indent=2))
-          24|      latitude = data['lat']
-          25|      longitude = data['lon']
-          26|
-          27|      # Get the National Weather Service Office, and grid for your location.
-          28|      # API Documentation: https://www.weather.gov/documentation/services-web-api#
-          29|      HEADERS = {'user-agent': '(IntroductionToEmbeddedSystems, ajbradburn@gmail.com)'}
-          30|
-          31|      URL = 'https://api.weather.gov/points/{},{}'
-          32|      URL = URL.format(latitude, longitude)
-          33|
-          34|      r = requests.get(url = URL, headers=HEADERS)
-          35|
-          36|      data = r.json()
-          37|      # For debugging purposes.
-          38|      #print(json.dumps(data, indent=2))
-          39|
-          40|      # Using the data from the last request, get the forcast for your area.
-          41|      office = data['properties']['gridId']
-          42|      loc_x = data['properties']['gridX']
-          43|      loc_y = data['properties']['gridY']
-          44|
-          45|      URL = 'https://api.weather.gov/gridpoints/{}/{},{}/forecast'
-          46|      URL = URL.format(office, loc_x, loc_y)
-          47|
-          48|      r = requests.get(url = URL, headers=HEADERS)
-          49|
-          50|      data = r.json()
-          51|      # For debugging purposes.
-          52|      #print(json.dumps(data, indent=2))
-          53|
-          54|      # Return only the current, or most immediate forecast.
-          55|      return data['properties']['periods'][0]
-          56|
-        </input>
-      </program>
-    </listing>
-    <listing>
-      <program>
-        <input>
-          57|  class oled_display():
-          58|    width = 128
-          59|    height = 32
-          60|
-          61|    oled = None
-          62|
-          63|    def __init__(self):
-          64|      self.oled = adafruit_ssd1306.SSD1306_I2C(self.width, self.height, board.I2C(), addr=0x3C)
-          65|
-          66|    def display_none(self):
-          67|      self.oled.fill(0)
-          68|      self.oled.show()
-          69|
-          70|    def display_string(self, text, font = None, size = 10, height = None, width = None):
-          71|      image = Image.new("1", (self.oled.width, self.oled.height))
-          72|
-          73|      draw = ImageDraw.Draw(image)
-          74|
-          75|      if height == None or width == None:
-          76|        dimensions = self.text_size(text, font, size)
-          77|
-          78|        if width == None:
-          79|          width = dimensions[0]
-          80|
-          81|        if height == None:
-          82|          height = dimensions[1]
-          83|
-          84|      if font == None:
-          85|        font = ImageFont.load_default()
-          86|      else:
-          87|        font = ImageFont.truetype(font, size)
-          88|
-          89|      draw.text(
-          90|        (self.oled.width // 2 - width // 2, self.oled.height // 2 - height // 2),
-          91|        text,
-          92|        font=font,
-          93|        fill=10,
-          94|        )
-          95|
-          96|      self.oled.image(image)
-          97|      self.oled.show()
-          98|
-        </input>
-      </program>
-    </listing>
-    <listing>
-      <program>
-        <input>
-          99|    def text_size(self, text, font = None, size = 10):
-          100|      if font == None:
-          101|        font = ImageFont.load_default()
-          102|      else:
-          103|        font = ImageFont.truetype(font, size)
-          104|      return font.getsize(text)
-          105|
-          106|    def scroll_string(self, text, font = None, size = 10, delay = 0.01):
-          107|      text_len = len(text)
-          108|      dimensions = self.text_size(text, font, size)
-          109|      window_length = math.floor(self.oled.width / (dimensions[0] / text_len))
-          110|      start = 0
-          111|      height = dimensions[1]
-          112|      width = window_length * (dimensions[0] / text_len)
-          113|      padding = ' ' * window_length
-          114|      text = padding + text + padding
-          115|      text_len = len(text)
-          116|      while start + window_length &lt;= text_len:
-          117|        sub_string = text[start:start + window_length]
-          118|        start = start + 1
-          119|        self.display_string(sub_string, font, size, width=width, height=height)
-          120|        sleep(delay)
-          121|      return
-          122|
-          123|    def display_with_intro(self, intro, text, font = None, size = 10):
-          124|      self.display_string(intro, font, size)
-          125|      sleep(1)
-          126|      self.scroll_string(text, font, size)
-          127|
-        </input>
-      </program>
-    </listing>
-    <listing>
-      <program>
-        <input>
-          128|  default_font = 'DejaVuSansMono.ttf'
-          129|
-          130|  # Initialize objects.
-          131|  oled_display = oled_display()
-          132|  sensor = adafruit_ahtx0.AHTx0(board.I2C())
-          133|
-          134|  def start_log_timer():
-          135|    log_timer = threading.Timer(30, log_measurements).start()
-          136|
-          137|  def start_forecast_timer():
-          138|    forecast_timer = threading.Timer(60, get_weather).start()
-          139|
-          140|  def start_temp_timer():
-          141|    global temp_timer
-          142|    temp_timer = threading.Timer(10, display_temp)
-          143|    temp_timer.start()
-          144|
-          145|  def get_weather():
-          146|    # Start a new timer.
-          147|    start_forecast_timer()
-          148|
-          149|    # Cancel the temp_timer so that it doesn't interfere with our forecast display.
-          150|    global temp_timer
-          151|    temp_timer.cancel()
-          152|
-          153|    # Get the forecast and display it.
-          154|    global oled_display
-          155|    global sensor
-          156|    weather = nws_forecast()
-          157|    forecast = weather.get()
-          158|    oled_display.display_string('High: {}°F'.format(forecast['temperature']), default_font, 16)
-          159|    sleep(2)
-          160|    oled_display.display_string('Inside: {}°F'.format(int(sensor.temperature * 9 / 5 + 32)), default_font, 16)
-          161|    sleep(2)
-          162|    oled_display.display_with_intro('Forecast:', forecast['detailedForecast'], default_font, 16)
-          163|
-          164|    # Resume the display of temperature, and start a new temp_timer.
-          165|    display_temp()
-          166|
-        </input>
-      </program>
-    </listing>
-    <listing>
-      <program>
-        <input>
-          167|  def display_temp():
-          168|    # Start a new timer.
-          169|    start_temp_timer()
-          170|
-          171|    # Read the temperature and display it.
-          172|    global default_font
-          173|    temperature = sensor.temperature
-          174|    humidity = sensor.relative_humidity
-          175|    oled_display.display_string('Inside: {:.2f}°F'.format(temperature * 9 / 5 + 32), default_font, 12)
-          176|
-          177|  def log_measurements():
-          178|    # Start a new timer.
-          179|    start_log_timer()
-          180|
-          181|    # Read temperature and humidity. Log it with the date/time to a file in csv format.
-          182|    global sensor
-          183|    temperature = sensor.temperature
-          184|    humidity = sensor.relative_humidity
-          185|    string = '\"{}\",{:.2f},{:.2f}\n'.format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"), temperature, humidity)
-          186|    file = open('log.csv', 'a')
-          187|    file.write(string)
-          188|    file.close()
-          189|
-          190|  # A variable to hold the temp_timer so that we can reference it later, and cancel the timer when needed.
-          191|  temp_timer = None
-          192|
-          193|  start_log_timer()
-          194|  display_temp()
-          195|  start_forecast_timer()
-        </input>
-      </program>
-    </listing>
-  </section>
-  <section>
-    <p>
-      There are a myriad ways to communicate over the internet. One of the more common methods is through what is called a REST API. Starting on line 12 we create a class with a single method that will get the forecasts for our area from the national weather service through a series of HTTP requests to different APIs.
-    </p>
-    <p>
-      The first request is to a IP geolocation service as identified in the URL on line 18. This service will take the public IP address that is making the request, and find the best estimate of the geographic location in terms of latitude and longitude. It will return this data in the form of a JSON object. If you uncomment line 23, and run the program, you can see what this response looks like.
-    </p>
-    <p>
-      When we get the geolocation response, we extract the latitude and longitude as seen on lines 24 and 25. We then use this information to make another request to the National Weather Service (as seen on line 31) so that we can get the office that is responsible for providing the forecasts, as well as the grid coordinates for our location. This request will return another JSON formatted data object that will contain the information we need. If you uncomment line 38 and run the application, you can see what the response looks like.
-    </p>
-    <p>
-      Next, we extract the office id, and grid coordinates as seen on lines 41, 42 and 43. We then use this data to make our final request as seen on line 45. The response for this will contain the data for a 7 day forecast. However, since we are only interested in the immediate forecast, we extract the first forecast in the list (at index 0) as seen on line 55, and return that to the requester.
-    </p>
-  </section>
-  <section>
-    <p>
-      The objective of this application is to display the inside temp, log the inside temp and humidity to a file, and also occasionally show the forecast high temperature along with the forecast. Measuring and displaying the inside temperature occurs every 10 seconds, except when the forecast is being displayed. The logging is done every 30 seconds. The display of the forecast is done every minute. In order to accurately control the timing of all of these functions we make extensive use of timers, and the functions lines 134, 137, and 145 help us with that.
-    </p>
-    <p>
-      The threading library provides the functions for declaring timers. The declaration includes the function name that you want to be called, and the number of seconds until the timer executes the function call. Each timer is executed only once, so when the functions are called, we create a new timer so that the process is repeated.
-    </p>
-    <p>
-      When the <c>get_weather</c> function is called, it cancels the <c>temp_timer</c> so that the display of the forecast isn't interrupted. This is only necessary because both of them make use of the OLED display. The <c>log_timer</c> isn't canceled because there is no conflict in the resources used.
-    </p>
-  </section>
-  <section>
-    <p>
-      With the <c>log_measurements</c> function, the inside temperature and humidity are combined with the current date and time into a CSV (Comma Separated Values) string, and appended to a file. This is a common data exchange format, and it can be read by a number of different applications. A common one is Microsoft Excel. If you open this fine in Excel, or LibreOffice Calc you can easily use it to create a graph that will show the changes in temperature and humidity in your immediate environment over time.
-    </p>
+    <title>Displaying Data Visually</title>
     <p>
       If we had a slightly more advanced display, or if this was a Graphical Application, we could instead display this data as a graph in real time.
     </p>
-    <!-- Create a graph of the data. -->
+    <p>[Explore pyplt and graphing our temperature data on the screen.]</p>
   </section>
 </chapter>

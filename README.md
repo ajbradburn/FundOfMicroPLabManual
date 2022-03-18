@@ -18,6 +18,7 @@ Work on structure of the labs:
 Associated Reading
 Introduction
 Discussion/Background
+Required Equipment
 Preview
 Wiring
 Code

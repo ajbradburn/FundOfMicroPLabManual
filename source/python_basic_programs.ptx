@@ -32,7 +32,9 @@
     </ul>
   </section>
   <section>
+    <title>Basic Python Programs</title>
     <subsection>
+      <title>Discussion</title>
       <p>
         When programming with Assembly, we used labels and branching to change the flow of our program based upon conditions. With high-level programming languages, the equivalent operation is achieved with something called a function. Like jumps and labels in Assembly, you define a name, call it to execute some instructions, and then are returned to the original position to continue with your program.
       </p>
@@ -40,63 +42,64 @@
         With high-level programming languages, so much of the basic computer operation is abstracted into functions that they are nearly all that you'll work with. In this lab, we will explore this subject with a simple Python program.
       </p>
     </subsection>
-    <project>
-      <p>
-        Transcribe this program into the Thonny Python IDE, and run it.
-      </p>
-      <listing>
-        <program>
-          <input>
-            1|  import sys
-            2|  import random
-            3|
-            4|  # Ask the user to tell us how many die they wish to roll.
-            5|  number_of_die = input("Enter the number of die you'd like to roll: ")
-            6|  # Make sure that any input is an int.
-            7|  number_of_die = int(number_of_die)
-            8|  # Check the user input for a reasonable value.
-            9|  if number_of_die &lt; 1:
-           10|      print('You must enter a number greater than 1.')
-           11|      sys.exit(2)
-           12|
-           13|  # Initialize a list of possible faces.
-           14|  die_faces = [4, 6, 8, 10, 12, 20]
-           15|  # Ask the user how many sides they want for the die that are rolled.
-           16|  sides_of_die = input("How many sides for each die? [{}]: ".format(', '.join(str(item) for item in die_faces)))
-           17|  # Make sure that any input is an int.
-           18|  sides_of_die = int(sides_of_die)
-           19|  # Check that the number provided was in our list of possible options.
-           20|  if sides_of_die not in die_faces:
-           21|      print('You must choose one of the options listed.')
-           22|      sys.exit(2)
-           23|
-           24|  # Roll Die.
-           25|  print("Rolling {} die with {} faces each.".format(number_of_die, sides_of_die))
-           26|
-           27|  # Create a dictionary that will store the rolls for each die.
-           28|  rolls = {}
-           29|  # Initialize a variable that will store the cumulative rolls.
-           30|  roll_total = 0
-           31|
-           32|  # For each die indicated, make a roll.
-           33|  for d in range(1, number_of_die + 1):
-           34|      # Select a number within the range possible for the number of sides.
-           35|      rolls[d] = random.randint(1, sides_of_die)
-           36|      # Add this new roll to the roll total.
-           37|      roll_total = roll_total + rolls[d]
-           38|
-           39|  # Output die results.
-           40|  for d in rolls:
-           41|      print("Die {} rolled a {}.".format(d, rolls[d]))
-           42|  print("The roll total is {}.".format(roll_total))
-          </input>
-        </program>
-      </listing>
-    </project>
     <subsection>
-      <title>
-        Data Types
-      </title>
+      <project>
+        <title>Code</title>
+        <p>
+          Transcribe, compile, and run the program.
+        </p>
+        <listing>
+          <program>
+            <input>
+              1|  import sys
+              2|  import random
+              3|
+              4|  # Ask the user to tell us how many die they wish to roll.
+              5|  number_of_die = input("Enter the number of die you'd like to roll: ")
+              6|  # Make sure that any input is an int.
+              7|  number_of_die = int(number_of_die)
+              8|  # Check the user input for a reasonable value.
+              9|  if number_of_die &lt; 1:
+            10|      print('You must enter a number greater than 1.')
+            11|      sys.exit(2)
+            12|
+            13|  # Initialize a list of possible faces.
+            14|  die_faces = [4, 6, 8, 10, 12, 20]
+            15|  # Ask the user how many sides they want for the die that are rolled.
+            16|  sides_of_die = input("How many sides for each die? [{}]: ".format(', '.join(str(item) for item in die_faces)))
+            17|  # Make sure that any input is an int.
+            18|  sides_of_die = int(sides_of_die)
+            19|  # Check that the number provided was in our list of possible options.
+            20|  if sides_of_die not in die_faces:
+            21|      print('You must choose one of the options listed.')
+            22|      sys.exit(2)
+            23|
+            24|  # Roll Die.
+            25|  print("Rolling {} die with {} faces each.".format(number_of_die, sides_of_die))
+            26|
+            27|  # Create a dictionary that will store the rolls for each die.
+            28|  rolls = {}
+            29|  # Initialize a variable that will store the cumulative rolls.
+            30|  roll_total = 0
+            31|
+            32|  # For each die indicated, make a roll.
+            33|  for d in range(1, number_of_die + 1):
+            34|      # Select a number within the range possible for the number of sides.
+            35|      rolls[d] = random.randint(1, sides_of_die)
+            36|      # Add this new roll to the roll total.
+            37|      roll_total = roll_total + rolls[d]
+            38|
+            39|  # Output die results.
+            40|  for d in rolls:
+            41|      print("Die {} rolled a {}.".format(d, rolls[d]))
+            42|  print("The roll total is {}.".format(roll_total))
+            </input>
+          </program>
+        </listing>
+      </project>
+    </subsection>
+    <subsection>
+      <title>Exploration</title>
       <p>
         The first this this program does is import two different libraries that contain the programming instructions for accessing the system functions, and generating random numbers.
       </p>
@@ -109,6 +112,10 @@
       <p>
         If you debug this program, and step through it until line 7, you'll be presented by the prompt in the <em>Shell</em> pane of the Thonny IDE. After you type a number, and press <em>Enter</em> you will see a new variable appear in the <em>Variables</em> pane. That new variable should have the value that you typed, however, you may notice that the number you typed has single quotes around it.
       </p>
+    </subsection>
+  </section>
+  <section>
+      <title>Data Types</title>
       <p>
         Variables in Python are incredibly dynamic. They can switch between a float, an int, a char, or an object and not even complain. In our case, the <c>input</c> function returns a string, and we stored that string in our variable. However, a string can't be used by some of the function we are going to call later. Additionally, a string doesn't even have to be a number.
       </p>
@@ -129,11 +136,9 @@
           ?
         </answer>
       </exercise>
-    </subsection>
-    <subsection>
-      <title>
-        Checking User Input
-      </title>
+  </section>
+  <section>
+      <title>Checking User Input</title>
       <p>
         Whenever dealing with external data, it is best practice to double check it for incorrect values. This is important because it will go a long way to prevent crashes, or unintended program behavior. It is also important because there are many cases where unchecked input can result in someone gaining access to the computer, and using it for malicious purposes.
       </p>
@@ -173,30 +178,36 @@
           ?
         </answer>
       </exercise>
-    </subsection>
-    <subsection>
-      <title>
-        Providing Output
-      </title>
-      <p>
-        Many embedded applications may have no need to interact with a user through text. However, it will not be uncommon for such applications to provide output. The output may come in the form of debugging logs that are streamed over a serial output, hidden deep inside the enclosure, or it may be in the form of data streamed to a web server somewhere on the internet for later analysis. Whatever the reason, it is advantageous to understand the basics of providing meaningful output.
-      </p>
-      <listing>
-        <program>
-          <input>
-            25|  print("Rolling {} die with {} faces each.".format(number_of_die, sides_of_die))
-          </input>
-        </program>
-      </listing>
-      <p>
-        On line 25 we make use of a print function that is designed to output the provided value to the <em>stdout</em>. In other cases, you may use functions designed to write the data to a file, or send it to a server on the internet. However, when calling the function, we create, and pass a string of text in a way that is worth closer examination.
-      </p>
-      <p>
-        In Python, string objects have a built in function called <c>format</c> that takes any number of parameters, and will sequentially replace and <c>{}</c> curly bracket pairs that it finds in the string. Special formatting instructions can be included in the curly brackets, and extensive documentation for this can be found in the Python documentation and other sources.
-      </p>
-      <p>
-        In our case, we have two curly bracket pairs, and we've provided two parameters when we called the <c>format</c> function. When the string is formatted, and printed out, we see a nice, human-readable sentence that lets us know what the program is doing.
-      </p>
-    </subsection>
   </section>
+  <section>
+    <title>Providing Output</title>
+    <p>
+      Many embedded applications may have no need to interact with a user through text. However, it will not be uncommon for such applications to provide output. The output may come in the form of debugging logs that are streamed over a serial output, hidden deep inside the enclosure, or it may be in the form of data streamed to a web server somewhere on the internet for later analysis. Whatever the reason, it is advantageous to understand the basics of providing meaningful output.
+    </p>
+    <listing>
+      <program>
+        <input>
+          25|  print("Rolling {} die with {} faces each.".format(number_of_die, sides_of_die))
+        </input>
+      </program>
+    </listing>
+    <p>
+      On line 25 we make use of a print function that is designed to output the provided value to the <em>stdout</em>. In other cases, you may use functions designed to write the data to a file, or send it to a server on the internet. However, when calling the function, we create, and pass a string of text in a way that is worth closer examination.
+    </p>
+    <p>
+      In Python, string objects have a built in function called <c>format</c> that takes any number of parameters, and will sequentially replace and <c>{}</c> curly bracket pairs that it finds in the string. Special formatting instructions can be included in the curly brackets, and extensive documentation for this can be found in the Python documentation and other sources.
+    </p>
+    <p>
+      In our case, we have two curly bracket pairs, and we've provided two parameters when we called the <c>format</c> function. When the string is formatted, and printed out, we see a nice, human-readable sentence that lets us know what the program is doing.
+    </p>
+  </section>
+    <section>
+      <title>Reflection</title>
+      <!-- Questions about the processes covered. -->
+      <exercise>
+        <prompt>
+          What are your thoughts on the assembly programming language?
+        </prompt>
+      </exercise>
+    </section>
 </chapter>
