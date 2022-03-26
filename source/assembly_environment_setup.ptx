@@ -160,7 +160,7 @@
     </figure>
     <ol>
       <li>Type the project name, or title in the <em>Project title:</em> field. In this case, <em>sum</em></li>
-      <li>Enter the path to where you project will be saved in the <em>Folder to create project in:</em> field. You can type this out, or click the <em>button</em> to the right of the field to select it using the file browser.</li>
+      <li>Enter the path to where your project will be saved in the <em>Folder to create project in:</em> field. You can type this out, or click the <em>button</em> to the right of the field to select it using the file browser.</li>
     </ol>
   </subsection>
   <subsection>
@@ -300,7 +300,7 @@
       <li>Click the <em>Run</em> (green arrow) shortcut in the toolbar.</li>
     </ol>
     <p>
-      If everything was typed correctly, you should see little window pop up and present to you the result of running your program. However, if there are errors, you're going to need to do some debugging, and that is what we will illustrate next.
+      If everything was typed correctly, you should see a little window pop up and present to you the result of running your program. However, if there are errors, you're going to need to double check your syntax and do some debugging.
     </p>
     <p>
       Because the program functions by executing one step at a time, you can follow the progress of the application by adding <em>break points</em> to the program in the IDE. These function as stop-and-wait points in the program and enable you to take time and review expected states for things.
@@ -372,7 +372,7 @@
       At this point, things will start happening on the screen.
     </p>
     <ul>
-      <li> A program console pop up on the screen, and maybe disappear.</li>
+      <li> A program console will pop up on the screen, and maybe disappear.</li>
       <li>The layout will change slightly.</li>
     </ul>
     <p>When asked to save the layout change:</p>
@@ -404,7 +404,7 @@
   </subsection>
   <subsection>
     <p>
-      There should now see a window in the foreground that displays register names, and values in both hexadecimal, and decimal.
+      There should now be a window in the foreground that displays register names, and values in both hexadecimal, and decimal.
     </p>
     <p>
       To see the values change as our program executes, step-by-step:
@@ -456,6 +456,16 @@
     <task>
       <statement>
         The Raspberry Pi uses an ARM processor. What are some other popular microprocessor designers?
+      </statement>
+    </task>
+    <task>
+      <statement>
+        Is programming a concept that is limited to computers?
+      </statement>
+    </task>
+    <task>
+      <statement>
+        What ofther aspects of your life require detailed istructions, precise communication?
       </statement>
     </task>
   </exercise>

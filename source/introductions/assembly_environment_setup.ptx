@@ -2,9 +2,9 @@
 
 <introduction>
   <p>
-    In order to interface with the processor, we are going to need to write programs. Writing programs can be a challenging process, requiring a great deal of knowledge, and is prone to mistakes. A simple human error can result in all sorts of unanticipated behavior.
+    In order to interface with the processor, we are going to need to write programs. Writing programs can be a challenging process that requires a great deal of knowledge, and is prone to mistakes. A simple human error can result in all sorts of unanticipated behavior.
   </p>
   <p>
-    There are tools, called an Interactive Development Environment or <term>IDE</term> that make this process of writing code and working through errors much easier. We will install one such IDE that will be used for the labs in this book.
+    There are tools, called an Interactive Development Environment or <term>IDE</term> that make this process of writing code and working through errors much easier. We will install one such IDE that will be used for some of the labs in this book.
   </p>
 </introduction>

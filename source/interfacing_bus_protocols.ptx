@@ -497,7 +497,7 @@
       </listing>
     </subsection>
     <subsection>
-      <title>Exploration></title>
+      <title>Exploration</title>
       <p>
         This little program re-uses the class we created for the OLED display in the last experiment.
       </p>
