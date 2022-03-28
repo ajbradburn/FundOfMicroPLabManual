@@ -84,7 +84,7 @@
         </row>
         <row>
             <cell>1</cell>
-            <cell>Film/Foil Capacitor</cell>
+            <cell>100nF Film/Foil Capacitor</cell>
         </row>
         <row>
             <cell>6</cell>
@@ -222,6 +222,9 @@
     <p>With everything wired up, transcribe the following program and run it.</p>
     <p>
       The majority of this code is a replication of the previous experiment. This includes some new library imports, a new class definition, and a couple of lines in the roll_dice function.
+    </p>
+    <p>
+      <url href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/interfacing_bus_protocols/dice.py">Download the Source</url>
     </p>
     <listing>
       <program>
@@ -401,20 +404,46 @@
       Next, we declare a class that will handle sending our roll results to the display. The main function is <c>display_string</c> which will take a preformatted sentence, incorporate it into an image, and send that image to the OLED display.
     </p>
     <p>
+      Classes are very important structures, if you continue on with programming, you'll explore them more. If you're interested, chapters 15 through 19 of <url href="https://open.umn.edu/opentextbooks/textbooks/think-python-how-to-think-like-a-computer-scientist">Think Python: How to Think Like a Computer Scientist. 2nd Edition</url> cover the subject matter in more detail.
+    </p>
+    <p>
       In the <c>roll_dice</c> function we've added two lines. The first formats a string of text that includes our rolled number. The next passes that text to the <c>display_string</c> function discussed previously.
     </p>
     <p>
       Finally, to interact with the OLED display, we've modified the <c>start</c> function to allow an <c>oled_display</c> object to be passed to it, and we've initialized a variable that points to an instance of our <c>oled_display</c> class we defined earlier.
     </p>
+    <p>
+      With this itteration of our project, when the button is pressed, the output is displayed on the LED display as before, but also on the OLED display in plain text.
+    </p>
   </subsection>
-    <!-- Explore I2C, or SPI a bit more. Demonstrate the bus protocol in graphic form. Show some captures of the bus. -->
   </section>
+  <!--
+  <section>
+    <title>Classes</title>
+    <p>
+      In this, and the previous lab, we have created, and used classes to group together variables and functions related to the LED display, and the OLED display. Additionally, we've used classes extensively by this point as all of our text strings are classes that have a number of useful functions that we can call to act upon them.
+    </p>
+    <p>
+      Classes solvea lot of programming challenges, and also make re-using code significantly more simple. One advantage that we leverage is mandating how the class is initialized, and destroyed. The <c>__init__</c> function is automatically called whenever a new class is created. In our <c>__init__</c> function of the <c>led_display</c> class we configure the Raspberry Pi to use specific pins as output. When we do it this way, we don't have to worry about the user remembering to set them up themselves.
+    </p>
+    <p>
+      Similarly, the <c>__del__</c> function is automatically called whenever the class is destroyed, say, at the end of a program. When that happens, our <c>led_display</c> class calls a function that clears the states of the GPIO pins.
+    </p>
+  </section>
+  -->
+  <!-- Explore I2C, or SPI a bit more. Demonstrate the bus protocol in graphic form. Show some captures of the bus. -->
   <section>
     <title>Reading and Using Data</title>
     <subsection>
       <title>Discussion</title>
       <p>
+        Outputting data is very handy, but being able to retrieve data from sensors is probably one of the greatest benefits of interfacing with peripherials. We will explore that with a second example.
+      </p>
+      <p>
         With everything wired up, transcribe the following program, and run it.
+      </p>
+      <p>
+        <url href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/interfacing_bus_protocols/temperature.py">Download the Source</url>
       </p>
     </subsection>
     <subsection>
@@ -509,4 +538,17 @@
       </p>
     </subsection>
   </section>
+  <exercise>
+    <title>Reflections</title>
+    <task>
+      <statement>
+        <p>How many <m>I^2C</m> devices can share a bus?</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>What are some advantages to using bus protocols over direct GPIO manipulation like what we used for the button and LEDs?</p>
+      </statement>
+    </task>
+  </exercise>
 </chapter>

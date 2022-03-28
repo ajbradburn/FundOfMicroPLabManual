@@ -48,20 +48,23 @@
         <p>
           Transcribe, compile, and run the program.
         </p>
+        <p>
+          <url href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/python_basic_programs/dice.py">Download the Source</url>
+        </p>
         <listing>
           <program>
             <input>
-              1|  import sys
-              2|  import random
-              3|
-              4|  # Ask the user to tell us how many die they wish to roll.
-              5|  number_of_die = input("Enter the number of die you'd like to roll: ")
-              6|  # Make sure that any input is an int.
-              7|  number_of_die = int(number_of_die)
-              8|  # Check the user input for a reasonable value.
-              9|  if number_of_die &lt; 1:
-            10|      print('You must enter a number greater than 1.')
-            11|      sys.exit(2)
+             1|  import sys
+             2|  import random
+             3|
+             4|  # Ask the user to tell us how many die they wish to roll.
+             5|  number_of_die = input("Enter the number of die you'd like to roll: ")
+             6|  # Make sure that any input is an int.
+             7|  number_of_die = int(number_of_die)
+             8|  # Check the user input for a reasonable value.
+             9|  if number_of_die &lt; 1:
+            10|    print('You must enter a number greater than 1.')
+            11|    sys.exit(2)
             12|
             13|  # Initialize a list of possible faces.
             14|  die_faces = [4, 6, 8, 10, 12, 20]
@@ -71,8 +74,8 @@
             18|  sides_of_die = int(sides_of_die)
             19|  # Check that the number provided was in our list of possible options.
             20|  if sides_of_die not in die_faces:
-            21|      print('You must choose one of the options listed.')
-            22|      sys.exit(2)
+            21|    print('You must choose one of the options listed.')
+            22|    sys.exit(2)
             23|
             24|  # Roll Die.
             25|  print("Rolling {} die with {} faces each.".format(number_of_die, sides_of_die))
@@ -84,14 +87,14 @@
             31|
             32|  # For each die indicated, make a roll.
             33|  for d in range(1, number_of_die + 1):
-            34|      # Select a number within the range possible for the number of sides.
-            35|      rolls[d] = random.randint(1, sides_of_die)
-            36|      # Add this new roll to the roll total.
-            37|      roll_total = roll_total + rolls[d]
+            34|    # Select a number within the range possible for the number of sides.
+            35|    rolls[d] = random.randint(1, sides_of_die)
+            36|    # Add this new roll to the roll total.
+            37|    roll_total = roll_total + rolls[d]
             38|
             39|  # Output die results.
             40|  for d in rolls:
-            41|      print("Die {} rolled a {}.".format(d, rolls[d]))
+            41|    print("Die {} rolled a {}.".format(d, rolls[d]))
             42|  print("The roll total is {}.".format(roll_total))
             </input>
           </program>
@@ -206,7 +209,7 @@
       <!-- Questions about the processes covered. -->
       <exercise>
         <prompt>
-          What are your thoughts on the assembly programming language?
+          What are some advantages of the python programming language?
         </prompt>
       </exercise>
     </section>

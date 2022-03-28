@@ -72,133 +72,133 @@
         <listing>
           <program>
             <input>
-             1|  #!/usr/bin/python3
-             2|  
-             3|  import sys
-             4|  import getopt
-             5|  from os.path import exists
-             6|  import json
-             7|  import random
-             8|  
-             9|  def calc_combinations(roll_totals, remaining_die, cumulative_rolls):
-            10|      for r in range(1, 6 + 1):
-            11|          if remaining_die > 1:
-            12|              die_left = remaining_die - 1
-            13|              calc_combinations(roll_totals, die_left, cumulative_rolls + r)
-            14|          else:
-            15|              roll_totals.append(cumulative_rolls + r)
-            16|  
-            17|  
-            18|  def main(argv):
-            19|      # Check if configuration file exists.
-            20|      file_name = 'die_stats.json'
-            21|      if(exists(file_name)):
-            22|          file_handle = open(file_name, 'r')
-            23|          stats = json.load(file_handle)
-            24|          file_handle.close()
-            25|          file_handle = open(file_name, 'w')
-            26|      else:
-            27|      # Initialize stats.
-            28|          file_handle = open(file_name, 'w')
-            29|          stats = {
-            30|                      '1':{
-            31|                          'run_count': 0,
-            32|                          '1':{"rolls":0, "percentage":16},
-            33|                          '2':{"rolls":0, "percentage":16},
-            34|                          '3':{"rolls":0, "percentage":16},
-            35|                          '4':{"rolls":0, "percentage":16},
-            36|                          '5':{"rolls":0, "percentage":16},
-            37|                          '6':{"rolls":0, "percentage":16},
-            38|                      }
-            39|                  }
-            40|  
-            41|      # Look for command line input of N die.
-            42|      help_string = 'output_with_format.py -i &lt;file_name&gt;'
-            43|      try:
-            44|          opts, args = getopt.getopt(argv, "hn:")
-            45|      except getopt.GetoptError:
-            46|          print(help_string)
-            47|          sys.exit(2)
-            48|  
-            49|      number_of_die = None
-            50|  
-            51|      for opt, arg in opts:
-            52|          if opt == '-h':
-            53|              print(help_string)
-            54|          elif opt in ("-n"):
-            55|              number_of_die = arg
-            56|  
+              1|  #!/usr/bin/python3
+              2|
+              3|  import sys
+              4|  import getopt
+              5|  from os.path import exists
+              6|  import json
+              7|  import random
+              8|
+              9|  def calc_combinations(roll_totals, remaining_die, cumulative_rolls):
+             10|    for r in range(1, 6 + 1):
+             11|      if remaining_die &gt; 1:
+             12|        die_left = remaining_die - 1
+             13|        calc_combinations(roll_totals, die_left, cumulative_rolls + r)
+             14|      else:
+             15|        roll_totals.append(cumulative_rolls + r)
+             16|
+             17|
+             18|  def main(argv):
+             19|    # Check if configuration file exists.
+             20|    file_name = 'die_stats.json'
+             21|    if(exists(file_name)):
+             22|      file_handle = open(file_name, 'r')
+             23|      stats = json.load(file_handle)
+             24|      file_handle.close()
+             25|      file_handle = open(file_name, 'w')
+             26|    else:
+             27|    # Initialize stats.
+             28|      file_handle = open(file_name, 'w')
+             29|      stats = {
+             30|            '1':{
+             31|              'run_count': 0,
+             32|              '1':{"rolls":0, "percentage":16},
+             33|              '2':{"rolls":0, "percentage":16},
+             34|              '3':{"rolls":0, "percentage":16},
+             35|              '4':{"rolls":0, "percentage":16},
+             36|              '5':{"rolls":0, "percentage":16},
+             37|              '6':{"rolls":0, "percentage":16},
+             38|            }
+             39|          }
+             40|
+             41|    # Look for command line input of N die.
+             42|    help_string = 'output_with_format.py -i &lt;file_name&gt;'
+             43|    try:
+             44|      opts, args = getopt.getopt(argv, "hn:")
+             45|    except getopt.GetoptError:
+             46|      print(help_string)
+             47|      sys.exit(2)
+             48|
+             49|    number_of_die = None
+             50|
+             51|    for opt, arg in opts:
+             52|      if opt == '-h':
+             53|        print(help_string)
+             54|      elif opt in ("-n"):
+             55|        number_of_die = arg
+             56|
             </input>
           </program>
         </listing>
         <listing>
           <program>
             <input>
-              57|      # If NO, ask for user input of N Die.
-              58|      if number_of_die == None:
-              59|          number_of_die = input("Enter the number of die you'd like to roll:")
-              60|  
-              61|      # Make sure that any input is an int.
-              62|      number_of_die = int(number_of_die)
-              63|      str_number_of_die = str(number_of_die)
-              64|  
-              65|      # Check the user input for a reasonable value.
-              66|      if number_of_die &lt; 1:
-              67|          print('You must enter a number greater than 1.')
-              68|          sys.exit(2)
-              69|  
-              70|      # Initialize stats for N die if it doesn't already exist.
-              71|      if not str_number_of_die in stats:
-              72|          die_combinations = []
-              73|          calc_combinations(die_combinations, number_of_die, 0)
-              74|          roll_values = (list(set(die_combinations)))
-              75|  
-              76|          stats[str_number_of_die] = {}
-              77|          stats[str_number_of_die]['run_count'] = 0
-              78|          for rv in roll_values:
-              79|              roll_possibilities = len(die_combinations)
-              80|              roll_frequency = die_combinations.count(rv)
-              81|              roll_percentage = int(roll_frequency / roll_possibilities * 100)
-              82|              stats[str_number_of_die][str(rv)] = {"rolls":0, "percentage":roll_percentage}
-              83|  
-              84|      # Roll Die.
-              85|      print("Rolling {} die.".format(number_of_die))
-              86|  
-              87|      rolls = {}
-              88|      roll_total = 0
-              89|  
-              90|      for d in range(1, number_of_die + 1):
-              91|          rolls[d] = random.randint(1, 6)
-              92|          str_roll = str(rolls[d])
-              93|          stats['1'][str_roll]['rolls'] = stats['1'][str_roll]['rolls'] + 1
-              94|          stats['1']['run_count'] = stats['1']['run_count'] + 1
-              95|          roll_total = roll_total + rolls[d]
-              96|      str_roll_total = str(roll_total)
-              97|      stats[str_number_of_die][str_roll_total]['rolls'] = stats[str_number_of_die][str_roll_total]['rolls'] + 1
-              98|      stats[str_number_of_die]['run_count'] = stats[str_number_of_die]['run_count'] + 1
-              99|  
-             100|      # Output die results.
-             101|      for d in rolls:
-             102|          print("Die {} rolled a {}.".format(d, rolls[d]))
-             103|  
+              57|    # If NO, ask for user input of N Die.
+              58|    if number_of_die == None:
+              59|      number_of_die = input("Enter the number of die you'd like to roll: ")
+              60|
+              61|    # Make sure that any input is an int.
+              62|    number_of_die = int(number_of_die)
+              63|    str_number_of_die = str(number_of_die)
+              64|
+              65|    # Check the user input for a reasonable value.
+              66|    if number_of_die &lt; 1:
+              67|      print('You must enter a number greater than 1.')
+              68|      sys.exit(2)
+              69|
+              70|    # Initialize stats for N die if it doesn't already exist.
+              71|    if not str_number_of_die in stats:
+              72|      die_combinations = []
+              73|      calc_combinations(die_combinations, number_of_die, 0)
+              74|      roll_values = (list(set(die_combinations)))
+              75|
+              76|      stats[str_number_of_die] = {}
+              77|      stats[str_number_of_die]['run_count'] = 0
+              78|      for rv in roll_values:
+              79|        roll_possibilities = len(die_combinations)
+              80|        roll_frequency = die_combinations.count(rv)
+              81|        roll_percentage = int(roll_frequency / roll_possibilities * 100)
+              82|        stats[str_number_of_die][str(rv)] = {"rolls":0, "percentage":roll_percentage}
+              83|
+              84|    # Roll Die.
+              85|    print("Rolling {} die.".format(number_of_die))
+              86|
+              87|    rolls = {}
+              88|    roll_total = 0
+              89|
+              90|    for d in range(1, number_of_die + 1):
+              91|      rolls[d] = random.randint(1, 6)
+              92|      str_roll = str(rolls[d])
+              93|      stats['1'][str_roll]['rolls'] = stats['1'][str_roll]['rolls'] + 1
+              94|      stats['1']['run_count'] = stats['1']['run_count'] + 1
+              95|      roll_total = roll_total + rolls[d]
+              96|    str_roll_total = str(roll_total)
+              97|    stats[str_number_of_die][str_roll_total]['rolls'] = stats[str_number_of_die][str_roll_total]['rolls'] + 1
+              98|    stats[str_number_of_die]['run_count'] = stats[str_number_of_die]['run_count'] + 1
+              99|
+             100|    # Output die results.
+             101|    for d in rolls:
+             102|      print("Die {} rolled a {}.".format(d, rolls[d]))
+             103|
             </input>
           </program>
         </listing>
         <listing>
           <program>
             <input>
-              104|      # Output die statistics.
-              105|      str_actual_roll_percent = int((stats[str_number_of_die][str_roll_total]['rolls'] / stats[str_number_of_die]['run_count']) * 100)
-              106|      print("Out of the {} times that this program has been run {} has been rolled {} times, a percentage of {}. A roll of {} should occur {}% of the time.".format(stats[str_number_of_die]['run_count'], str_roll_total, stats[str_number_of_die][str_roll_total]['rolls'], str_actual_roll_percent, str_roll_total, stats[str_number_of_die][str_roll_total]['percentage']))
-              107|  
-              108|  
-              109|      # Save config and statistics to a file.
-              110|      stats_string = json.dumps(stats, indent=4)
-              111|      file_handle.truncate()
-              112|      file_handle.write(stats_string)
-              113|  
+              104|    # Output die statistics.
+              105|    str_actual_roll_percent = int((stats[str_number_of_die][str_roll_total]['rolls'] / stats[str_number_of_die]['run_count']) * 100)
+              106|    print("Out of the {} times that this program has been run {} has been rolled {} times, a percentage of {}. A roll of {} should occur {}% of the time.".format(stats[str_number_of_die]['run_count'], str_roll_total, stats[str_number_of_die][str_roll_total]['rolls'], str_actual_roll_percent, str_roll_total, stats[str_number_of_die][str_roll_total]['percentage']))
+              107|
+              108|
+              109|    # Save config and statistics to a file.
+              110|    stats_string = json.dumps(stats, indent=4)
+              111|    file_handle.truncate()
+              112|    file_handle.write(stats_string)
+              113|
               114|  if __name__ == "__main__":
-              115|      main(sys.argv[1:])
+              115|    main(sys.argv[1:])
             </input>
           </program>
         </listing>
@@ -278,12 +278,12 @@
         <program>
           <input>
              9|  def calc_combinations(roll_totals, remaining_die, cumulative_rolls):
-            10|      for r in range(1, 6 + 1):
-            11|          if remaining_die > 1:
-            12|              die_left = remaining_die - 1
-            13|              calc_combinations(roll_totals, die_left, cumulative_rolls + r)
-            14|          else:
-            15|              roll_totals.append(cumulative_rolls + r)
+            10|    for r in range(1, 6 + 1):
+            11|      if remaining_die &gt; 1:
+            12|        die_left = remaining_die - 1
+            13|        calc_combinations(roll_totals, die_left, cumulative_rolls + r)
+            14|      else:
+            15|        roll_totals.append(cumulative_rolls + r)
           </input>
         </program>
       </listing>
@@ -319,6 +319,33 @@
       <p>
         Variables will be everywhere in your program. Learning how to use them well will be key to good programming. Additionally, giving them proper names will be key to great programming. Giving a variable a long, descriptive name doesn't effect the speed of your code, but does dramatically improve the readability of your code. Conversely, a long descriptive variable name can be irritating to type repeatedly, so you'll need to find your own balance.
       </p>
+      <p>
+        Here are a few examples of common case types used in programming:
+      </p>
+      <table>
+        <tabular>
+        <row>
+          <cell>Case Name</cell>
+          <cell>Example</cell>
+        </row>
+        <row>
+          <cell>Camel Case</cell>
+          <cell>thisIsMyVariableName</cell>
+        </row>
+        <row>
+            <cell>Snake Case</cell>
+            <cell>this_is_my_variable_name</cell>
+        </row>
+        <row>
+            <cell>Kebab Case</cell>
+            <cell>this-is-my-variable-name</cell>
+        </row>
+        <row>
+            <cell>Pascal Case</cell>
+            <cell>ThisIsMyVariableName</cell>
+        </row>
+      </tabular>
+    </table>
     </subsection>
   </section>
   <section>
@@ -335,11 +362,11 @@
       <listing>
         <program>
           <input>
-            11|          if remaining_die > 1:
-            12|              die_left = remaining_die - 1
-            13|              calc_combinations(roll_totals, die_left, cumulative_rolls + r)
-            14|          else:
-            15|              roll_totals.append(cumulative_rolls + r)
+            11|      if remaining_die &gt; 1:
+            12|        die_left = remaining_die - 1
+            13|        calc_combinations(roll_totals, die_left, cumulative_rolls + r)
+            14|      else:
+            15|        roll_totals.append(cumulative_rolls + r)
           </input>
         </program>
       </listing>
@@ -361,7 +388,7 @@
     <title>Structure</title>
     <subsection>
       <p>
-        You may notice, while looking over our program, that most of our lines are indented. The majority are indented by 4 spaces, while others are indented 8, or more. Python uses indentation to group lines of code into blocks. This indentation level indicates if a line of code belongs to a function, an <c>if</c>, <c>else</c>, or <c>for</c> statement, or some other program structure.
+        You may notice, while looking over our program, that most of our lines are indented. All lines are indented by some multiple of 2. Python uses indentation to group lines of code into blocks. This indentation level indicates if a line of code belongs to a function, an <c>if</c>, <c>else</c>, or <c>for</c> statement, or some other program structure.
       </p>
       <p>
         When writing Python programs, it is essential that you pay attention to the indentation level of the line you're writing. Failure to do so will result in code that doesn't work the way you expect it to.
@@ -391,6 +418,11 @@
     <exercise>
       <statement>
         <p>How would you write a if, else if, else statement in Python? How would you do the same in C++?</p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>What case convention makes the most sense to you? Write 5 variable names in your chosen convention.</p>
       </statement>
     </exercise>
   </section>

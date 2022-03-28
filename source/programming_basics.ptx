@@ -51,13 +51,7 @@
       So, again, to provide useful instructions, you have to be still more explicit.
     </p>
     <p>
-      This process can seem tedious, but it is at the root of making computers do what you want them to do. Take a moment to reflect on just how difficult it would be to explain to a 2 year old the process of making a peanut butter and jelly sandwich. The explanation would require details for everything from the process of growing peanuts, making peanut butter, baking bread,  preparing jellies, to slicing bread, and the proper tools for applying the core ingredients. Now, take a second to reflect on just how difficult it is to explain the same process to a rock.
-    </p>
-    <p>
-      At the core of our modern technology is a whole bunch of different configurations of digital circuits etched into silicon crystals. These rocks don't do anything more than what they are designed to do. Things like microprocessors, while incredibly useful for so many tasks, are less useful than a Baghdad battery unless provided with a program that brings their design to use.
-    </p>
-    <p>
-      [transition]
+      This process can seem tedious, but it is at the root of making computers do what you want them to do. Take a moment to reflect on just how difficult it would be to explain to a 2 year old the process of making a peanut butter and jelly sandwich. The explanation would require details for everything from the process of growing peanuts, making peanut butter, baking bread, and preparing jellies, to slicing bread, and the proper tools for applying the core ingredients. Now, take a second to reflect on just how difficult it is to explain the same process to a rock.
     </p>
   </section>
   <section>
@@ -75,7 +69,7 @@
       Let us return to our peanut butter and jelly sandwich example, from a slightly different perspective for a moment.
     </p>
     <p>
-      Let's say a friend comes to you and says they are hungry. Our first assessment of the problem indicates that the real problem is a lack of food. Providing food will eliminate the hunger. We offer a solution of a PBJ. Our friend accepts that solution, and they eat the sandwich. As they make progress on the sandwich, they realize that the bread and the peanut butter are making it a bit difficult to eat the sandwich, and that they could really use something to wash it down.
+      Let's say a friend comes to you and says they are hungry. Our first assessment of the problem indicates that the real problem is a lack of food. Providing food will eliminate the hunger. We offer a solution of a PB&amp;J. Our friend accepts that solution, and they eat the sandwich. As they make progress on the sandwich, they realize that the bread and the peanut butter are making it a bit difficult to eat the sandwich, and that they could really use something to wash it down.
     </p>
     <p>
       While our solution of the sandwich was appropriate for the problem as it was originally outlined, in practice, we have learned that there were unintended consequences to our original solution that make it inadequate, so the solution has to be revised.
@@ -93,7 +87,7 @@
       Once you have a problem and solution defined in broad terms, it becomes necessary to start breaking the solution down into constituent steps. This first round of definition usually involves drawing connections between the parts of the solution, and the end product.
     </p>
     <p>
-      For example, when talking about making a PB&amp;J, we'd be in a good position if we identified the components that go into making that sandwich, and organizing them that conveys relationships.
+      For example, when talking about making a PB&amp;J, we'd be in a good position if we identified the components that go into making that sandwich, and organized them in a way that conveys relationships.
     </p>
     <p>It can be convenient to start with a list of the elements involved, using levels to indicate subordinate points.</p>
     <ul>
@@ -148,10 +142,10 @@
   <section>
     <title>Documenting the process.</title>
     <p>
-      Lists are probably your best friend when it comes to planning but not in the obvious way. Lists really shine when you begin writing pseudocode. This is typically included as comments in a program, and is generally the starting point for some new work.
+      Lists are probably your best friend when it comes to planning but not in the obvious way. Lists really shine when you begin writing pseudocode. This is typically included as comments in a program, and is generally the starting point for new work.
     </p>
     <p>
-      These comments, lists of the steps that will be needed to make this section of code work are an excellent framework for programmers. First, because they are natural language descriptions that will remain in the code base, and will be readable for others who come later. Second, because they are syntax independent. You won't be able to remember how to type every command in the programming language, and looking that stuff up can be distracting from the more important process of defining your objects. Writing out the pseudocode list first, and adding the programming afterwards helps to keep you on track.
+      These comments, lists of the steps that will be needed to make this section of code work are an excellent framework for programmers. First, because they are natural language descriptions that will remain in the code base, and will be readable for others who come later. Second, because they are syntax independent. You won't be able to remember how to type every command in the programming language, and looking that stuff up can be a distraction from the more important process of defining your objectives. Writing out the pseudocode list first, and adding the programming afterwards helps to keep you on track.
     </p>
     <listing>
       <program>
@@ -160,7 +154,7 @@
 
           # import loaf
           # slice_1 = get slice of bread with loaf
-          # slice_2 = get clise of bread with loaf
+          # slice_2 = get slice of bread with loaf
 
           # import jelly
           # call apply with (slice_1, jelly)
@@ -199,12 +193,6 @@
       </program>
     </listing>
     <p>
-      With a programming project of any size, you're going to end up using functions to handle repeated work. We haven't covered this topic yet, but they can be described as a grouping of programming that can be re-used.
-    </p>
-    <p>
-      For example, we don't have to describe how to make jelly, because that process is self-contained. We just need to say, get a jar of jelly, and all the different steps that went into that jar of jelly are sorta hidden in the background. This sort of simplicity is good for our sanity, and efficient for programming.
-    </p>
-    <p>
       Lists, in the form of pseudo code, have a limited scope of utility. Large programs can't easily be described with lists, because the relationships between sections of code, and the jumps they make to functions, or obscured bits of the program, aren't included in them. This is where the importance of flowcharts comes back to the forefront.
     </p>
     <p>
@@ -217,10 +205,7 @@
       With documentation in place, as lists, flowcharts, and or pseudocode, it is time to start writing the actual program.
     </p>
     <p>
-      This set of exercises will introduce you to a couple of different programming paradigms. The first is low-level programming languages that really covers very simple steps, but doesn't get you very far very quickly, thus, it is pretty difficult to go from idea to finished product. The second is high-level programming language that has lots of inbuilt functionality, and enables you to program a solution quickly, but does abstract away a lot of the underlying principles of the machine.
-    </p>
-    <p>
-      If this was programming instruction at it's core, or if the curriculum was more focused on the Arduino, it would be very valuable for you to be exposed to the C programming language, a third paradigm which lies somewhere in between.
+      This set of exercises will introduce you to a couple of different programming paradigms. The first is lower-level programming languages that covers very simple steps, and demands a great deal of knowledge of the underlying system. As a result, they don't get you very far very quickly, and thus, it is pretty difficult to go from idea to finished product. The second is high-level programming languages that have lots of inbuilt functionality, don't require a great deal of familiarity with the underlying system, and enables you to program a solution quickly. However, as a result, they do abstract away a lot of the underlying principles of the machine.
     </p>
     <figure>
       <caption>Illustration of the basic relationship between different programming languages.</caption>

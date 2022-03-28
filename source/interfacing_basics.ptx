@@ -68,7 +68,7 @@
           </row>
           <row>
               <cell>1</cell>
-              <cell>Film/Foil Capacitor</cell>
+              <cell>100nF Film/Foil Capacitor</cell>
           </row>
           <row>
               <cell>6</cell>
@@ -208,9 +208,12 @@
     </subsection>
     <subsection>
       <title>Code</title>
-    <p>
-      With everything wired up, transcribe the following program, and run it.
-    </p>
+      <p>
+        With everything wired up, transcribe the following program, and run it.
+      </p>
+      <p>
+        <url href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/interfacing_basics/dice.py">Download the Source</url>
+      </p>
     <listing>
       <program>
         <input>
@@ -320,9 +323,8 @@
     <p>
       On line 75, we use the <c>GPIO.setup()</c> function again, but for the button. In this case we use the input mode, and add a parameter that also configures a pull-up resistor. If you're not familiar with it, a pull-up resistor is a high value resistor connected to a voltage source and causes the signal line to rest at the high value instead of floating when not used. The alternative is a pull-down resistor which is just a high value resistor connected to GND and causes the line to stay at a low value when not used.
     </p>
-
     <p>
-      There are a number of possible approaches to determining when the button is pressed, but the most reliable way will generally always be one that relies upon hardware interrupts. On line 77, we make use of the <c>GPIO.add_event_detect()</c> function to monitor the button pin for a transition from high to low. What that happens, the function <c>roll_dice</c> will be called.
+      There are a number of possible approaches to determining when the button is pressed, but the most reliable way will generally always be one that relies upon hardware interrupts. On line 77, we make use of the <c>GPIO.add_event_detect()</c> function to monitor the button pin for a transition from high to low. When that happens, the function <c>roll_dice</c> will be called.
     </p>
     <p>
       Upon being called, the <c>roll_dice</c> function will roll a random number, and display the number on the LED display we've created.
@@ -342,12 +344,14 @@
     Variable Scope. global keyword.
   -->
   </section>
+  <!--
   <section><title>GPIO Mode: In vs Out</title></section>
   <section><title>Analog vs Digital Read</title></section>
   <section><title>Analog vs Digital Write</title></section>
   <section><title>Debouncing</title></section>
   <section><title>Program Organization with Libraries / Modules</title></section>
   <section><title>Variable Scope</title></section>
+  -->
   <section>
     <title>
       Troubleshooting
@@ -368,6 +372,18 @@
         Double check the orientation of the LED. Because of their diode characteristics, having them reversed will prevent current from flowing through them, at the voltages we are using.
       </p>
     </subsection>
-
   </section>
+  <exercise>
+    <title>Reflections</title>
+    <task>
+      <statement>
+        <p>If we wanted to add a second button, which pin would be a good candidate? What code would be used to configure the pin to read the button state?</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>If we wanted to add another LED, which pin would make a good candidate? What code would be used to configure the pin to drive the LED?</p>
+      </statement>
+    </task>
+  </exercise>
 </chapter>

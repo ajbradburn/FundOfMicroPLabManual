@@ -48,6 +48,9 @@
       <p>
         Transcribe the program, and run it.
       </p>
+      <p>
+        <url href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/data_management/weather.py">Download the Source</url>
+      </p>
       <listing>
         <program>
           <input>
@@ -60,8 +63,8 @@
             7|  from time import sleep
             8|  from datetime import datetime
             9|  import adafruit_ahtx0
-          10|  import threading
-          11|
+           10|  import threading
+           11|
           </input>
         </program>
       </listing>
@@ -167,7 +170,7 @@
       <listing>
         <program>
           <input>
-            99|    def text_size(self, text, font = None, size = 10):
+             99|    def text_size(self, text, font = None, size = 10):
             100|      if font == None:
             101|        font = ImageFont.load_default()
             102|      else:
@@ -298,7 +301,7 @@
       </subsubsection>
       <subsubsection>
         <p>
-          The objective of this application is to display the inside temp, log the inside temp and humidity to a file, and also occasionally show the forecast high temperature along with the forecast. Measuring and displaying the inside temperature occurs every 10 seconds, except when the forecast is being displayed. The logging is done every 30 seconds. The display of the forecast is done every minute. In order to accurately control the timing of all of these functions we make extensive use of timers, and the functions lines 134, 137, and 145 help us with that.
+          The objective of this application is to display the inside temp, log the inside temp and humidity to a file, and also occasionally show the forecast high temperature along with the forecast. Measuring and displaying the inside temperature occurs every 10 seconds, except when the forecast is being displayed. The logging is done every 30 seconds. The display of the forecast is done every minute. In order to accurately control the timing of all of these functions we make extensive use of timers, and the functions on lines 134, 137, and 145 help us with that.
         </p>
         <p>
           The threading library provides the functions for declaring timers. The declaration includes the function name that you want to be called, and the number of seconds until the timer executes the function call. Each timer is executed only once, so when the functions are called, we create a new timer so that the process is repeated.
@@ -307,11 +310,12 @@
           When the <c>get_weather</c> function is called, it cancels the <c>temp_timer</c> so that the display of the forecast isn't interrupted. This is only necessary because both of them make use of the OLED display. The <c>log_timer</c> isn't canceled because there is no conflict in the resources used.
         </p>
         <p>
-          With the <c>log_measurements</c> function, the inside temperature and humidity are combined with the current date and time into a CSV (Comma Separated Values) string, and appended to a file. This is a common data exchange format, and it can be read by a number of different applications. A common one is Microsoft Excel. If you open this fine in Excel, or LibreOffice Calc you can easily use it to create a graph that will show the changes in temperature and humidity in your immediate environment over time.
+          With the <c>log_measurements</c> function, the inside temperature and humidity are combined with the current date and time into a CSV (Comma Separated Values) string, and appended to a file. This is a common data exchange format, and it can be read by a number of different applications. A common one is Microsoft Excel. If you open this file in Excel, or LibreOffice Calc you can easily use it to create a graph that will show the changes in temperature and humidity in your immediate environment over time.
         </p>
       </subsubsection>
    </subsection>
   </section>
+  <!--
   <section>
     <title>Displaying Data Visually</title>
     <p>
@@ -319,4 +323,5 @@
     </p>
     <p>[Explore pyplt and graphing our temperature data on the screen.]</p>
   </section>
+-->
 </chapter>

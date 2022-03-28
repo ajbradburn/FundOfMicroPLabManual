@@ -147,7 +147,10 @@
       </ol>
     </subsection>
     <subsection>
-      <p>With your new program saved, type out the following program, and save your progress.</p>
+      <p>With your new empty program saved, type out the following program, and save your progress.</p>
+      <p>
+        <url href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/python_environment_setup/dice.py">Download the Source</url>
+      </p>
       <listing>
         <program>
           <input>
@@ -333,4 +336,17 @@
       Between these two functions, you can explore and learn quite a bit about how to use, or the state of the data in your program.
     </p>
   </section>
+  <exercise>
+    <title>Reflections</title>
+    <task>
+      <statement>
+        <p>When would you use the <c>dir</c> funciton to debug?</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>When is the <c>vars</c> function useful?</p>
+      </statement>
+    </task>
+  </exercise>
 </chapter>

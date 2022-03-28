@@ -66,15 +66,15 @@
         <listing>
           <program>
             <input>
-              1|  .data
-              2|  .balign 4
-              3|  numbers: .word 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
-              4|  .balign 4
-              5|  number_count: .word 10
-              6|
-              7|  .text
-              8|  .balign 4
-              9|  .global main
+               1|  .data
+               2|  .balign 4
+               3|  numbers: .word 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+               4|  .balign 4
+               5|  number_count: .word 10
+               6|
+               7|  .text
+               8|  .balign 4
+               9|  .global main
               10|  .func main
               11|
               12|  main:
@@ -153,7 +153,7 @@
       </figure>
     </subsection>
     <subsection>
-      <title>Code</title>>
+      <title>Code</title>
       <project>
         <p>
           Transcribe, compile, and run the program.
@@ -164,15 +164,15 @@
         <listing>
           <program>
             <input>
-              1|  .data
-              2|  .balign 4
-              3|  numbers: .word 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
-              4|
-              5|  .text
-              6|  .balign 4
-              7|  .global main
-              8|  .func main
-              9|
+               1|  .data
+               2|  .balign 4
+               3|  numbers: .word 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
+               4|
+               5|  .text
+               6|  .balign 4
+               7|  .global main
+               8|  .func main
+               9|
               10|  main:
               11|    mov r0, #5
               12|    mov r1, #5
@@ -200,7 +200,7 @@
     <subsection>
       <title>Exploration</title>
       <p>
-        In this example, we simply add a special character (0) at the end of our numbers array, and as we load each number, we check to see if the newly loaded value is equal to our special character. On line 20, we compare <c>r1</c> and 0 to set flags. Then on line 21 the <c>beq end</c> instruction checks the flags, and if <c>r1</c> is equal to our special character, we jump to the <c>end:</c> label on line 26. Otherwise, the program advances, adds the new value to our running total in <c>r0</c> and then reaches <c>b add_mroe</c> on line 25 which sends the program back to the <c>add_more</c> label on line 17.
+        In this example, we simply add a special character (0) at the end of our numbers array, and as we load each number, we check to see if the newly loaded value is equal to our special character. On line 20, we compare <c>r1</c> and 0 to set flags. Then on line 21 the <c>beq end</c> instruction checks the flags, and if <c>r1</c> is equal to our special character, we jump to the <c>end:</c> label on line 26. Otherwise, the program advances, adds the new value to our running total in <c>r0</c> and then reaches <c>b add_more</c> on line 25 which sends the program back to the <c>add_more</c> label on line 17.
       </p>
     </subsection>
   </section>
@@ -364,7 +364,12 @@
     <!-- Questions about the processes covered. -->
     <exercise>
       <prompt>
-        [Something to write a bit about.]
+        <p>What are some real life processes that you experience on a daily basis? What does that look like in pseudo code?</p>
+        </prompt>
+    </exercise>
+    <exercise>
+      <prompt>
+        <p>What are some real life experiences that have have different outcomes based upon tested conditions? What does that look like in a flow chart?</p>
       </prompt>
     </exercise>
   </section>

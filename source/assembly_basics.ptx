@@ -184,7 +184,7 @@
         This example addresses accessing values from the memory. In doing so, we first initialize an array, or list of numbers that we will use for our calculations. When doing so, we specify the byte length for each element (number) which is <c>.word</c> or 4 bytes each. We also provide an assembler directive of <c>.balign 4</c> which tells the assembler that our data should be arranged with addresses that are multiples of 4 bytes. You can read more about <url href="http://web.mit.edu/gnu/doc/html/as_7.html">assembler directives</url> if you're interested.
       </p>
       <p>
-        While <c>numbers</c> identifies our variable for later reference, we can't use that to access the memory address directly, so we add the line <c>numbers_address: .word numbers</c> at the bottom that provides another variable that we can use. The explanation for this is found in the book.
+        While <c>numbers</c> identifies our variable for later reference, we can't use that to access the memory address directly, so we add the line <c>numbers_address: .word numbers</c> at the bottom that provides another variable that we can use. The explanation for this is found in the book.<fn><p>Raspberry Pi Assembly, page 12</p></fn>
       </p>
       <p>
         Finally, we start accessing our numbers from memory with the <c>ldr r2, numbers_address</c> command. This places the address of our first element. It is important to understand that even though our first element is 10, <c>r2</c> only contains the memory address to it, but not the actual value <c>10</c>.
@@ -337,7 +337,7 @@
         </p>
       </aside>
       <p>
-        With assembly, and even some high-level programming languages, it is very important to understand that there are signed, and unsigned ways of encoding the numbers you're working with. When working with unsigned values, you can add, and subtract, but you can't go into negative numbers. Additionally, there are often specific instructions to use when working with unsigned vs signed numbers.
+        With assembly, and some other high-level programming languages, it is very important to understand that there are signed, and unsigned ways of encoding the numbers you're working with. When working with unsigned values, you can add, and subtract, but you can't go into negative numbers. Additionally, there are often specific instructions to use when working with unsigned vs signed numbers.
       </p>
       <exercise>
         <statement>
@@ -371,7 +371,7 @@
       <title>Discussion</title>
       <p>For our last subject, we will explore a bit of logical operations.</p>
       <p>
-        These are operations like shifting, or not, or, and and xor. These operations aren't as relatable as the arithmetic, or the <c>mov</c> commands you've explored so far, but they do have very important places in the computer world. Otherwise, they wouldn't have been implemented.
+        These are operations like shifting, not, or, and and xor. These operations aren't as relatable as the arithmetic, or the <c>mov</c> commands you've explored so far, but they do have very important places in the computer world. Otherwise, they wouldn't have been implemented.
       </p>
     </subsection>
     <subsection>
@@ -520,12 +520,22 @@
           </program>
         </listing>
         <p>
-          The program can be compiled with the following command:
+          The program can be compiled with the following command typed in a terminal:
         </p>
         <listing>
           <console>
             <input>
               gcc -o extra extra.c
+            </input>
+          </console>
+        </listing>
+        <p>
+          And can then be run by typing the following command in a terminal:
+        </p>
+        <listing>
+          <console>
+            <input>
+              ./extra
             </input>
           </console>
         </listing>
@@ -547,6 +557,11 @@
     <exercise>
       <prompt>
         What are your thoughts on the assembly programming language?
+      </prompt>
+    </exercise>
+    <exercise>
+      <prompt>
+        What are some advantages of other programming languages?
       </prompt>
     </exercise>
   </section>

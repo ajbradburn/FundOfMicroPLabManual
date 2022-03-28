@@ -66,9 +66,7 @@
       <p>
         We will go into more detail about the process of programming in later exercises.
         For now, the expectation is that you will simply follow steps as you are guided through the process of using Code::Blocks IDE to write and debug a simple program.
-        We wont go into detail about what the program does, or why bits of text are included. That will come later. 
-        The goal with this exercise is to simply expose you to the process as a whole. So see, and do.
-        That way, when we discuss the material in more depth, you've actual experience to reflect upon.
+        The goal with this exercise is to simply expose you to the process as a whole. To see, and do.
       </p>
     </introduction>
     <subsection>
@@ -174,7 +172,6 @@
       <li>Click <em>Finish</em></li>
     </ol>
   </subsection>
-
   <subsection>
     <p>
       Now that your project is established, we need to make a few customizations for it to work well with our assembly code.
