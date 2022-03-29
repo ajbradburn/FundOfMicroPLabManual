@@ -20,10 +20,11 @@
     <xi:include href="./python_basic_programs.ptx" />
     <xi:include href="./interfacing_bus_protocols.ptx" />
     <xi:include href="./data_management.ptx" />
+    <xi:include href="./backmatter.ptx" />
     -->    
 
 
-    <xi:include href="./assembly_basics.ptx" />
+    <xi:include href="./backmatter.ptx" />
     <!--
     -->
 

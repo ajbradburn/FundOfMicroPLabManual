@@ -69,6 +69,9 @@
     <subsection>
       <title>Code</title>
       <project>
+        <p>
+          <url href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/python_high-level_programming/dice.py">Download the Source</url>
+        </p>
         <listing>
           <program>
             <input>
@@ -413,17 +416,22 @@
       </listing>
     </subsection>
   </section>
-  <section>
-    <title>Reflection</title>
-    <exercise>
+  <exercise>
+    <title>Reflections</title>
+    <task>
       <statement>
-        <p>How would you write a if, else if, else statement in Python? How would you do the same in C++?</p>
+        <p>How would you write an if, else if, else statement in Python? How would you do the same in C++?</p>
       </statement>
-    </exercise>
-    <exercise>
+    </task>
+    <task>
       <statement>
-        <p>What case convention makes the most sense to you? Write 5 variable names in your chosen convention.</p>
+        <p>Which case convention makes the most sense to you? Write 5 variable names in your chosen convention.</p>
       </statement>
-    </exercise>
-  </section>
+    </task>
+    <task>
+      <statement>
+        <p>With your knowledge of Assembly, and now Python, which is your preferred programming tool? Why?</p>
+      </statement>
+    </task>
+  </exercise>
 </chapter>

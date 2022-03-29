@@ -359,18 +359,17 @@
       </exercise>
     </subsection>
   </section>
-  <section>
-    <title>Reflection</title>
-    <!-- Questions about the processes covered. -->
-    <exercise>
-      <prompt>
-        <p>What are some real life processes that you experience on a daily basis? What does that look like in pseudo code?</p>
-        </prompt>
-    </exercise>
-    <exercise>
-      <prompt>
-        <p>What are some real life experiences that have have different outcomes based upon tested conditions? What does that look like in a flow chart?</p>
-      </prompt>
-    </exercise>
-  </section>
+  <exercise>
+    <title>Reflections</title>
+    <task>
+      <statement>
+        <p>Write down the assembly instructions for comparing registers 1 and 0, and then jumping to a label "repeat" if the value is less than equal.</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>Consider grocery shopping. When it comes to buying more toilet paper, or milk, you likely go through some sort of evaluation before doing so. Pick 4 such evaluations, and write them in assembly. You can use variable names, or made up numbers to represent values, but the comparison and branch instructions should be proper assembly insructions. Please comment your code.</p>
+      </statement>
+    </task>
+  </exercise>
 </chapter>

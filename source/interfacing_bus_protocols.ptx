@@ -84,7 +84,7 @@
         </row>
         <row>
             <cell>1</cell>
-            <cell>100nF Film/Foil Capacitor</cell>
+            <cell>100nF Capacitor</cell>
         </row>
         <row>
             <cell>6</cell>
@@ -446,7 +446,7 @@
         <url href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/interfacing_bus_protocols/temperature.py">Download the Source</url>
       </p>
     </subsection>
-    <subsection>
+    <subsection xml:id="interfacing_bus_protocols_project_2">
       <title>Code</title>
       <listing>
         <program>
@@ -548,6 +548,16 @@
     <task>
       <statement>
         <p>What are some advantages to using bus protocols over direct GPIO manipulation like what we used for the button and LEDs?</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>Searching online, can you find an <m>I^2C</m> or SPI peripherial that you'd be interested in using in a person electronics project? Pick one, and determine if there is a pre-existing python, or C based library for it.</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>Modify the code provided in <xref ref="interfacing_bus_protocols_project_2" /> so that in displays the temperature in Fahrenheit. Print the results. Include a screenshot that captures the code and the output.</p>
       </statement>
     </task>
   </exercise>

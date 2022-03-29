@@ -1,12 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<section>
-<title>Sourcing Suggestions</title>
-  <subsection>
+<appendix>
+  <title>Sourcing Suggestions</title>
+  <section>
     <title>Raspberry Pi</title>
-  </subsection>
-
-  <subsection>
+    <p><url href="https://www.raspberrypi.com/products/">RaspberryPi.com Hardware</url></p>
+    <p>Note: For the purposes of this class, the Raspberry Pi 3 Model B+, or Raspberry Pi 4 Model B are recommended. The Raspberry Pi 400 will work, but you'll have to check the documentation for the pinout when it comes to integrating external circuitry.</p>
+    <p>While the other, older models of the Raspberry Pi* will technically work for the subject matter in this class, there will be additional challenges, and for the sake of your sanity, they are not recommended.</p>
+    <p>The Raspberry Pi Pico will not work for this class.</p>
+  </section>
+  <section>
     <title>Sensors and Misc Components</title>
-  </subsection>
-</section>
+    <p>As time goes by, the availability of these components may vary. I will attempt to remedy this by including links to online searches, rather than specific vendor listings.</p>
+    <subsection>
+      <title>OLED Display</title>
+      <p>The important part is the SSD1306 with I2C. The dimensions of the OLED display are less important.</p>
+      <p>Keywords: 128x32 I2C SSD1306 OLED Display</p>
+      <p><url href="https://www.amazon.com/s?k=128x32+SSD1306+i2c+oled+display+-128x64&amp;i=electronics&amp;crid=43Y2OYEWS9MQ&amp;sprefix=128x32+ssd1306+i2c+oled+display+-128x64%2Celectronics%2C74&amp;ref=nb_sb_noss">128x32 SSD1306 <m>I^2C</m> OLED Display @ Amazon</url></p>
+      <p><url href="https://www.ebay.com/sch/i.html?_from=R40&amp;_trksid=p2380057.m570.l1313&amp;_nkw=128x32+SSD1306+i2c+oled+display&amp;_sacat=0">128x32 SSD1306 <m>I^2C</m> OLED Display @ ebay</url></p>
+      <p><url href="https://www.adafruit.com/product/931">128x32 SSD1306 <m>I^2C</m> OLED Display @ Adafruit</url></p>
+    </subsection>
+    <subsection>
+      <title>AHT20 Temperature and Humidity Sensor</title>
+      <p>Keywords: AHT20 I2C</p>
+      <p><url href="https://www.amazon.com/s?k=AHT20+i2c&amp;crid=127F2S6VISW7H&amp;sprefix=aht20+i2c+%2Caps%2C70&amp;ref=nb_sb_noss">AHT20 <m>I^2C</m> Sensor Breakout @ Amazon</url></p>
+      <p><url href="https://www.ebay.com/sch/i.html?_from=R40&amp;_trksid=p2380057.m570.l1313&amp;_nkw=AHT20+I2C&amp;_sacat=0">AHT20 <m>I^2C</m> Sensor Breakout @ ebay</url></p>
+      <p><url href="https://www.adafruit.com/product/4566?gclid=Cj0KCQjw3IqSBhCoARIsAMBkTb0juJQMoREL8sAM-v1LLEulkdTQxBiNlCdbKiyI_eVOksU9dTm2LO8aApqtEALw_wcB">AHT20 <m>I^2C</m> Sensor Breakout @ Adafruit</url></p>
+    </subsection>
+    <subsection>
+      <title>LEDs, Resistors, Etc.</title>
+      <p>It would seem, at the time of writing, that Amazon is saturated with electronics kits that contain plenty of LEDs, resistors, switches and hookup wires for these labs. I am looking at one that is under $20.00, and has everything needed.</p>
+      <p>Keywords: electronics kit</p>
+      <p>Required Components</p>
+      <table>
+        <tabular>
+          <row>
+            <cell>Amount</cell>
+            <cell>Part Type</cell>
+          </row>
+          <row>
+            <cell>1</cell>
+            <cell>Breadboard</cell>
+          </row>
+          <row>
+            <cell>1</cell>
+            <cell>100nF Capacitor</cell>
+          </row>
+          <row>
+            <cell>6</cell>
+            <cell>Red LED</cell>
+          </row>
+          <row>
+            <cell>6</cell>
+            <cell>470Ω Resistor</cell>
+          </row>
+          <row>
+            <cell>1</cell>
+            <cell>10KΩ Resistor</cell>
+          </row>
+          <row>
+            <cell>1</cell>
+            <cell>Push button</cell>
+          </row>
+          <row>
+            <cell>Handful</cell>
+            <cell>Male to Female Jumper Wires</cell>
+          </row>
+          <row>
+            <cell>Handful</cell>
+            <cell>Solid Core Jumper Wires</cell>
+          </row>
+        </tabular>
+      </table>
+      <p><url href="https://www.amazon.com/s?k=electronics+kit&amp;crid=P1BONNXKBI7B&amp;sprefix=electronics+kit%2Caps%2C90&amp;ref=nb_sb_noss">General Purpose Electronics Kit @ Amazon</url></p>
+      <p><url href="https://www.ebay.com/sch/i.html?_from=R40&amp;_trksid=p2380057.m570.l1313&amp;_nkw=electronics+kit&amp;_sacat=0">General Purpose Electronics Kit @ ebay</url></p>
+    </subsection>
+  </section>
+</appendix>

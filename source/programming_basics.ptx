@@ -223,4 +223,27 @@
       Finally, there are a whole slew of scripting, or interpreted languages that abstract away a lot of the detail from programming. In doing so, you loose some control, but for most general purpose applications, that control isn't needed. In exchange, they make processes like getting data from the internet, or displaying images on a screen a breeze.
     </p>
   </section>
+  <exercise>
+    <title>Reflections</title>
+    <task>
+      <statement>
+        <p>Reflect on your daily routine. Pick one regular process that you'd like to automate to the point that you could completely forget about it. What is that process? What involved in that process, and what is the result?</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>Using the process you've identified, write, in pseudocode, the series of steps and decisions that would be needed to automate it.</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>Using the pseudocode you've created, draft a flow chart. Include inputs, decisions/branching, loops, etc.</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>By your own estimate, how many other people would share your desire to automate this process? What are some of the challenges to actually doing so?</p>
+      </statement>
+    </task>
+  </exercise>
 </chapter>

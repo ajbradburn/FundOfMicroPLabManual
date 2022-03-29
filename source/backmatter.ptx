@@ -10,13 +10,12 @@
   
   <!-- Reference materials used for the creation of this manual -->
   <appendix>
+    <title>References</title>
     <xi:include href="./appendices/reference_materials.ptx" />
   </appendix>
 
   <!-- Guidance for sourcing parts -->
-  <appendix>
-    <xi:include href="./appendices/sourcing_parts.ptx" />
-  </appendix>
+  <xi:include href="./appendices/sourcing_parts.ptx" />
 
   <colophon>
     <p>

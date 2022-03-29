@@ -302,7 +302,7 @@
     <p>
       Now, to find these functions, you can, and should feel empowered to search online. However, you can also use some built-in Python tools. 
     </p>
-    <listing>
+    <listing xml:id="python_debug_with_dir">
       <program>
         <input>
           1|  from pprint import pprint
@@ -319,7 +319,7 @@
     <p>
       There is a similar function <c>vars</c> that will also output the variables in the object. But it will only work on Python objects that have been setup to be compatible with it.
     </p>
-    <listing>
+    <listing xml:id="python_debug_with_vars">
       <program>
         <input>
             1|  from pprint import pprint
@@ -340,12 +340,17 @@
     <title>Reflections</title>
     <task>
       <statement>
-        <p>When would you use the <c>dir</c> funciton to debug?</p>
+        <p>When would you use the <c>dir</c> funciton to debug? Run the code in <xref ref="python_debug_with_dir" /> and pick 3 functions. Provide a description of what each function does.</p>
       </statement>
     </task>
     <task>
       <statement>
-        <p>When is the <c>vars</c> function useful?</p>
+        <p>When is the <c>vars</c> function useful? Run the code in <xref ref="python_debug_with_vars" />. There are 2 constants defined in the <c>random</c> class. What are their variable names, and what are their significance in math?</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>Write a simple Python program that uses the random library to generate a random number and print it out. Include a screenshot that captures the code and the output.</p>
       </statement>
     </task>
   </exercise>

@@ -51,7 +51,7 @@
         <p>
           <url href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/python_basic_programs/dice.py">Download the Source</url>
         </p>
-        <listing>
+        <listing xml:id="python_basic_programs_code_1">
           <program>
             <input>
              1|  import sys
@@ -204,13 +204,22 @@
       In our case, we have two curly bracket pairs, and we've provided two parameters when we called the <c>format</c> function. When the string is formatted, and printed out, we see a nice, human-readable sentence that lets us know what the program is doing.
     </p>
   </section>
-    <section>
-      <title>Reflection</title>
-      <!-- Questions about the processes covered. -->
-      <exercise>
-        <prompt>
-          What are some advantages of the python programming language?
-        </prompt>
-      </exercise>
-    </section>
+  <exercise>
+    <title>Reflections</title>
+    <task>
+      <statement>
+        <p>In <xref ref="python_basic_programs_code_1" /> on line 16, we prompt the user for information. There is a lot going on there. Deconstruct the line, and describe what is happening.</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>In <xref ref="python_basic_programs_code_1" /> on line 14, we create a list. Use the <c>dir</c> function on it. While not a function, it is demonstrated to be a more complex data object than a simple grouping of numbers. How many functions does this <c>list</c> class make available to you? List 3 of them, and what they do.</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>Why is it important to check user input? What is an appropriate way to handle invalid input?</p>
+      </statement>
+    </task>
+  </exercise>
 </chapter>

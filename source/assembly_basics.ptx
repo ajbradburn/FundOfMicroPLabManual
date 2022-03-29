@@ -551,18 +551,22 @@
       </p>
     </subsection>
   </section>
-  <section>
-    <title>Reflection</title>
-    <!-- Questions about the processes covered. -->
-    <exercise>
-      <prompt>
-        What are your thoughts on the assembly programming language?
-      </prompt>
-    </exercise>
-    <exercise>
-      <prompt>
-        What are some advantages of other programming languages?
-      </prompt>
-    </exercise>
-  </section>
+  <exercise>
+    <title>Reflections</title>
+    <task>
+      <statement>
+        <p>Please provide the assembly instructions needed to add 3 numbers with the total available in register 0</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>What assembly instruction would be used to load a value from memory, and increment the pointer address by 1 byte?</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>At this early stage in your assembly exposure, what are your thoughts on programming a computer in this way?</p>
+      </statement>
+    </task>
+  </exercise>
 </chapter>

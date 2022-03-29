@@ -315,6 +315,29 @@
       </subsubsection>
    </subsection>
   </section>
+  <exercise>
+    <title>Reflections</title>
+    <task>
+      <statement>
+        <p>With access to the internet, what is a way that your project might be able to provide you with updates? What are some ways that you normally get updates? Could those same methods be used by a project to communicate with you? Is there a Python library to make it easier?</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>Can the process of communication with your project be reversed? Can your project get updates from you remotely? Would the method you identified previously work?</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>Modify the code for this project so that it records the temperature in Fahrenheit as well as celcius. This should add another column to the output data.</p>
+      </statement>
+    </task>
+    <task>
+      <statement>
+        <p>Run the program for an hour, or overnight. Then, using Google Sheets, Microsoft Excel, Open Office Calc, or some other application graph the results. Include a screenshot of the results.</p>
+      </statement>
+    </task>
+  </exercise>
   <!--
   <section>
     <title>Displaying Data Visually</title>

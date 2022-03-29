@@ -442,7 +442,6 @@
     </ol>
   </subsection>
   </section>
-
   <exercise>
     <title>Reflections</title>
     <task>
@@ -452,17 +451,22 @@
     </task>
     <task>
       <statement>
+        Assuming you'll be shown what you need to type as you're taught the basics of the assembly programming language, how confident are you that you'll be able to write and successfully compile your programs?
+      </statement>
+    </task>
+    <task>
+      <statement>
         The Raspberry Pi uses an ARM processor. What are some other popular microprocessor designers?
       </statement>
     </task>
     <task>
       <statement>
-        Is programming a concept that is limited to computers?
+        Is programming a concept that is limited to computers? Please explain.
       </statement>
     </task>
     <task>
       <statement>
-        What ofther aspects of your life require detailed istructions, precise communication?
+        What aspects of your life require detailed istructions, precise communication?
       </statement>
     </task>
   </exercise>
