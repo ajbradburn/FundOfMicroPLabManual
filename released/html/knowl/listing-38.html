@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-04-12T09:19:04-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<figure class="listing figure-like"><div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="program"><code class="language-none"> 1|  import signal
+ 2|  import sys
+ 3|  import RPi.GPIO as GPIO
+ 4|  from time import sleep
+ 5|  import random
+ 6|  import board
+ 7|  from PIL import Image, ImageDraw, ImageFont
+ 8|  import adafruit_ssd1306
+ 9|
+10|  # Define a class to handle displaying a number on the LED array.
+11|  class led_display:
+12|    # Define LED pins. There are a number of ways to do this
+13|    # I am doing it this way because I want it to be readable, and meaningful.
+14|    lp1 = 13 # pin for LED 1
+15|    lp2 = 16
+16|    lp3 = 19
+17|    lp4 = 20
+18|    lp5 = 26
+19|    lp6 = 21
+20|    lp = [lp1, lp2, lp3, lp4, lp5, lp6] # An array of all LED pins in LED order.
+21|
+22|    # Class constructor function.
+23|    # Initialize essential settings.
+24|    def __init__(self):
+25|      GPIO.setmode(GPIO.BCM)
+26|      for l in self.lp:
+27|        GPIO.setup(l, GPIO.OUT)
+28|
+29|    # Class Destructor function.
+30|    # Do things that should be done with stopping.
+31|    def __del__(self):
+32|      GPIO.cleanup()
+33|      return
+34|
+35|    # Display function: Illuminate n LEDs based upon a number provided.
+36|    def display(self, number):
+37|      if number &lt; 0:
+38|        return False
+39|
+40|      for i in range(0, len(self.lp)):
+41|        n = i + 1
+42|        if n &lt;= number:
+43|          GPIO.output(self.lp[i], 1)
+44|        else:
+45|          GPIO.output(self.lp[i], 0)
+46|
+</code></pre></div>
+<figcaption><span class="type">Listing</span><span class="space"> </span><span class="codenumber">9.2.6<span class="period">.</span></span><span class="space"> </span></figcaption></figure><span class="incontext"><a href="section-37.html#listing-38">in-context</a></span>
+</body>
+</html>

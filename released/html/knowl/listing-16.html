@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-04-12T09:19:04-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<figure class="listing figure-like"><div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="program"><code class="language-none"> 1|  #!/usr/bin/python3
+ 2|
+ 3|  import sys
+ 4|  import getopt
+ 5|  from os.path import exists
+ 6|  import json
+ 7|  import random
+ 8|
+ 9|  def calc_combinations(roll_totals, remaining_die, cumulative_rolls):
+10|    for r in range(1, 6 + 1):
+11|      if remaining_die &gt; 1:
+12|        die_left = remaining_die - 1
+13|        calc_combinations(roll_totals, die_left, cumulative_rolls + r)
+14|      else:
+15|        roll_totals.append(cumulative_rolls + r)
+16|
+17|
+18|  def main(argv):
+19|    # Check if configuration file exists.
+20|    file_name = 'die_stats.json'
+21|    if(exists(file_name)):
+22|      file_handle = open(file_name, 'r')
+23|      stats = json.load(file_handle)
+24|      file_handle.close()
+25|      file_handle = open(file_name, 'w')
+26|    else:
+27|    # Initialize stats.
+28|      file_handle = open(file_name, 'w')
+29|      stats = {
+30|            '1':{
+31|              'run_count': 0,
+32|              '1':{"rolls":0, "percentage":16},
+33|              '2':{"rolls":0, "percentage":16},
+34|              '3':{"rolls":0, "percentage":16},
+35|              '4':{"rolls":0, "percentage":16},
+36|              '5':{"rolls":0, "percentage":16},
+37|              '6':{"rolls":0, "percentage":16},
+38|            }
+39|          }
+40|
+41|    # Look for command line input of N die.
+42|    help_string = 'output_with_format.py -i &lt;file_name&gt;'
+43|    try:
+44|      opts, args = getopt.getopt(argv, "hn:")
+45|    except getopt.GetoptError:
+46|      print(help_string)
+47|      sys.exit(2)
+48|
+49|    number_of_die = None
+50|
+51|    for opt, arg in opts:
+52|      if opt == '-h':
+53|        print(help_string)
+54|      elif opt in ("-n"):
+55|        number_of_die = arg
+56|
+</code></pre></div>
+<figcaption><span class="type">Listing</span><span class="space"> </span><span class="codenumber">5.2.1<span class="period">.</span></span><span class="space"> </span></figcaption></figure><span class="incontext"><a href="section-18.html#listing-16">in-context</a></span>
+</body>
+</html>

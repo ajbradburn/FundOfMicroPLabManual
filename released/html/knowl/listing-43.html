@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-04-12T09:19:04-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<figure class="listing figure-like"><div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="program"><code class="language-none">22|  def display_temp():
+23|    # Create blank image with 1-bit color.
+24|    image = Image.new("1", (oled.width, oled.height))
+25|
+26|    # Get drawing object to draw on image.
+27|    draw = ImageDraw.Draw(image)
+28|
+29|    # Draw a white background
+30|    draw.rectangle((0, 0, oled.width, oled.height), outline=255, fill=255)
+31|
+32|    # Draw a smaller inner rectangle
+33|    draw.rectangle(
+34|      (BORDER, BORDER, oled.width - BORDER - 1, oled.height - BORDER - 1),
+35|      outline=0,
+36|      fill=0,
+37|      )
+38|
+39|    # Read the temperature.
+40|    temp = sensor.temperature
+41|    # Read the humidity.
+42|    hum = sensor.relative_humidity
+43|
+44|    text = " T:{:.1f}C|H:{:.1f}% ".format(temp, hum)
+45|
+46|    # Load default font.
+47|    font = ImageFont.load_default()
+48|
+49|    # Draw Some Text
+50|    (font_width, font_height) = font.getsize(text)
+51|    draw.text(
+52|      (oled.width // 2 - font_width // 2, oled.height // 2 - font_height // 2),
+53|      text,
+54|      font=font,
+55|      fill=255,
+56|      )
+57|
+58|    # Display image
+59|    oled.image(image)
+60|    oled.show()
+61|
+62|  while(True):
+63|    display_temp()
+64|    time.sleep(1)
+</code></pre></div>
+<figcaption><span class="type">Listing</span><span class="space"> </span><span class="codenumber">9.3.2<span class="period">.</span></span><span class="space"> </span></figcaption></figure><span class="incontext"><a href="section-38.html#listing-43">in-context</a></span>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appendix>
+  <title>Using Pretext</title>
+  <section>
+    <title>Editing and Building Custom Versions</title>
+    <p>I used PreTeXt to create and export this work.</p>
+    <p>The project page outlines everything you need to know to get going.</p>
+    <p><url href="https://pretextbook.org/">PreTeXt Project Homepage</url></p>
+  </section>
+  <section>
+    <title>Using PreTeXt CLI</title>
+    <p>I did most of my work with the PreTeXt CLI.</p>
+    <p>The GitHub page for the project outlines the steps of installing, and using PreTeXt CLI.</p>
+    <p><url href="https://github.com/PreTeXtBook/pretext-cli">PreTeXt CLI GitHub Page</url></p>
+    <p>Once it is installed, and you've got a copy of this source code, you can build your own copies with the following command.</p>
+    <listing>
+      <console>
+        <input>pretext build pdf -i source/IntroductionToEmbeddedSystemsLabManual.ptx</input>
+      </console>
+    </listing>
+  </section>
+</appendix>

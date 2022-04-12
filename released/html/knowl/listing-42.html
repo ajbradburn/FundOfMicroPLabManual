@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-04-12T09:19:04-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<figure class="listing figure-like"><div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="program"><code class="language-none"> 1|  import board
+ 2|  from PIL import Image, ImageDraw, ImageFont
+ 3|  import adafruit_ssd1306
+ 4|  import time
+ 5|  import adafruit_ahtx0
+ 6|
+ 7|  # Dimensions for OLED Display.
+ 8|  WIDTH = 128
+ 9|  HEIGHT = 32
+10|  BORDER = 0
+11|
+12|  # Use for I2C.
+13|  i2c = board.I2C()
+14|  oled = adafruit_ssd1306.SSD1306_I2C(WIDTH, HEIGHT, i2c, addr=0x3C)
+15|  sensor = adafruit_ahtx0.AHTx0(i2c)
+16|
+17|  def display_none():
+18|    # Reset Display/Clear
+19|    oled.fill(0)
+20|    oled.show()
+21|
+</code></pre></div>
+<figcaption><span class="type">Listing</span><span class="space"> </span><span class="codenumber">9.3.1<span class="period">.</span></span><span class="space"> </span></figcaption></figure><span class="incontext"><a href="section-38.html#listing-42">in-context</a></span>
+</body>
+</html>

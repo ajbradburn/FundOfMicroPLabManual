@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-04-12T09:19:05-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<figure class="listing figure-like"><div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="program"><code class="language-none">128|  default_font = 'DejaVuSansMono.ttf'
+129|
+130|  # Initialize objects.
+131|  oled_display = oled_display()
+132|  sensor = adafruit_ahtx0.AHTx0(board.I2C())
+133|
+134|  def start_log_timer():
+135|    log_timer = threading.Timer(30, log_measurements).start()
+136|
+137|  def start_forecast_timer():
+138|    forecast_timer = threading.Timer(60, get_weather).start()
+139|
+140|  def start_temp_timer():
+141|    global temp_timer
+142|    temp_timer = threading.Timer(10, display_temp)
+143|    temp_timer.start()
+144|
+145|  def get_weather():
+146|    # Start a new timer.
+147|    start_forecast_timer()
+148|
+149|    # Cancel the temp_timer so that it doesn't interfere with our forecast display.
+150|    global temp_timer
+151|    temp_timer.cancel()
+152|
+153|    # Get the forecast and display it.
+154|    global oled_display
+155|    global sensor
+156|    weather = nws_forecast()
+157|    forecast = weather.get()
+158|    oled_display.display_string('High: {}°F'.format(forecast['temperature']), default_font, 16)
+159|    sleep(2)
+160|    oled_display.display_string('Inside: {}°F'.format(int(sensor.temperature * 9 / 5 + 32)), default_font, 16)
+161|    sleep(2)
+162|    oled_display.display_with_intro('Forecast:', forecast['detailedForecast'], default_font, 16)
+163|
+164|    # Resume the display of temperature, and start a new temp_timer.
+165|    display_temp()
+166|
+</code></pre></div>
+<figcaption><span class="type">Listing</span><span class="space"> </span><span class="codenumber">10.2.5<span class="period">.</span></span><span class="space"> </span></figcaption></figure><span class="incontext"><a href="section-40.html#listing-48">in-context</a></span>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-04-12T09:19:04-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<figure class="listing figure-like"><div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="program"><code class="language-none"> 81|    def display_string(self, text):
+ 82|      # Reset display.
+ 83|      self.display_none()
+ 84|
+ 85|      # Create blank image with 0-bit color.
+ 86|      image = Image.new("1", (self.oled.width, self.oled.height))
+ 87|
+ 88|      # Get drawing object to draw on image.
+ 89|      draw = ImageDraw.Draw(image)
+ 90|
+ 91|      if self.border &gt; 0:
+ 92|        # Draw a white background
+ 93|        draw.rectangle((0, 0, self.oled.width, self.oled.height), outline=255, fill=255)
+ 94|
+ 95|        # Draw a smaller inner rectangle
+ 96|        draw.rectangle(
+ 97|          (border, border, self.oled.width - self.border - 1, self.oled.height - self.border - 1),
+ 98|          outline=0,
+ 99|          fill=0,
+100|          )
+101|
+102|      # Load default font.
+103|      font = ImageFont.truetype('DejaVuSansMono.ttf', 16)
+104|
+105|      # Draw Some Text
+106|      (font_width, font_height) = font.getsize(text)
+107|      draw.text(
+108|        (self.oled.width // 2 - font_width // 2, self.oled.height // 2 - font_height // 2),
+109|        text,
+110|        font=font,
+111|        fill=10,
+112|        )
+113|
+114|      # Display image
+115|      self.oled.image(image)
+116|      self.oled.show()
+117|
+</code></pre></div>
+<figcaption><span class="type">Listing</span><span class="space"> </span><span class="codenumber">9.2.8<span class="period">.</span></span><span class="space"> </span></figcaption></figure><span class="incontext"><a href="section-37.html#listing-40">in-context</a></span>
+</body>
+</html>

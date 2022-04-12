@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-04-12T09:19:03-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Connecting to the Internet</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="An Introduction to Embedded Systems and Applications">
+<meta property="book:author" content="Anthony Bradburn">
+<script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore|ignore-math",
+    processHtmlClass: "process-math",
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><link href="https://unpkg.com/prismjs@v1.22.0/themes/prism.css" rel="stylesheet">
+<script src="https://pretextbook.org/js/lib/jquery.min.js"></script><script src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script src="https://pretextbook.org/js/0.13/pretext.js"></script><script>miniversion=0.674</script><script src="https://pretextbook.org/js/0.13/pretext_add_on.js?x=1"></script><script src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/banner_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/toc_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/style_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/colors_blue_red.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext-book ignore-math has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</span></div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="my-great-book.html"><span class="title">An Introduction to Embedded Systems and Applications:</span> <span class="subtitle">Through the Raspberry Pi</span></a></h1>
+<p class="byline">Anthony Bradburn</p>
+</div>
+</div></div>
+<nav id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-39.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="ch-first.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="backmatter.html" title="Next">Next</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="section-39.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="ch-first.html" title="Up">Up</a><a class="next-button button toolbar-item" href="backmatter.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter">
+<a href="frontmatter.html" data-scroll="frontmatter" class="internal"><span class="title">Front Matter</span></a><ul>
+<li><a href="colophon-1.html" data-scroll="colophon-1" class="internal">Colophon</a></li>
+<li><a href="preface.html" data-scroll="preface" class="internal">Feedback about the text</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-first.html" data-scroll="ch-first" class="internal"><span class="codenumber">1</span> <span class="title">Setting up for, and exploring assembly programming.</span></a><ul>
+<li><a href="section-1.html" data-scroll="section-1" class="internal">Installing Code::Blocks IDE in Raspberry Pi OS</a></li>
+<li><a href="section-2.html" data-scroll="section-2" class="internal">Writing and Debugging Programs</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-first.html" data-scroll="ch-first" class="internal"><span class="codenumber">2</span> <span class="title">Basics of Programming</span></a><ul>
+<li><a href="section-3.html" data-scroll="section-3" class="internal">Where to begin?</a></li>
+<li><a href="section-4.html" data-scroll="section-4" class="internal">Defining the problem.</a></li>
+<li><a href="section-5.html" data-scroll="section-5" class="internal">Framing the Solution.</a></li>
+<li><a href="section-6.html" data-scroll="section-6" class="internal">Documenting the process.</a></li>
+<li><a href="section-7.html" data-scroll="section-7" class="internal">Writing Code</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-first.html" data-scroll="ch-first" class="internal"><span class="codenumber">3</span> <span class="title">Basics of Assembly</span></a><ul>
+<li><a href="section-8.html" data-scroll="section-8" class="internal">Associated Reading</a></li>
+<li><a href="section-9.html" data-scroll="section-9" class="internal">Basic Operations and Composition</a></li>
+<li><a href="section-10.html" data-scroll="section-10" class="internal">Memory Addressing</a></li>
+<li><a href="section-11.html" data-scroll="section-11" class="internal">Arithmetic Functions</a></li>
+<li><a href="section-12.html" data-scroll="section-12" class="internal">Logical Operations</a></li>
+<li><a href="section-13.html" data-scroll="section-13" class="internal">C</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-first.html" data-scroll="ch-first" class="internal"><span class="codenumber">4</span> <span class="title">Assembly Control Structures</span></a><ul>
+<li><a href="section-14.html" data-scroll="section-14" class="internal">Associated Reading</a></li>
+<li><a href="section-15.html" data-scroll="section-15" class="internal">Loops</a></li>
+<li><a href="section-16.html" data-scroll="section-16" class="internal">Branching</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-first.html" data-scroll="ch-first" class="internal"><span class="codenumber">5</span> <span class="title">High-level Programming Languages</span></a><ul>
+<li><a href="section-17.html" data-scroll="section-17" class="internal">Associated Reading</a></li>
+<li><a href="section-18.html" data-scroll="section-18" class="internal">High Level Programming Languages</a></li>
+<li><a href="section-19.html" data-scroll="section-19" class="internal">Libraries</a></li>
+<li><a href="section-20.html" data-scroll="section-20" class="internal">Functions</a></li>
+<li><a href="section-21.html" data-scroll="section-21" class="internal">Variables</a></li>
+<li><a href="section-22.html" data-scroll="section-22" class="internal">Control Structures</a></li>
+<li><a href="section-23.html" data-scroll="section-23" class="internal">Structure</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-first.html" data-scroll="ch-first" class="internal"><span class="codenumber">6</span> <span class="title">Setting up for, and exploring python programming.</span></a><ul>
+<li><a href="section-24.html" data-scroll="section-24" class="internal">Raspi Config</a></li>
+<li><a href="section-25.html" data-scroll="section-25" class="internal">Installing Python Libraries</a></li>
+<li><a href="section-26.html" data-scroll="section-26" class="internal">The Thonny Python IDE</a></li>
+<li><a href="section-27.html" data-scroll="section-27" class="internal">Debugging with Python</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-first.html" data-scroll="ch-first" class="internal"><span class="codenumber">7</span> <span class="title">Python Basics</span></a><ul>
+<li><a href="section-28.html" data-scroll="section-28" class="internal">Associated Reading</a></li>
+<li><a href="section-29.html" data-scroll="section-29" class="internal">Basic Python Programs</a></li>
+<li><a href="section-30.html" data-scroll="section-30" class="internal">Data Types</a></li>
+<li><a href="section-31.html" data-scroll="section-31" class="internal">Checking User Input</a></li>
+<li><a href="section-32.html" data-scroll="section-32" class="internal">Providing Output</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-first.html" data-scroll="ch-first" class="internal"><span class="codenumber">8</span> <span class="title">Interfacing Basics</span></a><ul>
+<li><a href="section-33.html" data-scroll="section-33" class="internal">Associated Reading</a></li>
+<li><a href="section-34.html" data-scroll="section-34" class="internal">Connecting the Pi to Peripherials</a></li>
+<li><a href="section-35.html" data-scroll="section-35" class="internal">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-first.html" data-scroll="ch-first" class="internal"><span class="codenumber">9</span> <span class="title">Interfacing with increased versatility, and complexity.</span></a><ul>
+<li><a href="section-36.html" data-scroll="section-36" class="internal">Associated Reading</a></li>
+<li><a href="section-37.html" data-scroll="section-37" class="internal">Connecting Using Data Exchange Protocols</a></li>
+<li><a href="section-38.html" data-scroll="section-38" class="internal">Reading and Using Data</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-first.html" data-scroll="ch-first" class="internal"><span class="codenumber">10</span> <span class="title">Data Management</span></a><ul>
+<li><a href="section-39.html" data-scroll="section-39" class="internal">Associated Reading</a></li>
+<li><a href="section-40.html" data-scroll="section-40" class="active">Connecting to the Internet</a></li>
+</ul>
+</li>
+<li class="link backmatter"><a href="backmatter.html" data-scroll="backmatter" class="internal"><span class="title">Backmatter</span></a></li>
+<li class="link">
+<a href="appendix-1.html" data-scroll="appendix-1" class="internal"><span class="codenumber">A</span> <span class="title">References</span></a><ul><li><a href="references-section.html" data-scroll="references-section" class="internal">References</a></li></ul>
+</li>
+<li class="link">
+<a href="appendix-2.html" data-scroll="appendix-2" class="internal"><span class="codenumber">B</span> <span class="title">Sourcing Suggestions</span></a><ul>
+<li><a href="section-41.html" data-scroll="section-41" class="internal">Raspberry Pi</a></li>
+<li><a href="section-42.html" data-scroll="section-42" class="internal">Sensors and Misc Components</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="appendix-3.html" data-scroll="appendix-3" class="internal"><span class="codenumber">C</span> <span class="title">Using Pretext</span></a><ul>
+<li><a href="section-43.html" data-scroll="section-43" class="internal">Editing and Building Custom Versions</a></li>
+<li><a href="section-44.html" data-scroll="section-44" class="internal">Using PreTeXt CLI</a></li>
+</ul>
+</li>
+<li class="link"><a href="colophon-2.html" data-scroll="colophon-2" class="internal"><span class="title">Colophon</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content">
+<section class="section" id="section-40"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">10.2</span> <span class="title">Connecting to the Internet</span>
+</h2>
+<section class="subsection" id="subsection-95"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">10.2.1</span> <span class="title">Discussion</span>
+</h3>
+<p id="p-324">The complexity of an embedded system grows dramatically when you begin to integrate communication and human interaction. However, it is an important part of the modern infrastructure, and so it is better to get a basic understanding of how such a thing is achieved.</p></section><section class="subsection" id="subsection-96"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">10.2.2</span> <span class="title">Code</span>
+</h3>
+<p id="p-325">Transcribe the program, and run it.</p>
+<p id="p-326"><a class="external" href="https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/data_management/weather.py" target="_blank">Download the Source</a><a href="" data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-39" id="fn-39"><sup> 39 </sup></a></p>
+<figure class="listing figure-like" id="listing-44"><div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="program"><code class="language-none"> 1|  import math
+ 2|  import requests
+ 3|  import json
+ 4|  import board
+ 5|  from PIL import Image, ImageDraw, ImageFont
+ 6|  import adafruit_ssd1306
+ 7|  from time import sleep
+ 8|  from datetime import datetime
+ 9|  import adafruit_ahtx0
+10|  import threading
+11|
+</code></pre></div>
+<figcaption><span class="type">Listing</span><span class="space"> </span><span class="codenumber">10.2.1<span class="period">.</span></span><span class="space"> </span></figcaption></figure><figure class="listing figure-like" id="listing-45"><div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="program"><code class="language-none">12|  class nws_forecast():
+13|    # Get the National Weather Service Forecast based upon the Geolocation.
+14|    # Geolocation is found by using the public IP address for the network that this device is attached to.
+15|    def get(self):
+16|      # Get the geolocation for your IP Address.
+17|      # API Documentation: https://ip-api.com/docs/api:json
+18|      URL = 'http://ip-api.com/json'
+19|
+20|      r = requests.get(url = URL)
+21|      data = r.json()
+22|      # For debuggin purposes.
+23|      #print(json.dumps(data, indent=2))
+24|      latitude = data['lat']
+25|      longitude = data['lon']
+26|
+27|      # Get the National Weather Service Office, and grid for your location.
+28|      # API Documentation: https://www.weather.gov/documentation/services-web-api#
+29|      HEADERS = {'user-agent': '(IntroductionToEmbeddedSystems, ajbradburn@gmail.com)'}
+30|
+31|      URL = 'https://api.weather.gov/points/{},{}'
+32|      URL = URL.format(latitude, longitude)
+33|
+34|      r = requests.get(url = URL, headers=HEADERS)
+35|
+36|      data = r.json()
+37|      # For debugging purposes.
+38|      #print(json.dumps(data, indent=2))
+39|
+40|      # Using the data from the last request, get the forcast for your area.
+41|      office = data['properties']['gridId']
+42|      loc_x = data['properties']['gridX']
+43|      loc_y = data['properties']['gridY']
+44|
+45|      URL = 'https://api.weather.gov/gridpoints/{}/{},{}/forecast'
+46|      URL = URL.format(office, loc_x, loc_y)
+47|
+48|      r = requests.get(url = URL, headers=HEADERS)
+49|
+50|      data = r.json()
+51|      # For debugging purposes.
+52|      #print(json.dumps(data, indent=2))
+53|
+54|      # Return only the current, or most immediate forecast.
+55|      return data['properties']['periods'][0]
+56|
+</code></pre></div>
+<figcaption><span class="type">Listing</span><span class="space"> </span><span class="codenumber">10.2.2<span class="period">.</span></span><span class="space"> </span></figcaption></figure><figure class="listing figure-like" id="listing-46"><div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="program"><code class="language-none">57|  class oled_display():
+58|    width = 128
+59|    height = 32
+60|
+61|    oled = None
+62|
+63|    def __init__(self):
+64|      self.oled = adafruit_ssd1306.SSD1306_I2C(self.width, self.height, board.I2C(), addr=0x3C)
+65|
+66|    def display_none(self):
+67|      self.oled.fill(0)
+68|      self.oled.show()
+69|
+70|    def display_string(self, text, font = None, size = 10, height = None, width = None):
+71|      image = Image.new("1", (self.oled.width, self.oled.height))
+72|
+73|      draw = ImageDraw.Draw(image)
+74|
+75|      if height == None or width == None:
+76|        dimensions = self.text_size(text, font, size)
+77|
+78|        if width == None:
+79|          width = dimensions[0]
+80|
+81|        if height == None:
+82|          height = dimensions[1]
+83|
+84|      if font == None:
+85|        font = ImageFont.load_default()
+86|      else:
+87|        font = ImageFont.truetype(font, size)
+88|
+89|      draw.text(
+90|        (self.oled.width // 2 - width // 2, self.oled.height // 2 - height // 2),
+91|        text,
+92|        font=font,
+93|        fill=10,
+94|        )
+95|
+96|      self.oled.image(image)
+97|      self.oled.show()
+98|
+</code></pre></div>
+<figcaption><span class="type">Listing</span><span class="space"> </span><span class="codenumber">10.2.3<span class="period">.</span></span><span class="space"> </span></figcaption></figure><figure class="listing figure-like" id="listing-47"><div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="program"><code class="language-none"> 99|    def text_size(self, text, font = None, size = 10):
+100|      if font == None:
+101|        font = ImageFont.load_default()
+102|      else:
+103|        font = ImageFont.truetype(font, size)
+104|      return font.getsize(text)
+105|
+106|    def scroll_string(self, text, font = None, size = 10, delay = 0.01):
+107|      text_len = len(text)
+108|      dimensions = self.text_size(text, font, size)
+109|      window_length = math.floor(self.oled.width / (dimensions[0] / text_len))
+110|      start = 0
+111|      height = dimensions[1]
+112|      width = window_length * (dimensions[0] / text_len)
+113|      padding = ' ' * window_length
+114|      text = padding + text + padding
+115|      text_len = len(text)
+116|      while start + window_length &lt;= text_len:
+117|        sub_string = text[start:start + window_length]
+118|        start = start + 1
+119|        self.display_string(sub_string, font, size, width=width, height=height)
+120|        sleep(delay)
+121|      return
+122|
+123|    def display_with_intro(self, intro, text, font = None, size = 10):
+124|      self.display_string(intro, font, size)
+125|      sleep(1)
+126|      self.scroll_string(text, font, size)
+127|
+</code></pre></div>
+<figcaption><span class="type">Listing</span><span class="space"> </span><span class="codenumber">10.2.4<span class="period">.</span></span><span class="space"> </span></figcaption></figure><figure class="listing figure-like" id="listing-48"><div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="program"><code class="language-none">128|  default_font = 'DejaVuSansMono.ttf'
+129|
+130|  # Initialize objects.
+131|  oled_display = oled_display()
+132|  sensor = adafruit_ahtx0.AHTx0(board.I2C())
+133|
+134|  def start_log_timer():
+135|    log_timer = threading.Timer(30, log_measurements).start()
+136|
+137|  def start_forecast_timer():
+138|    forecast_timer = threading.Timer(60, get_weather).start()
+139|
+140|  def start_temp_timer():
+141|    global temp_timer
+142|    temp_timer = threading.Timer(10, display_temp)
+143|    temp_timer.start()
+144|
+145|  def get_weather():
+146|    # Start a new timer.
+147|    start_forecast_timer()
+148|
+149|    # Cancel the temp_timer so that it doesn't interfere with our forecast display.
+150|    global temp_timer
+151|    temp_timer.cancel()
+152|
+153|    # Get the forecast and display it.
+154|    global oled_display
+155|    global sensor
+156|    weather = nws_forecast()
+157|    forecast = weather.get()
+158|    oled_display.display_string('High: {}°F'.format(forecast['temperature']), default_font, 16)
+159|    sleep(2)
+160|    oled_display.display_string('Inside: {}°F'.format(int(sensor.temperature * 9 / 5 + 32)), default_font, 16)
+161|    sleep(2)
+162|    oled_display.display_with_intro('Forecast:', forecast['detailedForecast'], default_font, 16)
+163|
+164|    # Resume the display of temperature, and start a new temp_timer.
+165|    display_temp()
+166|
+</code></pre></div>
+<figcaption><span class="type">Listing</span><span class="space"> </span><span class="codenumber">10.2.5<span class="period">.</span></span><span class="space"> </span></figcaption></figure><figure class="listing figure-like" id="listing-49"><div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="program"><code class="language-none">167|  def display_temp():
+168|    # Start a new timer.
+169|    start_temp_timer()
+170|
+171|    # Read the temperature and display it.
+172|    global default_font
+173|    temperature = sensor.temperature
+174|    humidity = sensor.relative_humidity
+175|    oled_display.display_string('Inside: {:.2f}°F'.format(temperature * 9 / 5 + 32), default_font, 12)
+176|
+177|  def log_measurements():
+178|    # Start a new timer.
+179|    start_log_timer()
+180|
+181|    # Read temperature and humidity. Log it with the date/time to a file in csv format.
+182|    global sensor
+183|    temperature = sensor.temperature
+184|    humidity = sensor.relative_humidity
+185|    string = '\"{}\",{:.2f},{:.2f}\n'.format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"), temperature, humidity)
+186|    file = open('log.csv', 'a')
+187|    file.write(string)
+188|    file.close()
+189|
+190|  # A variable to hold the temp_timer so that we can reference it later, and cancel the timer when needed.
+191|  temp_timer = None
+192|
+193|  start_log_timer()
+194|  display_temp()
+195|  start_forecast_timer()
+</code></pre></div>
+<figcaption><span class="type">Listing</span><span class="space"> </span><span class="codenumber">10.2.6<span class="period">.</span></span><span class="space"> </span></figcaption></figure></section><section class="subsection" id="subsection-97"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">10.2.3</span> <span class="title">Exploration</span>
+</h3>
+<section class="subsubsection" id="subsubsection-1"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span> <span class="codenumber">10.2.3.1</span> <span class="title"></span>
+</h4>
+<p id="p-327">There are a myriad ways to communicate over the internet. One of the more common methods is through what is called a REST API. Starting on line 12 we create a class with a single method that will get the forecasts for our area from the national weather service through a series of HTTP requests to different APIs.</p>
+<p id="p-328">The first request is to a IP geolocation service as identified in the URL on line 18. This service will take the public IP address that is making the request, and find the best estimate of the geographic location in terms of latitude and longitude. It will return this data in the form of a JSON object. If you uncomment line 23, and run the program, you can see what this response looks like.</p>
+<p id="p-329">When we get the geolocation response, we extract the latitude and longitude as seen on lines 24 and 25. We then use this information to make another request to the National Weather Service (as seen on line 31) so that we can get the office that is responsible for providing the forecasts, as well as the grid coordinates for our location. This request will return another JSON formatted data object that will contain the information we need. If you uncomment line 38 and run the application, you can see what the response looks like.</p>
+<p id="p-330">Next, we extract the office id, and grid coordinates as seen on lines 41, 42 and 43. We then use this data to make our final request as seen on line 45. The response for this will contain the data for a 7 day forecast. However, since we are only interested in the immediate forecast, we extract the first forecast in the list (at index 0) as seen on line 55, and return that to the requester.</p></section><section class="subsubsection" id="subsubsection-2"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span> <span class="codenumber">10.2.3.2</span> <span class="title"></span>
+</h4>
+<p id="p-331">The objective of this application is to display the inside temp, log the inside temp and humidity to a file, and also occasionally show the forecast high temperature along with the forecast. Measuring and displaying the inside temperature occurs every 10 seconds, except when the forecast is being displayed. The logging is done every 30 seconds. The display of the forecast is done every minute. In order to accurately control the timing of all of these functions we make extensive use of timers, and the functions on lines 134, 137, and 145 help us with that.</p>
+<p id="p-332">The threading library provides the functions for declaring timers. The declaration includes the function name that you want to be called, and the number of seconds until the timer executes the function call. Each timer is executed only once, so when the functions are called, we create a new timer so that the process is repeated.</p>
+<p id="p-333">When the <code class="code-inline tex2jax_ignore">get_weather</code> function is called, it cancels the <code class="code-inline tex2jax_ignore">temp_timer</code> so that the display of the forecast isn't interrupted. This is only necessary because both of them make use of the OLED display. The <code class="code-inline tex2jax_ignore">log_timer</code> isn't canceled because there is no conflict in the resources used.</p>
+<p id="p-334">With the <code class="code-inline tex2jax_ignore">log_measurements</code> function, the inside temperature and humidity are combined with the current date and time into a CSV (Comma Separated Values) string, and appended to a file. This is a common data exchange format, and it can be read by a number of different applications. A common one is Microsoft Excel. If you open this file in Excel, or LibreOffice Calc you can easily use it to create a graph that will show the changes in temperature and humidity in your immediate environment over time.</p></section></section></section><div class="hidden-content tex2jax_ignore" id="hk-fn-39"><div class="fn"><code class="code-inline tex2jax_ignore">https://raw.githubusercontent.com/ajbradburn/IntroToEmbeddedSystemsLabExercises/master/data_management/weather.py</code></div></div>
+</div></main>
+</div>
+<script src="https://unpkg.com/prismjs@v1.22.0/components/prism-core.min.js"></script><script src="https://unpkg.com/prismjs@v1.22.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

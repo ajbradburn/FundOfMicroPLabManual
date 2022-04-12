@@ -89,7 +89,7 @@
       <listing>
         <console>
           <input>
-            pip3 install board adafruit-circuitpython-ssd1306 adafruit_ssd1306 adafruit-circuitpython-ahtx0
+            pip3 install adafruit-circuitpython-ssd1306 adafruit_ssd1306 adafruit-circuitpython-ahtx0 adafruit-blinka
           </input>
         </console>
       </listing>

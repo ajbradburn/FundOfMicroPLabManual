@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-04-12T09:19:04-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<figure class="listing figure-like"><div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="program"><code class="language-none"> 1|  .data
+ 2|  .balign 4
+ 3|  numbers: .word 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
+ 4|
+ 5|  .text
+ 6|  .balign 4
+ 7|  .global main
+ 8|  .func main
+ 9|
+10|  main:
+11|    mov r0, #5
+12|    mov r1, #5
+13|      /* r0 + 5 */
+14|    add r0, r0, r1
+15|
+16|    ldr r2, =numbers
+17|  add_more:
+18|    ldr r1, [r2], #4
+19|      /* Is the new number equal to 0? */
+20|    cmp r1, #0
+21|    beq end
+22|      /* Add new number. */
+23|    add r0, r0, r1
+24|      /* Do it again. */
+25|    b add_more
+26|  end:
+27|
+28|    bx lr
+</code></pre></div>
+<figcaption><span class="type">Listing</span><span class="space"> </span><span class="codenumber">4.2.6<span class="period">.</span></span><span class="space"> </span></figcaption></figure><span class="incontext"><a href="section-15.html#listing-13">in-context</a></span>
+</body>
+</html>

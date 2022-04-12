@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-04-12T09:19:04-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<figure class="listing figure-like"><div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="program"><code class="language-none">104|    # Output die statistics.
+105|    str_actual_roll_percent = int((stats[str_number_of_die][str_roll_total]['rolls'] / stats[str_number_of_die]['run_count']) * 100)
+106|    print("Out of the {} times that this program has been run {} has been rolled {} times, a percentage of {}. A roll of {} should occur {}% of the time.".format(stats[str_number_of_die]['run_count'], str_roll_total, stats[str_number_of_die][str_roll_total]['rolls'], str_actual_roll_percent, str_roll_total, stats[str_number_of_die][str_roll_total]['percentage']))
+107|
+108|
+109|    # Save config and statistics to a file.
+110|    stats_string = json.dumps(stats, indent=4)
+111|    file_handle.truncate()
+112|    file_handle.write(stats_string)
+113|
+114|  if __name__ == "__main__":
+115|    main(sys.argv[1:])
+</code></pre></div>
+<figcaption><span class="type">Listing</span><span class="space"> </span><span class="codenumber">5.2.3<span class="period">.</span></span><span class="space"> </span></figcaption></figure><span class="incontext"><a href="section-18.html#listing-18">in-context</a></span>
+</body>
+</html>

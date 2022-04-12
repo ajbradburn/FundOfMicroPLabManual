@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-04-12T09:19:05-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<figure class="listing figure-like"><div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="program"><code class="language-none">57|  class oled_display():
+58|    width = 128
+59|    height = 32
+60|
+61|    oled = None
+62|
+63|    def __init__(self):
+64|      self.oled = adafruit_ssd1306.SSD1306_I2C(self.width, self.height, board.I2C(), addr=0x3C)
+65|
+66|    def display_none(self):
+67|      self.oled.fill(0)
+68|      self.oled.show()
+69|
+70|    def display_string(self, text, font = None, size = 10, height = None, width = None):
+71|      image = Image.new("1", (self.oled.width, self.oled.height))
+72|
+73|      draw = ImageDraw.Draw(image)
+74|
+75|      if height == None or width == None:
+76|        dimensions = self.text_size(text, font, size)
+77|
+78|        if width == None:
+79|          width = dimensions[0]
+80|
+81|        if height == None:
+82|          height = dimensions[1]
+83|
+84|      if font == None:
+85|        font = ImageFont.load_default()
+86|      else:
+87|        font = ImageFont.truetype(font, size)
+88|
+89|      draw.text(
+90|        (self.oled.width // 2 - width // 2, self.oled.height // 2 - height // 2),
+91|        text,
+92|        font=font,
+93|        fill=10,
+94|        )
+95|
+96|      self.oled.image(image)
+97|      self.oled.show()
+98|
+</code></pre></div>
+<figcaption><span class="type">Listing</span><span class="space"> </span><span class="codenumber">10.2.3<span class="period">.</span></span><span class="space"> </span></figcaption></figure><span class="incontext"><a href="section-40.html#listing-46">in-context</a></span>
+</body>
+</html>

@@ -17,6 +17,8 @@
   <!-- Guidance for sourcing parts -->
   <xi:include href="./appendices/sourcing_parts.ptx" />
 
+  <xi:include href="./appendices/using_pretext.ptx" />
+
   <colophon>
     <p>
       This book was authored in <pretext />.

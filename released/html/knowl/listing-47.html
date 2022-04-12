@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-04-12T09:19:05-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<figure class="listing figure-like"><div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="program"><code class="language-none"> 99|    def text_size(self, text, font = None, size = 10):
+100|      if font == None:
+101|        font = ImageFont.load_default()
+102|      else:
+103|        font = ImageFont.truetype(font, size)
+104|      return font.getsize(text)
+105|
+106|    def scroll_string(self, text, font = None, size = 10, delay = 0.01):
+107|      text_len = len(text)
+108|      dimensions = self.text_size(text, font, size)
+109|      window_length = math.floor(self.oled.width / (dimensions[0] / text_len))
+110|      start = 0
+111|      height = dimensions[1]
+112|      width = window_length * (dimensions[0] / text_len)
+113|      padding = ' ' * window_length
+114|      text = padding + text + padding
+115|      text_len = len(text)
+116|      while start + window_length &lt;= text_len:
+117|        sub_string = text[start:start + window_length]
+118|        start = start + 1
+119|        self.display_string(sub_string, font, size, width=width, height=height)
+120|        sleep(delay)
+121|      return
+122|
+123|    def display_with_intro(self, intro, text, font = None, size = 10):
+124|      self.display_string(intro, font, size)
+125|      sleep(1)
+126|      self.scroll_string(text, font, size)
+127|
+</code></pre></div>
+<figcaption><span class="type">Listing</span><span class="space"> </span><span class="codenumber">10.2.4<span class="period">.</span></span><span class="space"> </span></figcaption></figure><span class="incontext"><a href="section-40.html#listing-47">in-context</a></span>
+</body>
+</html>
