@@ -14,8 +14,8 @@
   <colophon>
     <website>
       <p>The source code for this document is available on GitHub.</p>
-      <name>https://github.com/ajbradburn/FundOfMicroPLabManual</name>
-      <address>https://github.com/ajbradburn/FundOfMicroPLabManual</address>
+      <name>https://github.com/ajbradburn/IntroductionToEmbeddedSystemsLabManual</name>
+      <address>https://github.com/ajbradburn/IntroductionToEmbeddedSystemsLabManual</address>
     </website>
 
     <copyright>
@@ -42,7 +42,7 @@
     </p>
     <p>
       If you find errors, please check the version of the product you're using, to make sure it is the newest.
-      If the errors exist in the most recent version, please email the maintainer at <url visual="ajbradburn@gmail.com" href="mailto:ajbradburn@gmail.com?subject=Assembly for Raspberry Pi Lab Manual"><c>ajbradburn@gmail.com</c></url> and include answers to the following:
+      If the errors exist in the most recent version, please email the maintainer at <url visual="ajbradburn@gmail.com" href="mailto:ajbradburn@gmail.com?subject=Introduction to Embedded Systems Lab Manual"><c>ajbradburn@gmail.com</c></url> and include answers to the following:
       <ol>
           <li>A description of the error, with screenshots/photo if possible.</li>
           <li>Is the problem in the online version or the PDF version or both?</li>
